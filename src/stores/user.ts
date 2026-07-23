@@ -1,10 +1,5 @@
 import { defineStore } from 'pinia'
-
-type User = {
-  id: number
-  name: string
-  email: string
-}
+import type { User } from '@/types/user'
 
 export const useUserStore = defineStore('user', () => {
   const user = useState<User | null>('auth-user', () => null)
@@ -34,9 +29,14 @@ export const useUserStore = defineStore('user', () => {
     user.value = null
   }
 
+  function setUser(nextUser: User | null) {
+    user.value = nextUser
+  }
+
   return {
     user,
     fetchUser,
     clearUser,
+    setUser,
   }
 })

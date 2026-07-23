@@ -28,7 +28,7 @@ Monorepo skeleton for a lunch ordering app with:
 Frontend:
 
 ```powershell
-cd frontend
+cd src
 npm install
 npm run dev
 ```
@@ -38,5 +38,4 @@ Database:
 
 ## Status
 
-This repository is intentionally scaffold-only.
-Feature code is not implemented yet.
+The frontend includes a polished demo experience for signing in and voting on today's lunch options. Votes are currently held in browser memory so the UI can be explored without database setup; the database schema is ready for a persistent API implementation.
