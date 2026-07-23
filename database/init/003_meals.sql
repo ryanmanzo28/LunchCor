@@ -1,0 +1,23 @@
+-- 003_meals.sql
+
+CREATE TABLE IF NOT EXISTS meals (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+
+    restaurant_id INT UNSIGNED NOT NULL,
+
+    name VARCHAR(100) NOT NULL,
+    description TEXT NULL,
+
+    average_rating DECIMAL(3,2) NOT NULL DEFAULT 0.00,
+
+    active BOOLEAN NOT NULL DEFAULT TRUE,
+
+    created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    modified DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_meals_restaurant
+        FOREIGN KEY (restaurant_id)
+        REFERENCES restaurants(id)
+        ON DELETE CASCADE
+);
