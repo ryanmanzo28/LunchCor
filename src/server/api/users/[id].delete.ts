@@ -1,6 +1,4 @@
 import mysql from 'mysql2/promise'
-import type { User } from '@/types/user'
-import { isValidEmail, isValidPassword } from '../../utils/validators'
 type MysqlGlobal = typeof globalThis & { __lunchcorPool?: mysql.Pool }
 
 interface UserRow extends mysql.RowDataPacket {

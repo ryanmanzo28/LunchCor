@@ -69,6 +69,12 @@ export default defineEventHandler(async (event) => {
             [newUserId]
         )
         const newUser = rows[0]
+        if (!newUser) {
+            throw createError({
+                statusCode: 500,
+                statusMessage: "Unable to load created user"
+            })
+        }
 
         return {
             id: newUser.id,

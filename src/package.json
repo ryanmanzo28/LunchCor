@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
+    "check": "npm run typecheck && npm run build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "start": "node .output/server/index.mjs",
+    "typecheck": "nuxt typecheck",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
@@ -14,12 +17,15 @@
     "@pinia/nuxt": "^1.0.1",
     "@vueuse/nuxt": "^14.3.0",
     "axios": "^1.18.1",
+    "jose": "^5.2.0",
     "mysql2": "^3.23.2",
     "nuxt": "^4.5.0",
     "vue": "^3.5.40",
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
-    "@types/node": "^26.1.1"
+    "@types/node": "^26.1.1",
+     "vue-tsc": "^3.3.8",
+     "typescript": "^5.7.3"
   }
 }

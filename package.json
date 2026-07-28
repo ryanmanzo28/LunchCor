@@ -1,0 +1,11 @@
+{
+  "name": "lunchcor",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix src run dev",
+    "build": "npm --prefix src run build",
+    "start": "npm --prefix src run start",
+    "typecheck": "npm --prefix src run typecheck",
+    "check": "npm --prefix src run check"
+  }
+}

@@ -13,6 +13,8 @@ Monorepo skeleton for a lunch ordering app with:
 	Copy-Item .env.example .env
 	```
 
+	Set `JWT_SECRET` in `.env` to a strong random value for token verification.
+
 2. Start all services:
 
 	```powershell
@@ -28,6 +30,12 @@ Monorepo skeleton for a lunch ordering app with:
 Frontend:
 
 ```powershell
+npm run dev
+```
+
+Alternative (inside `src` directly):
+
+```powershell
 cd src
 npm install
 npm run dev
@@ -35,6 +43,18 @@ npm run dev
 
 Database:
 - Use Docker MySQL from compose, or provide your own MySQL and set values in .env.
+
+## Project Scripts
+
+Run from repository root:
+
+```powershell
+npm run dev
+npm run build
+npm run start
+npm run typecheck
+npm run check
+```
 
 ## Status
 

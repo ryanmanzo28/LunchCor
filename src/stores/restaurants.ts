@@ -80,7 +80,12 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     }
 
     const choice = randomRestaurant(restaurants.value.filter((restaurant) => restaurant.id !== selectedId.value))
-    voteFor(choice?.id ?? restaurants.value[0].id)
+    const fallback = restaurants.value[0]
+    if (!fallback) {
+      return
+    }
+
+    voteFor(choice?.id ?? fallback.id)
   }
 
   if (import.meta.client) {

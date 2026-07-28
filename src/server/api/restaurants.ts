@@ -162,6 +162,12 @@ async function addRestaurant(input: RestaurantCreateInput) {
 	const [rows] = await pool.execute<RestaurantRow[]>(query, [result.insertId])
 
 	const created = rows[0]
+	if (!created) {
+		throw createError({
+			statusCode: 500,
+			statusMessage: 'Unable to load created restaurant',
+		})
+	}
 
 	return {
 		id: created.id,

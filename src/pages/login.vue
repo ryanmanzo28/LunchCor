@@ -28,13 +28,15 @@ const userStore = useUserStore()
 const email = ref('')
 
 function signIn() {
-  const name = email.value
-    .split('@')[0]
+  const normalizedEmail = email.value.trim().toLowerCase()
+  const localPart = normalizedEmail.split('@')[0] ?? ''
+  const name = localPart
     .replace(/[._-]/g, ' ')
     .replace(/\b\w/g, (letter) => letter.toUpperCase()) || 'LunchCor User'
+  const isAdmin = normalizedEmail === 'admin@lunchcor.local' || /^admin\+.+@lunchcor\.local$/.test(normalizedEmail)
 
   authStore.setToken('demo-jwt')
-  userStore.setUser({ id: 1, name, email: email.value })
+  userStore.setUser({ id: 1, name, email: normalizedEmail, password: '', admin: isAdmin })
   router.push('/')
 }
 </script>

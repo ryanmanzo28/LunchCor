@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import type { User } from '@/types/user'
+import { decodeId } from '@/utils/jwtVerify'
 
 
 export const useUserStore = defineStore('user', () => {
@@ -20,6 +21,8 @@ export const useUserStore = defineStore('user', () => {
         const response = await $fetch<User>(`/api/users/${id}`, {
         })
         user.value = response
+      } else {
+        user.value = null
       }
     } catch (error) {
       user.value = null
