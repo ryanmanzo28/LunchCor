@@ -9,7 +9,8 @@ export const useUserStore = defineStore('user', () => {
       return user.value
     }
 
-    const token = localStorage.getItem('jwt')
+    const authStore = useAuthStore()
+    const token = authStore.token
 
     if (!token) {
       user.value = null

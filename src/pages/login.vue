@@ -16,6 +16,12 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  title: 'Login',
+  link: [
+    { rel: 'icon', href: '/favicon.ico' },
+  ],
+})
 const router = useRouter()
 const authStore = useAuthStore()
 const userStore = useUserStore()
@@ -27,7 +33,6 @@ function signIn() {
     .replace(/[._-]/g, ' ')
     .replace(/\b\w/g, (letter) => letter.toUpperCase()) || 'LunchCor User'
 
-  localStorage.setItem('jwt', 'demo-jwt')
   authStore.setToken('demo-jwt')
   userStore.setUser({ id: 1, name, email: email.value })
   router.push('/')

@@ -4,7 +4,7 @@
       <NuxtLink class="brand" to="/">Lunch<span>Cor</span></NuxtLink>
       <div class="profile">
         <span class="avatar">{{ initials }}</span>
-        <span>{{ userStore.user?.name }}</span>
+        <span>{{ userStore.user?.name ?? 'User' }}</span>
         <button class="text-button" type="button" @click="signOut">Sign out</button>
       </div>
     </header>
@@ -22,6 +22,14 @@
       Your vote for <strong>{{ selectedRestaurant.name }}</strong> is in. Nice choice.
     </p>
 
+    <p v-else-if="isLoading" class="notice" role="status">
+      Loading today's restaurant options...
+    </p>
+
+    <p v-else-if="loadError" class="notice" role="status">
+      {{ loadError }}
+    </p>
+
     <section class="content-grid">
       <section aria-labelledby="vote-heading">
         <div class="section-heading">
@@ -32,7 +40,7 @@
           <span class="vote-count">{{ totalVotes }} votes</span>
         </div>
 
-        <div class="restaurant-list">
+        <div v-if="rankedRestaurants.length" class="restaurant-list">
           <article
             v-for="restaurant in rankedRestaurants"
             :key="restaurant.id"
@@ -68,10 +76,12 @@
             </div>
           </article>
         </div>
+
+        <p v-else class="muted">No restaurants are available right now.</p>
       </section>
 
       <aside class="sidebar">
-        <section class="panel" aria-labelledby="leader-heading">
+        <section v-if="leader" class="panel" aria-labelledby="leader-heading">
           <p class="eyebrow">Currently leading</p>
           <h2 id="leader-heading">{{ leader.name }}</h2>
           <div class="leader-row">
@@ -103,12 +113,29 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  title: 'Home',
+  link: [
+    { rel: 'icon', href: '/favicon.ico' },
+  ],
+})
+
 const router = useRouter()
 const authStore = useAuthStore()
 const userStore = useUserStore()
 const restaurantsStore = useRestaurantsStore()
 
-const { rankedRestaurants, popularRestaurants, leader, totalVotes, leaderPercent, selectedId, selectedRestaurant } = storeToRefs(restaurantsStore)
+const {
+  rankedRestaurants,
+  popularRestaurants,
+  leader,
+  totalVotes,
+  leaderPercent,
+  selectedId,
+  selectedRestaurant,
+  isLoading,
+  loadError,
+} = storeToRefs(restaurantsStore)
 
 const initials = computed(() => (userStore.user?.name ?? 'LC').split(' ').map((name) => name[0]).join('').slice(0, 2))
 
@@ -119,9 +146,12 @@ const todayLabel = new Intl.DateTimeFormat('en-US', {
 }).format(new Date())
 
 function signOut() {
-  localStorage.removeItem('jwt')
   authStore.clearToken()
   userStore.clearUser()
   router.push('/login')
+}
+
+if (import.meta.client) {
+  void restaurantsStore.fetchRestaurants()
 }
 </script>

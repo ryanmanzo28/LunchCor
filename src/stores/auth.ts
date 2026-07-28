@@ -1,7 +1,11 @@
 import { defineStore } from 'pinia'
 
 export const useAuthStore = defineStore('auth', () => {
-  const token = useState<string | null>('auth-token', () => null)
+  const token = useCookie<string | null>('jwt', {
+    default: () => null,
+    sameSite: 'lax',
+    path: '/',
+  })
 
   function setToken(nextToken: string) {
     token.value = nextToken

@@ -5,15 +5,21 @@ type MysqlGlobal = typeof globalThis & { __lunchcorPool?: mysql.Pool }
 interface RestaurantRow extends mysql.RowDataPacket {
 	id: number
 	name: string
+	cuisine: string
 	description: string | null
 	times_ordered: number
 	average_rating: number | string
+	icon: string
+	color: string
 	votes: number
 }
 
 interface RestaurantCreateInput {
 	name: string
+	cuisine?: string
 	description?: string | null
+	icon?: string
+	color?: string
 }
 
 function getPool() {
@@ -33,71 +39,140 @@ function getPool() {
 	return globalRef.__lunchcorPool
 }
 
+async function hasVotesTable() {
+	const pool = getPool()
+	const [rows] = await pool.query<Array<mysql.RowDataPacket & { has_table: number }>>(
+		`SELECT COUNT(*) AS has_table
+		 FROM information_schema.tables
+		 WHERE table_schema = DATABASE()
+		   AND table_name = 'votes'`,
+	)
+
+	return Number(rows[0]?.has_table || 0) > 0
+}
+
 async function listAllRestaurants() {
 	const pool = getPool()
-	const [rows] = await pool.query<RestaurantRow[]>(`
-		SELECT
-			r.id,
-			r.name,
-			r.description,
-			r.times_ordered,
-			r.average_rating,
-			COALESCE(v.votes, 0) AS votes
-		FROM restaurants r
-		LEFT JOIN (
-			SELECT restaurant_id, COUNT(*) AS votes
-			FROM votes
-			GROUP BY restaurant_id
-		) v ON v.restaurant_id = r.id
-		WHERE r.active = TRUE
-		ORDER BY r.name ASC
-	`)
+	const canUseVotes = await hasVotesTable()
+	const query = canUseVotes
+		? `
+			SELECT
+				r.id,
+				r.name,
+				r.cuisine,
+				r.description,
+				r.times_ordered,
+				r.average_rating,
+				r.icon,
+				r.color,
+				COALESCE(v.votes, 0) AS votes
+			FROM restaurants r
+			LEFT JOIN (
+				SELECT restaurant_id, COUNT(*) AS votes
+				FROM votes
+				GROUP BY restaurant_id
+			) v ON v.restaurant_id = r.id
+			WHERE r.active = TRUE
+			ORDER BY r.name ASC
+		`
+		: `
+			SELECT
+				r.id,
+				r.name,
+				r.cuisine,
+				r.description,
+				r.times_ordered,
+				r.average_rating,
+				r.icon,
+				r.color,
+				0 AS votes
+			FROM restaurants r
+			WHERE r.active = TRUE
+			ORDER BY r.name ASC
+		`
+
+	const [rows] = await pool.query<RestaurantRow[]>(query)
 
 	return rows.map((row) => ({
 		id: row.id,
 		name: row.name,
-		description: row.description,
-		timesOrdered: row.times_ordered,
-		averageRating: Number(row.average_rating),
+		cuisine: row.cuisine,
+		description: row.description ?? '',
+		rating: Number(row.average_rating),
+		orders: row.times_ordered,
 		votes: row.votes,
+		icon: row.icon,
+		color: row.color,
 	}))
 }
 
 async function addRestaurant(input: RestaurantCreateInput) {
 	const pool = getPool()
+	const canUseVotes = await hasVotesTable()
+	const normalizedName = input.name.trim()
+	const fallbackIcon = normalizedName.charAt(0).toUpperCase() || 'R'
 	const [result] = await pool.execute<mysql.ResultSetHeader>(
-		'INSERT INTO restaurants (name, description, active) VALUES (?, ?, TRUE)',
-		[input.name.trim(), input.description ?? null],
+		'INSERT INTO restaurants (name, cuisine, description, icon, color, active) VALUES (?, ?, ?, ?, ?, TRUE)',
+		[
+			normalizedName,
+			input.cuisine?.trim() || 'General',
+			input.description ?? null,
+			input.icon?.trim() || fallbackIcon,
+			input.color?.trim() || '#9aa5b1',
+		],
 	)
 
-	const [rows] = await pool.execute<RestaurantRow[]>(
-		`SELECT
-			r.id,
-			r.name,
-			r.description,
-			r.times_ordered,
-			r.average_rating,
-			COALESCE(v.votes, 0) AS votes
-		 FROM restaurants r
-		 LEFT JOIN (
-			 SELECT restaurant_id, COUNT(*) AS votes
-			 FROM votes
-			 GROUP BY restaurant_id
-		 ) v ON v.restaurant_id = r.id
-		 WHERE r.id = ?
-		 LIMIT 1`,
-		[result.insertId],
-	)
+	const query = canUseVotes
+		? `
+			SELECT
+				r.id,
+				r.name,
+				r.cuisine,
+				r.description,
+				r.times_ordered,
+				r.average_rating,
+				r.icon,
+				r.color,
+				COALESCE(v.votes, 0) AS votes
+			FROM restaurants r
+			LEFT JOIN (
+				SELECT restaurant_id, COUNT(*) AS votes
+				FROM votes
+				GROUP BY restaurant_id
+			) v ON v.restaurant_id = r.id
+			WHERE r.id = ?
+			LIMIT 1
+		`
+		: `
+			SELECT
+				r.id,
+				r.name,
+				r.cuisine,
+				r.description,
+				r.times_ordered,
+				r.average_rating,
+				r.icon,
+				r.color,
+				0 AS votes
+			FROM restaurants r
+			WHERE r.id = ?
+			LIMIT 1
+		`
+
+	const [rows] = await pool.execute<RestaurantRow[]>(query, [result.insertId])
 
 	const created = rows[0]
 
 	return {
 		id: created.id,
 		name: created.name,
-		description: created.description,
-		timesOrdered: created.times_ordered,
-		averageRating: Number(created.average_rating),
+		cuisine: created.cuisine,
+		description: created.description ?? '',
+		rating: Number(created.average_rating),
+		orders: created.times_ordered,
 		votes: created.votes,
+		icon: created.icon,
+		color: created.color,
 	}
 }
 
@@ -137,7 +212,10 @@ export default defineEventHandler(async (event) => {
 
 			const restaurant = await addRestaurant({
 				name: body.name,
+				cuisine: body.cuisine,
 				description: body.description,
+				icon: body.icon,
+				color: body.color,
 			})
 
 			setResponseStatus(event, 201)
