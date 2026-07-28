@@ -1,6 +1,14 @@
 import mysql from 'mysql2/promise'
-import type User from 'types/user'
+import type { User } from '@/types/user'
 type MysqlGlobal = typeof globalThis & { __lunchcorPool?: mysql.Pool }
+
+interface UserRow extends mysql.RowDataPacket {
+    id: number
+    name: string
+    email: string
+    password: string
+    admin: number | boolean
+}
 
 
 function getPool() {
@@ -30,8 +38,8 @@ export default defineEventHandler(async (event) => {
         statusMessage: "Invalid user ID"
     })
 }
-    const [rows] = await pool.query<User[]>(
-        "SELECT * FROM users WHERE id = ? LIMIT 1",
+    const [rows] = await pool.query<UserRow[]>(
+        "SELECT id, name, email, password, admin FROM users WHERE id = ? LIMIT 1",
         [id]
     )
     const user = rows[0]
@@ -41,7 +49,13 @@ export default defineEventHandler(async (event) => {
             statusMessage: "User not found"
         })
     } else {
-        return user
+        return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            password: user.password,
+            admin: Boolean(user.admin),
+        } satisfies User
     }
 })
 

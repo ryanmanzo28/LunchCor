@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import type { User } from '@/types/user'
 
+
 export const useUserStore = defineStore('user', () => {
   const user = useState<User | null>('auth-user', () => null)
 
@@ -13,12 +14,17 @@ export const useUserStore = defineStore('user', () => {
       return null
     }
 
-    user.value = {
-      id: 1,
-      name: 'LunchCor User',
-      email: 'user@lunchcor.local',
-      admin: false,
+    try {
+      const id = await decodeId(token)
+      if (id) {
+        const response = await $fetch<User>(`/api/users/${id}`, {
+        })
+        user.value = response
+      }
+    } catch (error) {
+      user.value = null
     }
+    
 
     return user.value
   }
