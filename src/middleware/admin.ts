@@ -7,7 +7,7 @@ export default defineNuxtRouteMiddleware(() => {
   }
 
   const email = userStore.user?.email?.toLowerCase() ?? ''
-  const isAdmin = email.includes('admin') || email.endsWith('@lunchcor.local')
+  const isAdmin = email === 'admin@lunchcor.local' || /^admin\+.+@lunchcor\.local$/.test(email)
 
   if (!isAdmin) {
     return navigateTo('/')

@@ -37,7 +37,7 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     loadError.value = null
 
     try {
-      const response = await $fetch<RestaurantsResponse>('/api/health/restaurants')
+      const response = await $fetch<RestaurantsResponse>('/api/restaurants')
       restaurants.value = response.restaurants
       hasLoaded.value = true
 

@@ -5,10 +5,6 @@ export const useUserStore = defineStore('user', () => {
   const user = useState<User | null>('auth-user', () => null)
 
   async function fetchUser() {
-    if (!process.client) {
-      return user.value
-    }
-
     const authStore = useAuthStore()
     const token = authStore.token
 
@@ -21,6 +17,7 @@ export const useUserStore = defineStore('user', () => {
       id: 1,
       name: 'LunchCor User',
       email: 'user@lunchcor.local',
+      admin: false,
     }
 
     return user.value

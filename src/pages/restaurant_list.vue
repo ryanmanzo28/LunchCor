@@ -36,10 +36,6 @@ useHead({
   ],
 })
 
-definePageMeta({
-  middleware: ['auth'],
-})
-
 const userStore = useUserStore()
 const restaurantsStore = useRestaurantsStore()
 const { restaurants: allRestaurants, isLoading, loadError } = storeToRefs(restaurantsStore)

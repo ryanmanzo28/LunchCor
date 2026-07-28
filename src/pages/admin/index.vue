@@ -8,7 +8,7 @@
     <article class="card">
       <h2>Restaurants</h2>
       <p>Use the restaurants API endpoint to list, add, and remove entries.</p>
-      <NuxtLink to="/api/health/restaurants">Open endpoint</NuxtLink>
+      <NuxtLink to="/api/restaurants">Open endpoint</NuxtLink>
     </article>
 
     <article class="card">
