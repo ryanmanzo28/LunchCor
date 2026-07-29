@@ -128,6 +128,23 @@ export async function createRestaurant(input: RestaurantCreateInput) {
     ],
   )
 
+  await pool.execute(
+    `INSERT INTO menu_items (restaurant_id, name, description, category, price_cents, currency, is_available)
+     SELECT ?, ?, ?, ?, ?, ?, TRUE
+     WHERE NOT EXISTS (
+       SELECT 1 FROM menu_items WHERE restaurant_id = ?
+     )`,
+    [
+      result.insertId,
+      `${normalizedName} Signature`,
+      `Starter menu entry for ${normalizedName}.`,
+      'House Special',
+      1299,
+      'USD',
+      result.insertId,
+    ],
+  )
+
   const query = canUseVotes
     ? `
       SELECT
