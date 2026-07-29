@@ -1,6 +1,7 @@
 import mysql from 'mysql2/promise'
 import type { User } from '@/types/user'
 import { isValidEmail, isValidPassword } from '../../utils/validators'
+import { hashPassword } from '../../../utils/passwordHash'
 type MysqlGlobal = typeof globalThis & { __lunchcorPool?: mysql.Pool }
 
 interface CreateUserBody {
@@ -41,7 +42,7 @@ export default defineEventHandler(async (event) => {
     if (body.name && body.email && body.password) {
         const name = String(body.name).trim()
         const email = String(body.email).trim().toLowerCase()
-        const password = String(body.password)
+        const plainPassword = String(body.password)
 
         const emailIsAvailable = await isValidEmail(email)
         if (!emailIsAvailable) {
@@ -51,12 +52,14 @@ export default defineEventHandler(async (event) => {
             })
         }
 
-        if (!isValidPassword(password)) {
+        if (!isValidPassword(plainPassword)) {
             throw createError({
                 statusCode: 400,
                 statusMessage: "Password must be at least 8 characters"
             })
         }
+
+        const password = await hashPassword(plainPassword)
 
         const pool = getPool()
         const [result] = await pool.query<mysql.ResultSetHeader>(

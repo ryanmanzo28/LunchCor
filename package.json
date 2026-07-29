@@ -8,5 +8,8 @@
     "typecheck": "npm --prefix src run typecheck",
     "check": "npm --prefix src run check",
     "docker:build-and-start": "powershell -ExecutionPolicy Bypass -File ./scripts/build-and-start.ps1"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0"
   }
 }
