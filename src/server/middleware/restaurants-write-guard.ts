@@ -3,8 +3,10 @@ import { createError, defineEventHandler, getRequestURL } from 'h3'
 export default defineEventHandler((event) => {
   const method = event.node.req.method || 'GET'
   const url = getRequestURL(event)
+  const isRestaurantsCollection = url.pathname === '/api/restaurants'
+  const isRestaurantsItem = /^\/api\/restaurants\/[0-9]+$/.test(url.pathname)
 
-  if (url.pathname !== '/api/restaurants') {
+  if (!isRestaurantsCollection && !isRestaurantsItem) {
     return
   }
 
