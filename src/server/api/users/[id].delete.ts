@@ -76,6 +76,6 @@ export default defineEventHandler(async (event) => {
 
     return {
         status: "deleted",
-        id: user.id,
+        id,
     }
 })

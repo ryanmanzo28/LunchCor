@@ -1,4 +1,4 @@
-import { createRestaurant, type RestaurantCreateInput } from './utils'
+import { createRestaurant, type RestaurantCreateInput } from '~/server/utils/restaurants'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody<Partial<RestaurantCreateInput>>(event)

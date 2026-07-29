@@ -1,4 +1,4 @@
-import { listRestaurants } from './utils'
+import { listRestaurants } from '~/server/utils/restaurants'
 
 export default defineEventHandler(async () => {
   try {
