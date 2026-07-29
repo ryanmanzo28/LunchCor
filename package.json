@@ -6,6 +6,7 @@
     "build": "npm --prefix src run build",
     "start": "npm --prefix src run start",
     "typecheck": "npm --prefix src run typecheck",
-    "check": "npm --prefix src run check"
+    "check": "npm --prefix src run check",
+    "docker:build-and-start": "powershell -ExecutionPolicy Bypass -File ./scripts/build-and-start.ps1"
   }
 }
