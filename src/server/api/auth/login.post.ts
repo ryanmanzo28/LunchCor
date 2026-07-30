@@ -1,6 +1,7 @@
 import mysql from 'mysql2/promise'
 import { verifyPassword } from '~/utils/passwordHash'
 import { getPool } from '~/server/utils/db'
+import { signJwt } from '~/server/utils/jwt'
 
 export default defineEventHandler(async (event) => {
   const { email, password } = await readBody(event)
@@ -29,8 +30,29 @@ export default defineEventHandler(async (event) => {
       })
     }
 
+    const token = await signJwt({
+      id: Number(user.id),
+      email: String(user.email),
+      admin: Boolean(user.admin),
+    })
+
+    setCookie(event, 'jwt', token, {
+      path: '/',
+      sameSite: 'lax',
+      httpOnly: true,
+      maxAge: 60 * 60 * 24,
+    })
+
+    setCookie(event, 'admin', String(Boolean(user.admin)), {
+      path: '/',
+      sameSite: 'lax',
+      httpOnly: false,
+      maxAge: 60 * 60 * 24,
+    })
+
     return {
       status: 'success',
+      token,
       user: {
         id: user.id,
         name: user.name,

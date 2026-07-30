@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS restaurants (
     menu_items_json JSON NULL,
 
     times_ordered INT UNSIGNED NOT NULL DEFAULT 0,
+    times_voted INT UNSIGNED NOT NULL DEFAULT 0,
     votes INT UNSIGNED NOT NULL DEFAULT 0,
     average_rating DECIMAL(3,2) NOT NULL DEFAULT 0.00,
 

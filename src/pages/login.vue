@@ -29,35 +29,28 @@ const authStore = useAuthStore()
 const userStore = useUserStore()
 const email = ref('')
 const password = ref('')
+const isSubmitting = ref(false)
 
 async function signIn() {
-  // Build a friendly fallback display name from the email local-part.
-  const normalizedEmail = email.value.trim().toLowerCase()
-  const localPart = normalizedEmail.split('@')[0] ?? ''
-  const nextPassword = password.value
-  const name = localPart
-    .replace(/[._-]/g, ' ')
-    .replace(/\b\w/g, (letter) => letter.toUpperCase()) || 'LunchCor User'
-  const isAdmin = normalizedEmail === 'admin@lunchcor.local' || /^admin\+.+@lunchcor\.local$/.test(normalizedEmail)
+  if (isSubmitting.value) {
+    return
+  }
 
-  // Seed local auth state immediately; middleware will gate protected routes.
-  await authStore.setProfile({
-    name,
-    email: normalizedEmail,
-    password: nextPassword,
-    admin: isAdmin,
-  })
+  isSubmitting.value = true
 
-  authStore.setToken('jwt')
+  try {
+    const user = await authStore.login(email.value, password.value)
+    userStore.setUser({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      password: '',
+      admin: Boolean(user.admin),
+    })
 
-  userStore.setUser({
-    id: authStore.userId ?? 0,
-    name,
-    email: normalizedEmail,
-    password: nextPassword,
-    admin: isAdmin,
-  })
-
-  await router.push('/')
+    await router.replace('/')
+  } finally {
+    isSubmitting.value = false
+  }
 }
 </script>

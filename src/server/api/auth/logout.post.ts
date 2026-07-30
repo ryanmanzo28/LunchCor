@@ -1,6 +1,7 @@
 export default defineEventHandler((event) => {
-    // Remove auth cookie to terminate server-side session context.
-    deleteCookie(event, "token")
+    // Remove auth cookies to terminate server-side session context.
+    deleteCookie(event, 'jwt')
+    deleteCookie(event, 'admin')
 
     return {
         success: true

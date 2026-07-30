@@ -1,22 +1,15 @@
 import { defineStore } from 'pinia'
 import type { Restaurant } from '@/types/restaurant'
-import { randomRestaurant, sortByPopularity, sortByRating } from '@/utils/restaurants'
-import { getMenuFromHtml } from '~/utils/menu'
-
-function buildHtmlSignature(html: string) {
-  // Strip volatile markup so signature tracks meaningful content changes.
-  return html
-    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
-    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
-    .replace(/>\s+</g, '><')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
+import { randomRestaurant, restaurantIdByName, sortByPopularity, sortByRating } from '@/utils/restaurants'
 
 interface RestaurantsResponse {
   status: string
   count: number
   restaurants: Restaurant[]
+}
+
+interface VoteResponse {
+  success: boolean
 }
 
 export const useRestaurantsStore = defineStore('restaurants', () => {
@@ -25,8 +18,6 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
   const isLoading = useState<boolean>('restaurants-loading', () => false)
   const hasLoaded = useState<boolean>('restaurants-loaded', () => false)
   const loadError = useState<string | null>('restaurants-error', () => null)
-  const lastMenuRefreshAt = new Map<number, number>()
-  const menuRefreshCooldownMs = 10 * 60 * 1000
 
   const rankedRestaurants = computed(() => sortByRating(restaurants.value))
   const popularRestaurants = computed(() => sortByPopularity(restaurants.value).slice(0, 3))
@@ -58,10 +49,6 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
       if (selectedId.value && !restaurants.value.some((restaurant) => restaurant.id === selectedId.value)) {
         selectedId.value = null
       }
-
-      if (import.meta.client) {
-        void refreshMenusLightweight()
-      }
     }
     catch {
       loadError.value = 'Unable to load restaurants right now.'
@@ -71,91 +58,67 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     }
   }
 
-  async function refreshMenuItemsForRestaurant(restaurant: Restaurant) {
-    if (!restaurant?.id) {
-      return false
-    }
-
-    const targetUrl = restaurant.link?.trim()
-    if (!targetUrl) {
-      return false
-    }
-
-    const lastRefresh = lastMenuRefreshAt.get(restaurant.id) ?? 0
-    const now = Date.now()
-    // Cooldown limits scraping pressure and repeated parsing work.
-    if (now - lastRefresh < menuRefreshCooldownMs) {
-      return false
-    }
-
-    try {
-      const currentHtmlSignature = restaurant.menuItems?.length
-        ? buildHtmlSignature(JSON.stringify(restaurant.menuItems))
-        : ''
-
-      const refreshedMenu = await getMenuFromHtml(targetUrl)
-      if (!refreshedMenu || refreshedMenu.length === 0) {
-        return false
-      }
-
-      const nextHtmlSignature = buildHtmlSignature(JSON.stringify(refreshedMenu))
-      const changed = currentHtmlSignature !== nextHtmlSignature
-
-      if (!changed) {
-        lastMenuRefreshAt.set(restaurant.id, now)
-        return false
-      }
-
-      const target = restaurants.value.find((entry) => entry.id === restaurant.id)
-      if (!target) {
-        lastMenuRefreshAt.set(restaurant.id, now)
-        return false
-      }
-
-      target.menuItems = refreshedMenu
-      lastMenuRefreshAt.set(restaurant.id, now)
-      return true
-    }
-    catch {
-      return false
-    }
-  }
-
   async function refreshMenusLightweight() {
-    if (!restaurants.value.length) {
-      return
-    }
-
-    for (const restaurant of restaurants.value) {
-      if (restaurant.menuItems?.length) {
-        await refreshMenuItemsForRestaurant(restaurant)
-      }
-    }
+    // Menu refresh is intentionally disabled.
+    return
   }
 
-  function voteFor(id: number) {
-    // Enforce one active vote per user in local state.
-    if (selectedId.value === id) {
-      return
-    }
+  function idFromName(name: string) {
+    return restaurantIdByName(restaurants.value, name)
+  }
 
-    if (selectedId.value) {
-      const previous = restaurants.value.find((restaurant) => restaurant.id === selectedId.value)
-
-      if (previous) {
-        previous.votes -= 1
-      }
-    }
-
+  function applyVoteLocally(id: number) {
     const choice = restaurants.value.find((restaurant) => restaurant.id === id)
 
-    if (choice) {
-      choice.votes += 1
-      selectedId.value = id
+    if (!choice) {
+      return
+    }
+
+    choice.votes += 1
+    choice.timesVoted += 1
+    selectedId.value = id
+  }
+
+  async function voteFor(id: number) {
+    // Backend enforces one vote per user, so skip duplicate local attempts.
+    if (selectedId.value) {
+      return
+    }
+
+    const authStore = useAuthStore()
+    const currentUserId = authStore.userId
+
+    if (!currentUserId) {
+      loadError.value = 'You must be signed in to vote.'
+      return
+    }
+
+    loadError.value = null
+
+    try {
+      const response = await $fetch<VoteResponse>('/api/votes/vote', {
+        method: 'POST',
+        body: {
+          userId: currentUserId,
+          restaurantId: id,
+        },
+      })
+
+      if (response.success) {
+        applyVoteLocally(id)
+      }
+    }
+    catch (error: any) {
+      if (error?.statusCode === 409) {
+        loadError.value = 'You have already cast your vote for today.'
+        return
+      }
+
+      loadError.value = 'Unable to submit your vote right now.'
     }
   }
 
-  function pickSurprise() {
+  async function pickSurprise() {
     if (!restaurants.value.length) {
       return
     }
@@ -166,7 +129,7 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
       return
     }
 
-    voteFor(choice?.id ?? fallback.id)
+    await voteFor(choice?.id ?? fallback.id)
   }
 
   if (import.meta.client) {
@@ -185,6 +148,7 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     isLoading,
     hasLoaded,
     loadError,
+    idFromName,
     fetchRestaurants,
     refreshMenusLightweight,
     voteFor,

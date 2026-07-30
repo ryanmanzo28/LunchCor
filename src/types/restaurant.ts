@@ -5,6 +5,7 @@ export interface Restaurant {
   description: string
   rating: number
   orders: number
+  timesVoted: number
   votes: number
   icon: string
   color: string

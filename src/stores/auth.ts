@@ -32,33 +32,39 @@ export const useAuthStore = defineStore('auth', () => {
 
     profile.value = resolvedProfile
 
-    // Backfill profile id by logging in when only credentials are present.
-    if (!resolvedProfile.id && resolvedProfile.email && resolvedProfile.password) {
-      try {
-        const response = await $fetch<{ user?: { id: number, name: string, email: string, admin: boolean } }>('/api/auth/login', {
-          method: 'POST',
-          body: {
-            email: resolvedProfile.email,
-            password: resolvedProfile.password,
-          },
-        })
+    return profile.value
+  }
 
-        const loggedInUser = response.user
-        if (loggedInUser) {
-          profile.value = {
-            id: loggedInUser.id,
-            name: loggedInUser.name,
-            email: loggedInUser.email,
-            password: resolvedProfile.password,
-            admin: Boolean(loggedInUser.admin),
-          }
-        }
-      } catch {
-        profile.value = resolvedProfile
-      }
+  async function login(email: string, password: string) {
+    const response = await $fetch<{ token?: string, user?: { id: number, name: string, email: string, admin: boolean } }>('/api/auth/login', {
+      method: 'POST',
+      body: {
+        email: email.trim().toLowerCase(),
+        password,
+      },
+      credentials: 'include',
+    })
+
+    if (!response.user) {
+      throw createError({
+        statusCode: 401,
+        statusMessage: 'Invalid login response',
+      })
     }
 
-    return profile.value
+    await setProfile({
+      id: response.user.id,
+      name: response.user.name,
+      email: response.user.email,
+      password: '',
+      admin: Boolean(response.user.admin),
+    })
+
+    if (typeof response.token === 'string' && response.token.length > 0) {
+      setToken(response.token)
+    }
+
+    return response.user
   }
 
   async function restoreSession() {
@@ -88,8 +94,19 @@ export const useAuthStore = defineStore('auth', () => {
           }
         }
       } catch {
-        // Ignore errors and keep profile as null.
+        clearToken()
       }
+    }
+  }
+
+  async function logout() {
+    try {
+      await $fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'include',
+      })
+    } finally {
+      clearToken()
     }
   }
 
@@ -125,8 +142,10 @@ export const useAuthStore = defineStore('auth', () => {
     token,
     profile: currentUser,
     userId,
+    login,
     setProfile,
     restoreSession,
+    logout,
     setToken,
     clearToken,
   }

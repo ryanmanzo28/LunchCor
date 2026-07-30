@@ -39,7 +39,7 @@ export default defineEventHandler(async (event) => {
 
     // Keep denormalized vote counter aligned with inserted vote records.
     await pool.execute(
-      'UPDATE restaurants SET votes = votes + 1 WHERE id = ?',
+      'UPDATE restaurants SET votes = votes + 1, times_voted = times_voted + 1 WHERE id = ?',
       [body.restaurantId],
     )
 

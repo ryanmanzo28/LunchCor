@@ -9,6 +9,7 @@ services:
       - .env
     volumes:
       - ./:/workspace
+      - /workspace/src/node_modules
     depends_on:
       database:
         condition: service_healthy
