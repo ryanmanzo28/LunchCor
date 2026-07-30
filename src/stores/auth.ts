@@ -32,6 +32,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     profile.value = resolvedProfile
 
+    // Backfill profile id by logging in when only credentials are present.
     if (!resolvedProfile.id && resolvedProfile.email && resolvedProfile.password) {
       try {
         const response = await $fetch<{ user?: { id: number, name: string, email: string, admin: boolean } }>('/api/auth/login', {
@@ -60,7 +61,40 @@ export const useAuthStore = defineStore('auth', () => {
     return profile.value
   }
 
+  async function restoreSession() {
+    // Attempt to restore session from cookie on app load.
+    const jwtCookie = useCookie<string | null>('jwt', {
+      default: () => null,
+      sameSite: 'lax',
+      path: '/',
+      maxAge: DEFAULT_JWT_MAX_AGE,
+    })
+
+    if (jwtCookie.value) {
+      try {
+        const response = await $fetch<{ user?: { id: number, name: string, email: string, admin: boolean } }>('/api/auth/restore-session', {
+          method: 'GET',
+          credentials: 'include',
+        })
+
+        const loggedInUser = response.user
+        if (loggedInUser) {
+          profile.value = {
+            id: loggedInUser.id,
+            name: loggedInUser.name,
+            email: loggedInUser.email,
+            password: '',
+            admin: Boolean(loggedInUser.admin),
+          }
+        }
+      } catch {
+        // Ignore errors and keep profile as null.
+      }
+    }
+  }
+
   function setToken(nextToken: string, rememberMe = false) {
+    // Recreate cookie with adjusted max-age to support remember-me toggles.
     const maxAge = rememberMe ? REMEMBER_ME_JWT_MAX_AGE : DEFAULT_JWT_MAX_AGE
     const jwtCookie = useCookie<string | null>('jwt', {
       default: () => token.value ?? null,
@@ -74,6 +108,7 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   function clearToken() {
+    // Expire cookie and clear all auth state in one place.
     const jwtCookie = useCookie<string | null>('jwt', {
       default: () => null,
       sameSite: 'lax',
@@ -91,6 +126,7 @@ export const useAuthStore = defineStore('auth', () => {
     profile: currentUser,
     userId,
     setProfile,
+    restoreSession,
     setToken,
     clearToken,
   }

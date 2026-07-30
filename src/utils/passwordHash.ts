@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt'
 
+// Keep rounds moderate for local/dev responsiveness while preserving basic security.
 const BCRYPT_ROUNDS = 10
 
 export function hashPassword(password: string): Promise<string> {

@@ -68,6 +68,7 @@ function parseStoredMenuItems(value: string | null | undefined) {
 }
 
 export function mapRestaurant(row: RestaurantRow): Restaurant {
+  // Coerce nullable/legacy database fields into stable API shape.
   return {
     id: row.id,
     name: row.name,
@@ -86,6 +87,7 @@ export function mapRestaurant(row: RestaurantRow): Restaurant {
 export async function listRestaurants() {
   const pool = getPool()
   const canUseVotes = await hasVotesTable()
+  // Fall back to zero votes when the votes table does not exist yet.
   const query = canUseVotes
     ? `
       SELECT
@@ -171,6 +173,7 @@ export async function createRestaurant(input: RestaurantCreateInput) {
   const pool = getPool()
   const normalizedName = input.name.trim()
 
+  // Ensure additive schema columns exist for older local databases.
   await ensureMenuItemsColumn()
   await ensureRestaurantVoteColumn()
   await ensureRestaurantLinkColumn()

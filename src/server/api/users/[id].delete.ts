@@ -25,6 +25,7 @@ export default defineEventHandler(async (event) => {
         })
     }
 
+    // Only allow users to remove their own account.
     if (Number(event.context.auth.id) !== id) {
         throw createError({
             statusCode: 403,

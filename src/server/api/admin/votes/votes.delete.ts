@@ -19,6 +19,7 @@ export default defineEventHandler(async (event) => {
   const admin = await verifyAdminCredentials(body.userId, body.password)
 
   if (admin) {
+    // Clear vote records and reset denormalized counters together.
     const pool = getPool()
     await pool.execute('DELETE FROM votes', [])
     await pool.execute('UPDATE restaurants SET votes = 0', [])

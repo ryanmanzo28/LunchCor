@@ -1,5 +1,5 @@
 import { ForesightManager } from 'js.foresight'
-// foresightjs is a library that enables efficient prefetching based on predictive analytics of user mouse behavior, enhances website performance
+// Track anchors once to avoid duplicate registrations after DOM mutations.
 const trackedAnchors = new WeakSet<HTMLAnchorElement>()
 
 function isLocalAnchor(anchor: HTMLAnchorElement) {
@@ -28,6 +28,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   const prefetched = new Set<string>()
   const router = useRouter()
+  // Nuxt may expose payload preloading globally depending on runtime mode.
   const preloadRoutePayloadFn = (globalThis as typeof globalThis & {
     preloadRoutePayload?: (path: string) => Promise<void>
   }).preloadRoutePayload
@@ -61,6 +62,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
         trackedAnchors.add(anchor)
 
+        // Predictive prefetch: warm route code and payload before click.
         manager.register({
           element: anchor,
           name: `nav-${anchor.href}`,
@@ -92,6 +94,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     registerAnchors()
 
+    // Re-scan links when client-rendered content adds new anchors.
     const observer = new MutationObserver(() => {
       registerAnchors()
     })

@@ -26,6 +26,7 @@ export default defineEventHandler(async (event) => {
         const email = String(body.email).trim().toLowerCase()
         const plainPassword = String(body.password)
 
+        // Validate uniqueness/format before hashing and insert.
         const emailIsAvailable = await isValidEmail(email)
         if (!emailIsAvailable) {
             throw createError({
@@ -41,6 +42,7 @@ export default defineEventHandler(async (event) => {
             })
         }
 
+        // Never persist plain-text passwords.
         const password = await hashPassword(plainPassword)
 
         const pool = getPool()

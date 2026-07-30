@@ -11,6 +11,7 @@ export default defineEventHandler(async () => {
     }
   }
   catch (error) {
+    // Preserve typed HTTP errors; wrap unknown failures as internal server errors.
     if (error && typeof error === 'object' && 'statusCode' in error) {
       throw error
     }

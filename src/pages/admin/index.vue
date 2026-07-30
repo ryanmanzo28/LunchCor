@@ -16,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+// Reuse the dedicated admin shell for navigation and framing.
 definePageMeta({
   layout: 'admin',
 })

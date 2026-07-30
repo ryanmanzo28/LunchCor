@@ -9,6 +9,7 @@ export interface Restaurant {
   icon: string
   color: string
   link?: string
+  // Menu items are optional because scraping/import may not have run yet.
   menuItems?: Array<{
     section?: string
     name: string

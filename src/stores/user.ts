@@ -8,7 +8,7 @@ export const useUserStore = defineStore('user', () => {
 
   async function fetchUser() {
     const authStore = useAuthStore()
-    const token = authStore.token
+    const token = authStore.token || null
 
     if (!token) {
       user.value = null
@@ -16,7 +16,8 @@ export const useUserStore = defineStore('user', () => {
     }
 
     try {
-      const id = authStore.userId || await decodeId(token)
+      // Prefer cached id from auth store and fall back to JWT payload decode.
+      const id = authStore.userId ?? await decodeId(token)
       if (id) {
         const response = await $fetch<User>(`/api/users/${id}`, {})
         user.value = response

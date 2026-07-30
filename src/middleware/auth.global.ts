@@ -1,44 +1,27 @@
 export default defineNuxtRouteMiddleware(async (to) => {
-  const isLoginRoute = to.path === '/login'
   const authStore = useAuthStore()
   const userStore = useUserStore()
 
-  const currentToken = authStore.token?.trim() || null
-
-  if (!currentToken) {
-    authStore.clearToken()
-    userStore.clearUser()
-
-    if (!isLoginRoute) {
-      return navigateTo({
-        path: '/login',
-        query: { redirect: to.fullPath },
-      })
-    }
-
-    return
+  if (authStore.token && !authStore.profile) {
+    await authStore.restoreSession()
   }
 
-  if (isLoginRoute) {
+  const authenticated = Boolean(authStore.token)
+
+  if (!authenticated && to.path !== '/login') {
+    return navigateTo('/login')
+  }
+
+  if (authenticated && to.path === '/login') {
     return navigateTo('/')
   }
 
-  try {
-    if (!userStore.user) {
-      await userStore.fetchUser()
-    }
-
-    if (!userStore.user) {
-      throw new Error('Unable to hydrate user from token')
-    }
-  }
-  catch {
-    authStore.clearToken()
-    userStore.clearUser()
-
-    return navigateTo({
-      path: '/login',
-      query: { redirect: to.fullPath },
-    })
-  }
+  userStore.setUser(authStore.profile ? {
+    id: authStore.profile.id ?? 0,
+    name: authStore.profile.name,
+    email: authStore.profile.email,
+    password: authStore.profile.password,
+    admin: authStore.profile.admin,
+  } : null)
 })
+  

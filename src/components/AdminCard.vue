@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+// Optional title prop lets pages use a consistent card shell with minimal markup.
 withDefaults(defineProps<{
   title?: string
 }>(), {

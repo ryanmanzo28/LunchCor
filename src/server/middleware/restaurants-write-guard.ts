@@ -11,6 +11,7 @@ export default defineEventHandler((event) => {
     return
   }
 
+  // Only mutate operations require authentication for restaurant endpoints.
   if (method === 'POST' || method === 'DELETE') {
     const isAuthenticated = Boolean(event.context.auth?.isAuthenticated)
 

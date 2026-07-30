@@ -20,6 +20,7 @@ export default defineEventHandler(async (event) => {
     })
   }
 
+  // Protect elevation with a separate shared admin secret.
   const adminPassword = process.env.ADMIN_PASSWORD
 
   if (!adminPassword) {

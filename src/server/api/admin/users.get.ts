@@ -15,6 +15,7 @@ defineEventHandler(async (event) => {
             statusMessage: 'Invalid user ID',
         })
     }
+    // Re-authenticate admin on each privileged listing request.
     const admin = await verifyAdminCredentials(query.id, query.password)
     if (admin) {
         const [rows] = await pool.query(

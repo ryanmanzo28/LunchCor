@@ -19,6 +19,7 @@ export default defineEventHandler(async (event) => {
   const pool = getPool()
 
   try {
+    // Application-level duplicate check for friendlier 409 responses.
     const [existingVotes] = await pool.query<Array<mysql.RowDataPacket>>(
       'SELECT id FROM votes WHERE user_id = ? LIMIT 1',
       [body.userId],
@@ -36,6 +37,7 @@ export default defineEventHandler(async (event) => {
       [body.userId, body.restaurantId],
     )
 
+    // Keep denormalized vote counter aligned with inserted vote records.
     await pool.execute(
       'UPDATE restaurants SET votes = votes + 1 WHERE id = ?',
       [body.restaurantId],

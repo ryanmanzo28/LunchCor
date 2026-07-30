@@ -7,6 +7,7 @@ export default defineEventHandler(async (event) => {
   const pool = getPool()
 
   if (email && password) {
+    // Perform credential validation against stored hash.
     const [rows] = await pool.query<mysql.RowDataPacket[]>(
       'SELECT id, name, email, password, admin FROM users WHERE email = ? LIMIT 1',
       [email],

@@ -4,6 +4,7 @@ import { randomRestaurant, sortByPopularity, sortByRating } from '@/utils/restau
 import { getMenuFromHtml } from '~/utils/menu'
 
 function buildHtmlSignature(html: string) {
+  // Strip volatile markup so signature tracks meaningful content changes.
   return html
     .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
     .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
@@ -41,6 +42,7 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
   const selectedRestaurant = computed(() => restaurants.value.find((restaurant) => restaurant.id === selectedId.value) ?? null)
 
   async function fetchRestaurants(force = false) {
+    // Avoid overlapping requests and unnecessary re-fetches.
     if (isLoading.value || (hasLoaded.value && !force)) {
       return
     }
@@ -81,6 +83,7 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
 
     const lastRefresh = lastMenuRefreshAt.get(restaurant.id) ?? 0
     const now = Date.now()
+    // Cooldown limits scraping pressure and repeated parsing work.
     if (now - lastRefresh < menuRefreshCooldownMs) {
       return false
     }
@@ -131,6 +134,7 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
   }
 
   function voteFor(id: number) {
+    // Enforce one active vote per user in local state.
     if (selectedId.value === id) {
       return
     }

@@ -31,6 +31,7 @@ const email = ref('')
 const password = ref('')
 
 async function signIn() {
+  // Build a friendly fallback display name from the email local-part.
   const normalizedEmail = email.value.trim().toLowerCase()
   const localPart = normalizedEmail.split('@')[0] ?? ''
   const nextPassword = password.value
@@ -39,6 +40,7 @@ async function signIn() {
     .replace(/\b\w/g, (letter) => letter.toUpperCase()) || 'LunchCor User'
   const isAdmin = normalizedEmail === 'admin@lunchcor.local' || /^admin\+.+@lunchcor\.local$/.test(normalizedEmail)
 
+  // Seed local auth state immediately; middleware will gate protected routes.
   await authStore.setProfile({
     name,
     email: normalizedEmail,

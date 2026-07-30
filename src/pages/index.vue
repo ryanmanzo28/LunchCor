@@ -137,6 +137,7 @@ const {
   loadError,
 } = storeToRefs(restaurantsStore)
 
+// Render compact user initials for the top-right profile chip.
 const initials = computed(() => (userStore.user?.name ?? 'LC').split(' ').map((name) => name[0]).join('').slice(0, 2))
 
 const todayLabel = new Intl.DateTimeFormat('en-US', {
@@ -146,6 +147,7 @@ const todayLabel = new Intl.DateTimeFormat('en-US', {
 }).format(new Date())
 
 function signOut() {
+  // Clear both auth token and hydrated user state before redirect.
   authStore.clearToken()
   userStore.clearUser()
   router.push('/login')

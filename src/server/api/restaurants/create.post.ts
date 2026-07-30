@@ -3,6 +3,7 @@ import { createRestaurant, type RestaurantCreateInput } from '~/server/utils/res
 export default defineEventHandler(async (event) => {
   const body = await readBody<Partial<RestaurantCreateInput>>(event)
 
+  // Keep API contract explicit before invoking DB helpers.
   if (!body?.name?.trim()) {
     throw createError({
       statusCode: 400,

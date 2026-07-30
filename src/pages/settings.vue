@@ -11,6 +11,7 @@ onMounted(() => {
 
   const authStore = useAuthStore()
   const settingsPlugin = useNuxtApp().$settings as { applySettings: () => void } | undefined
+  // Read/write settings from cookie to persist preferences across reloads.
   const settingsCookie = useCookie<SettingsPreferences>('settings', {
     default: () => ({ ...defaultSettings }),
     sameSite: 'lax',
@@ -104,6 +105,7 @@ function createSelect(values: string[], labels: string[], selectedValue: string)
 function applyRememberMe(keepLoggedIn: boolean, authStore: ReturnType<typeof useAuthStore>) {
   const token = authStore.token
 
+  // Re-set token so cookie expiry policy is updated in-place.
   if (typeof token === 'string' && token.length > 0) {
     authStore.setToken(token, keepLoggedIn)
   }

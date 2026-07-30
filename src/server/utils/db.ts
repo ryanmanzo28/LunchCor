@@ -5,6 +5,7 @@ type MysqlGlobal = typeof globalThis & { __lunchcorPool?: mysql.Pool }
 export function getPool() {
   const globalRef = globalThis as MysqlGlobal
 
+  // Reuse one pool across hot reloads in development.
   if (!globalRef.__lunchcorPool) {
     globalRef.__lunchcorPool = mysql.createPool({
       host: process.env.DB_HOST || '127.0.0.1',

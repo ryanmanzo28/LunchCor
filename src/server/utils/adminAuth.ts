@@ -18,6 +18,7 @@ export async function verifyAdminCredentials(id: number, password: string): Prom
     })
   }
 
+  // Verify password first, then enforce admin role check.
   const correct = await verifyPassword(password, user.password)
 
   if (!correct) {

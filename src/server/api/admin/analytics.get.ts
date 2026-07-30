@@ -15,6 +15,7 @@ export default defineEventHandler(async (event) => {
     const query = getQuery(event) as AdminAnalyticsQuery
     const pool = getPool()
     const userId = Number(query.id)
+    // Support both camelCase and legacy PascalCase query names.
     const startDate = query.startDate || query.StartDate || ''
     const endDate = query.endDate || query.EndDate || ''
 

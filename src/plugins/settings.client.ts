@@ -21,6 +21,7 @@ export default defineNuxtPlugin(() => {
 
   const applySettings = () => {
     const root = document.documentElement
+    // Normalize incoming settings to supported theme/font tokens.
     const theme = settings.value.theme === 'dark' ? 'dark' : 'light'
     const font = settings.value.font === 'dm-sans'
       ? 'dm-sans'
@@ -37,6 +38,7 @@ export default defineNuxtPlugin(() => {
 
   applySettings()
 
+  // Keep DOM state in sync when cookie-backed preferences change.
   watch(
     settings,
     () => {

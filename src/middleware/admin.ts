@@ -8,6 +8,7 @@ export default defineNuxtRouteMiddleware(() => {
 
   const isAdmin = Boolean(userStore.user?.admin)
 
+  // Gate admin routes to users explicitly marked as admin.
   if (!isAdmin) {
     return navigateTo('/')
   }

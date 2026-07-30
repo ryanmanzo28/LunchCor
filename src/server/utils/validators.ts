@@ -5,6 +5,7 @@ export async function isValidEmail(email: string): Promise<boolean> {
   const normalizedEmail = email.trim().toLowerCase()
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
+  // Validate format first, then enforce uniqueness in the users table.
   if (!emailRegex.test(normalizedEmail)) {
     return false
   }

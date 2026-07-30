@@ -1,4 +1,5 @@
 <template>
+  <!-- Split layout keeps persistent admin nav while child pages swap in the content slot. -->
   <div class="admin-shell">
     <aside class="admin-sidebar">
       <NuxtLink class="admin-brand" to="/">LunchCor Admin</NuxtLink>

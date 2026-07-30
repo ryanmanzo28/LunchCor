@@ -17,6 +17,7 @@ export default defineEventHandler(async (event) => {
     })
   }
 
+  // Require admin credentials before soft-deleting restaurant entries.
   await verifyAdminCredentials(query.id, query.password)
 
   const removed = await deleteRestaurant(id)

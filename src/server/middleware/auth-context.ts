@@ -17,6 +17,7 @@ export default defineEventHandler(async (event) => {
 
   const admin = getCookie(event, 'admin') === 'true' ? true : false
 
+  // Attach normalized auth context so downstream handlers can authorize consistently.
   event.context.auth = {
     token,
     isAuthenticated: isAuth,

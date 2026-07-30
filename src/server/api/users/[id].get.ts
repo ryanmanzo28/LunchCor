@@ -13,6 +13,7 @@ interface UserRow extends mysql.RowDataPacket {
 export default defineEventHandler(async (event) => {
     const id = Number(getRouterParam(event, "id"))
     const pool = getPool()
+    // Parse and validate route param before querying.
     if (!id || isNaN(id)) {
     throw createError({
         statusCode: 400,

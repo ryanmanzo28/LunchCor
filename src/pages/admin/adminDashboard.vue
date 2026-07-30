@@ -12,6 +12,7 @@ useHead({
 const restaurantsStore = useRestaurantsStore()
 const { restaurants, isLoading, loadError } = storeToRefs(restaurantsStore)
 
+// Prime admin dashboard with restaurant inventory on first client render.
 if (import.meta.client) {
     void restaurantsStore.fetchRestaurants()
 }
