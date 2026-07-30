@@ -13,14 +13,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@foresightjs/vue": "1.0.0",
     "@nuxt/image": "^2.1.0",
     "@nuxtjs/tailwindcss": "^6.14.0",
     "@pinia/nuxt": "^1.0.1",
-    "@types/cheerio": "^0.22.35",
-    "@vueuse/nuxt": "^14.3.0",
-    "axios": "^1.18.1",
-    "cheerio": "^1.2.0",
     "jose": "^5.2.0",
     "js.foresight": "^4.2.1",
     "mysql2": "^3.23.2",
@@ -29,7 +24,7 @@
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
-    "@types/bcrypt": "^3.0.0",
+    "@types/bcrypt": "^6.0.0",
     "@types/node": "^26.1.1",
     "typescript": "^5.7.3",
     "vue-tsc": "^3.3.8"

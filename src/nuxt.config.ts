@@ -72,10 +72,6 @@ export default defineNuxtConfig({
     payloadExtraction: true,
   },
 
-  future: {
-    compatibilityVersion: 4,
-  },
-
   devtools: {
     enabled: process.env.NODE_ENV !== "production",
   },
@@ -88,14 +84,33 @@ export default defineNuxtConfig({
   modules: [
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
-    "@vueuse/nuxt",
-	"@nuxt/image",
-	"nuxt-webhook-validators",
+    "@nuxt/image",
+    "nuxt-webhook-validators",
+    "@nuxt/fonts",
   ],
 
   css: [
     "~/assets/css/tailwind.css",
   ],
+  fonts: {
+    families: [
+      {
+        name: 'Inter',
+        provider: 'google',
+        weights: [400, 500, 600, 700],
+      },
+      {
+        name: 'DM Sans',
+        provider: 'google',
+        weights: [400, 500, 600, 700],
+      },
+      {
+        name: 'Fraunces',
+        provider: 'google',
+        weights: [400, 500, 600, 700],
+      },
+    ]
+  },
 
   devServer: {
     host: "0.0.0.0",

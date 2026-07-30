@@ -11,8 +11,12 @@
     "docker:build-and-start:sh": "./scripts/build-and-start.sh"
   },
   "dependencies": {
+    "@nuxt/fonts": "^0.14.0",
+    "@nuxt/ui": "^4.10.0",
     "bcrypt": "^6.0.0",
+    "fuse.js": "^7.5.0",
     "nuxt-webhook-validators": "^0.2.8",
-    "playwright": "^1.62.1"
+    "mysql2": "^3.23.2",
+    "nuxt": "^4.5.0"
   }
 }

@@ -16,7 +16,7 @@
 
       <ul v-else class="restaurant-grid" aria-label="All restaurants">
         <li v-for="restaurant in allRestaurants" :key="restaurant.id" class="restaurant-item">
-          <RestaurantCard
+          <LazyRestaurantCard
             :name="restaurant.name"
             :description="restaurant.description"
             :rating="restaurant.rating"
