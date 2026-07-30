@@ -23,18 +23,6 @@ if (import.meta.client) {
     gap: 14px;
 }
 
-.card {
-    border: 1px solid #e4e8ef;
-    border-radius: 10px;
-    padding: 16px;
-}
-
-.card h2 {
-    margin: 0 0 10px;
-    font-size: 1.05rem;
-    color: #1f3249;
-}
-
 .muted {
     margin: 0;
     color: #566579;
@@ -75,8 +63,7 @@ if (import.meta.client) {
 </style>
 <template>
     <section class="admin-grid">
-        <article class="card">
-            <h2>Manage Restaurants</h2>
+        <AdminCard title="Manage Restaurants">
             <p v-if="isLoading" class="muted">Loading restaurants...</p>
             <p v-else-if="loadError" class="muted">{{ loadError }}</p>
 
@@ -89,7 +76,7 @@ if (import.meta.client) {
                     </div>
                 </li>
             </ul>
-        </article>
+        </AdminCard>
     </section>
 </template>
 

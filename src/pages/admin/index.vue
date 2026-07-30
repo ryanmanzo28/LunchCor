@@ -1,20 +1,17 @@
 <template>
   <section class="admin-grid">
-    <article class="card">
-      <h2>System Status</h2>
+    <AdminCard title="System Status">
       <p>Frontend and API are reachable through the Nuxt app runtime.</p>
-    </article>
+    </AdminCard>
 
-    <article class="card">
-      <h2>Restaurants</h2>
+    <AdminCard title="Restaurants">
       <p>Use the restaurants API endpoint to list, add, and remove entries.</p>
       <NuxtLink to="/api/restaurants">Open endpoint</NuxtLink>
-    </article>
+    </AdminCard>
 
-    <article class="card">
-      <h2>Next Step</h2>
+    <AdminCard title="Next Step">
       <p>Add role-based access when user roles are available in auth state.</p>
-    </article>
+    </AdminCard>
   </section>
 </template>
 

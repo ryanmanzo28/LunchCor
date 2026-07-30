@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		color-scheme: light;
+		--color-bg: #f8f7f3;
+		--color-surface: #fffdf9;
+		--color-surface-strong: #ffffff;
+		--color-text: #243247;
+		--color-text-muted: #667085;
+		--color-border: #e7eaf0;
+		--color-accent: #d95d39;
+		--color-accent-deep: #213d4c;
+		--ink: var(--color-text);
+		--muted: var(--color-text-muted);
+		--line: var(--color-border);
+		--paper: var(--color-surface);
+		--accent: var(--color-accent);
+		--deep: var(--color-accent-deep);
+		--font-body: 'DM Sans', sans-serif;
+		--font-display: 'Fraunces', Georgia, serif;
+		--font-ui: 'DM Sans', sans-serif;
+	}
+
+	.dark,
+	[data-theme='dark'] {
+		color-scheme: dark;
+		--color-bg: #111827;
+		--color-surface: #1f2937;
+		--color-surface-strong: #273449;
+		--color-text: #f9fafb;
+		--color-text-muted: #cbd5e1;
+		--color-border: #374151;
+		--color-accent: #f59e0b;
+		--color-accent-deep: #fbbf24;
+		--ink: var(--color-text);
+		--muted: var(--color-text-muted);
+		--line: var(--color-border);
+		--paper: var(--color-surface);
+		--accent: var(--color-accent);
+		--deep: var(--color-accent-deep);
+	}
+
+	[data-font='inter'] {
+		--font-body: 'Inter', sans-serif;
+		--font-display: 'Inter', sans-serif;
+		--font-ui: 'Inter', sans-serif;
+	}
+
+	[data-font='dm-sans'] {
+		--font-body: 'DM Sans', sans-serif;
+		--font-display: 'DM Sans', sans-serif;
+		--font-ui: 'DM Sans', sans-serif;
+	}
+
+	[data-font='fraunces'] {
+		--font-body: 'Fraunces', Georgia, serif;
+		--font-display: 'Fraunces', Georgia, serif;
+		--font-ui: 'Fraunces', Georgia, serif;
+	}
+
+	* {
+		@apply box-border;
+	}
+
+	body {
+		@apply m-0;
+		background-color: var(--color-bg);
+		color: var(--color-text);
+		font-family: var(--font-body);
+	}
+
+	:root[data-compact='true'] body {
+		font-size: 0.95rem;
+		line-height: 1.4;
+	}
+
+	button,
+	input {
+		font: inherit;
+	}
+
+	button {
+		@apply cursor-pointer;
+	}
+
+	h1,
+	h2,
+	h3,
+	p {
+		@apply m-0;
+	}
+
+	h1,
+	h2 {
+		font-family: Fraunces, Georgia, serif;
+		letter-spacing: -0.035em;
+	}
+
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	input[type='number'] {
+		-moz-appearance: textfield;
+	}
+}
+
+@layer components {
+	.brand {
+		@apply inline-block text-[var(--deep)] no-underline font-[700] tracking-[-0.06em];
+		font-family: Fraunces, Georgia, serif;
+		font-size: 1.55rem;
+	}
+
+	.brand span {
+		@apply text-[var(--accent)];
+	}
+
+	.dashboard {
+		@apply mx-auto max-w-[1190px] px-7 pb-14;
+	}
+
+	.topbar {
+		@apply flex h-[78px] items-center justify-between;
+	}
+
+	.profile {
+		@apply flex items-center gap-2.5 text-[0.9rem] font-semibold;
+	}
+
+	.avatar {
+		@apply grid place-items-center rounded-full bg-[#d9e9e3] text-[0.72rem] text-[var(--deep)];
+		width: 32px;
+		height: 32px;
+	}
+
+	.text-button {
+		@apply ml-[5px] border-0 bg-transparent p-[6px] text-[var(--muted)];
+	}
+
+	.hero {
+		@apply flex items-end justify-between rounded-[20px] px-[54px] py-[55px];
+		background: linear-gradient(122deg, #e6f1ed, #fdf0df);
+	}
+
+	.eyebrow {
+		@apply mb-[9px] text-[0.7rem] font-bold uppercase tracking-[0.12em] text-[#7b665a];
+	}
+
+	.hero h1 {
+		@apply max-w-[620px] text-[clamp(2.2rem,5vw,4rem)] leading-[1.04];
+	}
+
+	.hero-copy,
+	.login-copy {
+		@apply mt-[14px] max-w-[500px] leading-[1.55] text-[var(--muted)];
+	}
+
+	.surprise-button,
+	form button {
+		@apply whitespace-nowrap rounded-[10px] border-0 bg-[var(--accent)] px-[18px] py-[13px] font-bold text-white shadow-[0_7px_14px_#d95d3930];
+	}
+
+	.surprise-button:hover,
+	form button:hover {
+		@apply bg-[#bf4c2d];
+	}
+
+	.notice {
+		@apply mt-[22px] rounded-[10px] border border-[#cae1d7] bg-[#edf7f1] px-[16px] py-[13px] text-[#356854];
+	}
+
+	.content-grid {
+		@apply mt-10 grid gap-[42px] md:grid-cols-[minmax(0,1.7fr)_minmax(255px,0.7fr)];
+	}
+
+	.section-heading {
+		@apply mb-[15px] flex items-end justify-between;
+	}
+
+	.section-heading h2,
+	.panel h2 {
+		@apply text-[1.6rem];
+	}
+
+	.vote-count {
+		@apply text-[0.85rem] text-[var(--muted)];
+	}
+
+	.restaurant-list {
+		@apply grid gap-[11px];
+	}
+
+	.restaurant-card {
+		@apply grid items-center gap-[15px] rounded-[13px] border border-[var(--line)] bg-white p-[17px];
+		grid-template-columns: 46px minmax(0, 1fr) auto;
+		transition: border 0.15s, box-shadow 0.15s;
+	}
+
+	.restaurant-card.selected {
+		@apply border-[#94c3b3] shadow-[0_4px_15px_#1a594213];
+	}
+
+	.restaurant-icon,
+	.leader-icon {
+		@apply grid place-items-center rounded-[12px] font-[700] text-[#293546];
+		width: 46px;
+		height: 46px;
+		font-family: Fraunces, serif;
+	}
+
+	.restaurant-title {
+		@apply flex items-baseline gap-[9px];
+	}
+
+	.restaurant-title h3 {
+		@apply text-[1rem];
+	}
+
+	.cuisine,
+	.meta,
+	.muted {
+		@apply text-[0.79rem] text-[var(--muted)];
+	}
+
+	.restaurant-details p {
+		@apply mb-[7px] mt-[4px] text-[0.86rem] text-[var(--muted)];
+	}
+
+	.meta {
+		@apply flex gap-[13px];
+	}
+
+	.rating {
+		@apply font-[700] text-[#b46c12];
+	}
+
+	.vote-action {
+		@apply grid justify-items-center gap-0 text-[0.7rem] text-[var(--muted)];
+	}
+
+	.vote-action strong {
+		@apply text-[1.1rem] text-[var(--ink)];
+	}
+
+	.vote-action button {
+		@apply mt-[7px] min-w-[65px] rounded-[7px] border border-[#dce8e3] bg-[#eff4f2] px-[10px] py-[7px] text-[0.75rem] font-[700] text-[var(--deep)];
+	}
+
+	.selected .vote-action button {
+		@apply border-[#3e7b68] bg-[#3e7b68] text-white;
+	}
+
+	.sidebar {
+		@apply grid content-start gap-[18px];
+	}
+
+	.panel {
+		@apply rounded-[13px] border border-[var(--line)] bg-white p-[23px];
+	}
+
+	.leader-row {
+		@apply my-[18px] flex items-center gap-[11px] text-[0.86rem] text-[var(--muted)];
+	}
+
+	.leader-icon {
+		@apply h-[34px] w-[34px] rounded-[9px];
+	}
+
+	.progress {
+		@apply h-[7px] overflow-hidden rounded-[8px] bg-[#e8eeeb];
+	}
+
+	.progress span {
+		@apply block h-full rounded-[inherit] bg-[#498b75] transition-[width] duration-200;
+	}
+
+	.panel .muted {
+		@apply mt-[11px];
+	}
+
+	.favorites {
+		@apply my-[19px] mb-[2px] list-none p-0;
+	}
+
+	.favorites li {
+		@apply flex items-center gap-[12px];
+	}
+
+	.favorites li > span {
+		@apply grid place-items-center rounded-full bg-[#fbf0d8] text-[0.72rem] font-[700] text-[#866332];
+		width: 23px;
+		height: 23px;
+	}
+
+	.favorites strong,
+	.favorites small {
+		@apply block;
+	}
+
+	.favorites strong {
+		@apply text-[0.87rem];
+	}
+
+	.favorites small {
+		@apply mt-[2px] text-[0.75rem] text-[var(--muted)];
+	}
+
+	.login-page {
+		@apply grid min-h-screen place-items-center bg-[radial-gradient(circle_at_20%_10%,_#e1f0e8_0,_transparent_37%),_#f8f7f3] p-6;
+	}
+
+	.login-card {
+		@apply w-full max-w-[460px] rounded-[17px] border border-[var(--line)] bg-white p-[42px] shadow-[0_20px_60px_#1f3e4820];
+	}
+
+	.login-card .brand {
+		@apply mb-[44px] inline-block;
+	}
+
+	.login-card h1 {
+		@apply text-[2.25rem] leading-[1.07];
+	}
+
+	.login-card form {
+		@apply mt-[28px] grid gap-[8px];
+	}
+
+	.login-card label {
+		@apply text-[0.84rem] font-[700];
+	}
+
+	.login-card input {
+		@apply w-full rounded-[8px] border border-[#cfd7df] px-[12px] py-[12px] text-[var(--ink)] outline-[#559682];
+	}
+
+	.login-card form button {
+		@apply mt-[9px];
+	}
+
+	.form-note {
+		@apply mt-[16px] text-center text-[0.77rem] text-[var(--muted)];
+	}
+}
+
+@media (max-width: 760px) {
+	.dashboard {
+		@apply px-4 pb-8;
+	}
+
+	.topbar {
+		@apply h-[64px];
+	}
+
+	.profile > span:not(.avatar) {
+		@apply hidden;
+	}
+
+	.hero {
+		@apply grid gap-6 px-[26px] py-[32px];
+	}
+
+	.content-grid {
+		@apply grid-cols-1 gap-[26px];
+	}
+
+	.sidebar {
+		@apply grid-cols-2;
+	}
+
+	.restaurant-card {
+		@apply gap-[11px] p-[13px];
+	}
+
+	.restaurant-details p {
+		@apply hidden;
+	}
+
+	.restaurant-title {
+		@apply block;
+	}
+
+	.cuisine {
+		@apply mt-[2px] block;
+	}
+
+	.login-card {
+		@apply p-[30px_25px];
+	}
+}
+
+@media (max-width: 500px) {
+	.sidebar {
+		@apply grid-cols-1;
+	}
+
+	.restaurant-card {
+		grid-template-columns: 40px minmax(0, 1fr) auto;
+	}
+
+	.restaurant-icon {
+		@apply h-[40px] w-[40px];
+	}
+
+	.meta {
+		@apply block;
+	}
+
+	.meta span + span {
+		@apply ml-[6px];
+	}
+
+	.text-button {
+		@apply ml-0;
+	}
+}

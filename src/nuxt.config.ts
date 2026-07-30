@@ -27,11 +27,12 @@ export default defineNuxtConfig({
 		port: Number.parseInt(process.env.FRONTEND_PORT || '3000', 10),
 	},
 	devtools: { enabled: process.env.NODE_ENV !== 'production' },
-	css: ['~/assets/css/app.css'],
+	css: ['~/assets/css/tailwind.css'],
 	modules: [
 		'@nuxtjs/tailwindcss',
 		'@pinia/nuxt',
 		'@vueuse/nuxt',
+		'@foresightjs/vue'
 	],
 	typescript: {
 		strict: true,

@@ -24,7 +24,8 @@
     "mysql2": "^3.23.2",
     "nuxt": "^4.5.0",
     "vue": "^3.5.40",
-    "vue-router": "^5.2.0"
+    "vue-router": "^5.2.0",
+    "@foresightjs/vue": "^4.*.*"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
