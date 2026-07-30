@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import type { RestaurantCreateInput } from '~/server/utils/restaurants'
 
 onMounted(() => {
   const root = document.getElementById('restaurant-form-root')
@@ -77,11 +78,44 @@ onMounted(() => {
   form.appendChild(preview)
 
   const submitButton = document.createElement('button')
+  submitButton.setAttribute('id', 'create-restaurant-button')
   submitButton.setAttribute('type', 'submit')
   submitButton.textContent = 'Create'
 
   form.appendChild(submitButton)
   root.appendChild(form)
+
+  async function createRestaurantFormSubmit(event: Event) {
+    event.preventDefault()
+
+    const payload: Partial<RestaurantCreateInput> = {
+      name: (form.elements.namedItem('name') as HTMLInputElement | null)?.value ?? '',
+      cuisine: (form.elements.namedItem('cuisine') as HTMLInputElement | null)?.value ?? '',
+      description: (form.elements.namedItem('description') as HTMLInputElement | null)?.value ?? '',
+      color: (form.elements.namedItem('color') as HTMLInputElement | null)?.value ?? '',
+      link: (form.elements.namedItem('link') as HTMLInputElement | null)?.value ?? '',
+    }
+
+    try {
+      await $fetch('/api/restaurants/create', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
+
+      alert('Restaurant created successfully!')
+      form.reset()
+      preview.style.display = 'none'
+      preview.removeAttribute('src')
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown error'
+      alert(`Error creating restaurant: ${message}`)
+    }
+  }
+
+  form.addEventListener('submit', createRestaurantFormSubmit)
 })
 </script>
 

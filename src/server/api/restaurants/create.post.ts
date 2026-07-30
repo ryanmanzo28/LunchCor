@@ -24,9 +24,7 @@ export default defineEventHandler(async (event) => {
     color: body.color,
     icon: body.icon,
     link: body.link,
-    menuItems: 
   } satisfies RestaurantCreateInput)
-  })
 
   setResponseStatus(event, 201)
 

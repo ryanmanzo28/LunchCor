@@ -4,9 +4,10 @@ export default defineEventHandler((event) => {
   const method = event.node.req.method || 'GET'
   const url = getRequestURL(event)
   const isRestaurantsCollection = url.pathname === '/api/restaurants'
+  const isRestaurantsCreate = url.pathname === '/api/restaurants/create'
   const isRestaurantsItem = /^\/api\/restaurants\/[0-9]+$/.test(url.pathname)
 
-  if (!isRestaurantsCollection && !isRestaurantsItem) {
+  if (!isRestaurantsCollection && !isRestaurantsCreate && !isRestaurantsItem) {
     return
   }
 

@@ -1,5 +1,4 @@
 import mysql from 'mysql2/promise'
-import type { User } from '@/types/user'
 import { isValidEmail, isValidPassword } from '../../utils/validators'
 import { hashPassword } from '../../../utils/passwordHash'
 type MysqlGlobal = typeof globalThis & { __lunchcorPool?: mysql.Pool }
@@ -83,9 +82,8 @@ export default defineEventHandler(async (event) => {
             id: newUser.id,
             name: newUser.name,
             email: newUser.email,
-            password: newUser.password,
             admin: Boolean(newUser.admin),
-        } satisfies User
+        }
     }
 
     throw createError({
