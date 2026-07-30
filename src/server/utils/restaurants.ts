@@ -9,6 +9,7 @@ export interface RestaurantRow extends mysql.RowDataPacket {
   name: string
   cuisine: string
   description: string | null
+  link: string | null
   menu_items_json: string | null
   times_ordered: number
   average_rating: number | string
@@ -95,6 +96,7 @@ export function mapRestaurant(row: RestaurantRow): Restaurant {
     votes: typeof row.votes === 'number' ? row.votes : 0,
     icon: typeof row.icon === 'string' ? row.icon : '',
     color: typeof row.color === 'string' ? row.color : '#9aa5b1',
+    link: typeof row.link === 'string' ? row.link : undefined,
     menuItems: parseStoredMenuItems(row.menu_items_json),
   }
 }
@@ -109,6 +111,7 @@ export async function listRestaurants() {
         r.name,
         r.cuisine,
         r.description,
+        r.link,
         r.times_ordered,
         r.average_rating,
         r.icon,
@@ -129,6 +132,7 @@ export async function listRestaurants() {
         r.name,
         r.cuisine,
         r.description,
+        r.link,
         r.times_ordered,
         r.average_rating,
         r.icon,
@@ -170,12 +174,24 @@ async function ensureMenuItemsColumn() {
   }
 }
 
+async function ensureRestaurantLinkColumn() {
+  const pool = getPool()
+  const [rows] = await pool.query<Array<mysql.RowDataPacket>>(
+    "SHOW COLUMNS FROM restaurants LIKE 'link'",
+  )
+
+  if (rows.length === 0) {
+    await pool.query('ALTER TABLE restaurants ADD COLUMN link VARCHAR(500) NULL')
+  }
+}
+
 export async function createRestaurant(input: RestaurantCreateInput) {
   const pool = getPool()
   const normalizedName = input.name.trim()
 
   await ensureMenuItemsColumn()
   await ensureRestaurantVoteColumn()
+  await ensureRestaurantLinkColumn()
 
   let menuItemsPayload: MenuItem[] = []
 
@@ -188,14 +204,14 @@ export async function createRestaurant(input: RestaurantCreateInput) {
   }
 
   const [result] = await pool.execute<mysql.ResultSetHeader>(
-    'INSERT INTO restaurants (name, description, menu_items_json, active) VALUES (?, ?, ?, TRUE)',
-    [normalizedName, input.description ?? null, JSON.stringify(menuItemsPayload)],
+    'INSERT INTO restaurants (name, description, link, menu_items_json, active) VALUES (?, ?, ?, ?, TRUE)',
+    [normalizedName, input.description ?? null, input.link?.trim() || null, JSON.stringify(menuItemsPayload)],
   )
 
   const restaurantId = Number(result.insertId)
 
   const [rows] = await pool.execute<RestaurantRow[]>(
-    'SELECT id, name, description, menu_items_json, times_ordered, average_rating FROM restaurants WHERE id = ? LIMIT 1',
+    'SELECT id, name, description, link, menu_items_json, times_ordered, average_rating FROM restaurants WHERE id = ? LIMIT 1',
     [restaurantId],
   )
   const created = rows[0]

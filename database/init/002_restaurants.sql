@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS restaurants (
 
     name VARCHAR(100) NOT NULL,
     description TEXT NULL,
+    link VARCHAR(500) NULL,
     menu_items_json JSON NULL,
 
     times_ordered INT UNSIGNED NOT NULL DEFAULT 0,

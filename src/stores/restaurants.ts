@@ -1,6 +1,16 @@
 import { defineStore } from 'pinia'
 import type { Restaurant } from '@/types/restaurant'
 import { randomRestaurant, sortByPopularity, sortByRating } from '@/utils/restaurants'
+import { getMenuFromHtml } from '~/utils/menu'
+
+function buildHtmlSignature(html: string) {
+  return html
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+    .replace(/>\s+</g, '><')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
 
 interface RestaurantsResponse {
   status: string
@@ -14,6 +24,8 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
   const isLoading = useState<boolean>('restaurants-loading', () => false)
   const hasLoaded = useState<boolean>('restaurants-loaded', () => false)
   const loadError = useState<string | null>('restaurants-error', () => null)
+  const lastMenuRefreshAt = new Map<number, number>()
+  const menuRefreshCooldownMs = 10 * 60 * 1000
 
   const rankedRestaurants = computed(() => sortByRating(restaurants.value))
   const popularRestaurants = computed(() => sortByPopularity(restaurants.value).slice(0, 3))
@@ -44,12 +56,77 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
       if (selectedId.value && !restaurants.value.some((restaurant) => restaurant.id === selectedId.value)) {
         selectedId.value = null
       }
+
+      if (import.meta.client) {
+        void refreshMenusLightweight()
+      }
     }
     catch {
       loadError.value = 'Unable to load restaurants right now.'
     }
     finally {
       isLoading.value = false
+    }
+  }
+
+  async function refreshMenuItemsForRestaurant(restaurant: Restaurant) {
+    if (!restaurant?.id) {
+      return false
+    }
+
+    const targetUrl = restaurant.link?.trim()
+    if (!targetUrl) {
+      return false
+    }
+
+    const lastRefresh = lastMenuRefreshAt.get(restaurant.id) ?? 0
+    const now = Date.now()
+    if (now - lastRefresh < menuRefreshCooldownMs) {
+      return false
+    }
+
+    try {
+      const currentHtmlSignature = restaurant.menuItems?.length
+        ? buildHtmlSignature(JSON.stringify(restaurant.menuItems))
+        : ''
+
+      const refreshedMenu = await getMenuFromHtml(targetUrl)
+      if (!refreshedMenu || refreshedMenu.length === 0) {
+        return false
+      }
+
+      const nextHtmlSignature = buildHtmlSignature(JSON.stringify(refreshedMenu))
+      const changed = currentHtmlSignature !== nextHtmlSignature
+
+      if (!changed) {
+        lastMenuRefreshAt.set(restaurant.id, now)
+        return false
+      }
+
+      const target = restaurants.value.find((entry) => entry.id === restaurant.id)
+      if (!target) {
+        lastMenuRefreshAt.set(restaurant.id, now)
+        return false
+      }
+
+      target.menuItems = refreshedMenu
+      lastMenuRefreshAt.set(restaurant.id, now)
+      return true
+    }
+    catch {
+      return false
+    }
+  }
+
+  async function refreshMenusLightweight() {
+    if (!restaurants.value.length) {
+      return
+    }
+
+    for (const restaurant of restaurants.value) {
+      if (restaurant.menuItems?.length) {
+        await refreshMenuItemsForRestaurant(restaurant)
+      }
     }
   }
 
@@ -105,6 +182,7 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     hasLoaded,
     loadError,
     fetchRestaurants,
+    refreshMenusLightweight,
     voteFor,
     pickSurprise,
   }
