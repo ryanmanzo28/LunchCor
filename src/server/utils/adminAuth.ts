@@ -43,6 +43,7 @@ export async function verifyAdminCredentials(id: number, password: string): Prom
       statusCode: 401,
       statusMessage: 'Invalid password',
     })
+    return false
   }
 
   if (!Boolean(user.admin)) {
@@ -50,6 +51,7 @@ export async function verifyAdminCredentials(id: number, password: string): Prom
       statusCode: 403,
       statusMessage: 'Admin privileges required',
     })
+    return false
   }
 
   return true

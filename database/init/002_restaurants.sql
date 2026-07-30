@@ -5,8 +5,10 @@ CREATE TABLE IF NOT EXISTS restaurants (
 
     name VARCHAR(100) NOT NULL,
     description TEXT NULL,
+    menu_items_json JSON NULL,
 
     times_ordered INT UNSIGNED NOT NULL DEFAULT 0,
+    votes INT UNSIGNED NOT NULL DEFAULT 0,
     average_rating DECIMAL(3,2) NOT NULL DEFAULT 0.00,
 
     active BOOLEAN NOT NULL DEFAULT TRUE,

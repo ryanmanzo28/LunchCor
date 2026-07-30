@@ -8,4 +8,10 @@ export interface Restaurant {
   votes: number
   icon: string
   color: string
+  menuItems?: Array<{
+    section?: string
+    name: string
+    description?: string
+    price?: string
+  }>
 }

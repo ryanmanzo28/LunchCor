@@ -3,10 +3,17 @@ import { createRestaurant, type RestaurantCreateInput } from '~/server/utils/res
 export default defineEventHandler(async (event) => {
   const body = await readBody<Partial<RestaurantCreateInput>>(event)
 
-  if (!body?.name || !body.name.trim()) {
+  if (!body?.name?.trim()) {
     throw createError({
       statusCode: 400,
       statusMessage: 'Restaurant name is required',
+    })
+  }
+
+  if (!body?.link?.trim()) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Restaurant link is required',
     })
   }
 
@@ -14,8 +21,9 @@ export default defineEventHandler(async (event) => {
     name: body.name,
     cuisine: body.cuisine,
     description: body.description,
-    icon: body.icon,
     color: body.color,
+    icon: body.icon,
+    link: body.link,
   })
 
   setResponseStatus(event, 201)

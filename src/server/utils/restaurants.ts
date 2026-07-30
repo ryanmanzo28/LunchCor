@@ -1,5 +1,6 @@
 import mysql from 'mysql2/promise'
 import type { Restaurant } from '@/types/restaurant'
+import { getMenuFromHtml, type MenuItem } from '~/utils/menu'
 
 type MysqlGlobal = typeof globalThis & { __lunchcorPool?: mysql.Pool }
 
@@ -8,11 +9,16 @@ export interface RestaurantRow extends mysql.RowDataPacket {
   name: string
   cuisine: string
   description: string | null
+  menu_items_json: string | null
   times_ordered: number
   average_rating: number | string
   icon: string
   color: string
   votes: number
+}
+
+export interface RestaurantMenu {
+  items: MenuItem[]
 }
 
 export interface RestaurantCreateInput {
@@ -21,6 +27,8 @@ export interface RestaurantCreateInput {
   description?: string | null
   icon?: string
   color?: string
+  link: string
+  menu?: RestaurantMenu
 }
 
 export function getPool() {
@@ -52,17 +60,42 @@ export async function hasVotesTable() {
   return Number(rows[0]?.has_table || 0) > 0
 }
 
+async function ensureRestaurantVoteColumn() {
+  const pool = getPool()
+  const [rows] = await pool.query<Array<mysql.RowDataPacket>>(
+    "SHOW COLUMNS FROM restaurants LIKE 'votes'",
+  )
+
+  if (rows.length === 0) {
+    await pool.query('ALTER TABLE restaurants ADD COLUMN votes INT UNSIGNED NOT NULL DEFAULT 0')
+  }
+}
+
+function parseStoredMenuItems(value: string | null | undefined) {
+  if (!value) {
+    return []
+  }
+
+  try {
+    const parsed = JSON.parse(value)
+    return Array.isArray(parsed) ? parsed : []
+  } catch {
+    return []
+  }
+}
+
 export function mapRestaurant(row: RestaurantRow): Restaurant {
   return {
     id: row.id,
     name: row.name,
-    cuisine: row.cuisine,
+    cuisine: typeof row.cuisine === 'string' ? row.cuisine : '',
     description: row.description ?? '',
     rating: Number(row.average_rating),
     orders: row.times_ordered,
-    votes: row.votes,
-    icon: row.icon,
-    color: row.color,
+    votes: typeof row.votes === 'number' ? row.votes : 0,
+    icon: typeof row.icon === 'string' ? row.icon : '',
+    color: typeof row.color === 'string' ? row.color : '#9aa5b1',
+    menuItems: parseStoredMenuItems(row.menu_items_json),
   }
 }
 
@@ -111,78 +144,60 @@ export async function listRestaurants() {
   return rows.map(mapRestaurant)
 }
 
+function parsePriceCents(price?: string): number | null {
+  if (!price) {
+    return null
+  }
+
+  const normalized = price.replace(/[^\d.]/g, '')
+  const value = Number.parseFloat(normalized)
+
+  if (Number.isNaN(value)) {
+    return null
+  }
+
+  return Math.round(value * 100)
+}
+
+async function ensureMenuItemsColumn() {
+  const pool = getPool()
+  const [rows] = await pool.query<Array<mysql.RowDataPacket>>(
+    "SHOW COLUMNS FROM restaurants LIKE 'menu_items_json'",
+  )
+
+  if (rows.length === 0) {
+    await pool.query('ALTER TABLE restaurants ADD COLUMN menu_items_json JSON NULL')
+  }
+}
+
 export async function createRestaurant(input: RestaurantCreateInput) {
   const pool = getPool()
-  const canUseVotes = await hasVotesTable()
   const normalizedName = input.name.trim()
-  const fallbackIcon = normalizedName.charAt(0).toUpperCase() || 'R'
+
+  await ensureMenuItemsColumn()
+  await ensureRestaurantVoteColumn()
+
+  let menuItemsPayload: MenuItem[] = []
+
+  if (input.link?.trim()) {
+    const menu = await getMenuFromHtml(input.link.trim())
+
+    if (menu && menu.length > 0) {
+      menuItemsPayload = menu
+    }
+  }
 
   const [result] = await pool.execute<mysql.ResultSetHeader>(
-    'INSERT INTO restaurants (name, cuisine, description, icon, color, active) VALUES (?, ?, ?, ?, ?, TRUE)',
-    [
-      normalizedName,
-      input.cuisine?.trim() || 'General',
-      input.description ?? null,
-      input.icon?.trim() || fallbackIcon,
-      input.color?.trim() || '#9aa5b1',
-    ],
+    'INSERT INTO restaurants (name, description, menu_items_json, active) VALUES (?, ?, ?, TRUE)',
+    [normalizedName, input.description ?? null, JSON.stringify(menuItemsPayload)],
   )
 
-  await pool.execute(
-    `INSERT INTO menu_items (restaurant_id, name, description, category, price_cents, currency, is_available)
-     SELECT ?, ?, ?, ?, ?, ?, TRUE
-     WHERE NOT EXISTS (
-       SELECT 1 FROM menu_items WHERE restaurant_id = ?
-     )`,
-    [
-      result.insertId,
-      `${normalizedName} Signature`,
-      `Starter menu entry for ${normalizedName}.`,
-      'House Special',
-      1299,
-      'USD',
-      result.insertId,
-    ],
+  const restaurantId = Number(result.insertId)
+
+  const [rows] = await pool.execute<RestaurantRow[]>(
+    'SELECT id, name, description, menu_items_json, times_ordered, average_rating FROM restaurants WHERE id = ? LIMIT 1',
+    [restaurantId],
   )
-
-  const query = canUseVotes
-    ? `
-      SELECT
-        r.id,
-        r.name,
-        r.cuisine,
-        r.description,
-        r.times_ordered,
-        r.average_rating,
-        r.icon,
-        r.color,
-        COALESCE(v.votes, 0) AS votes
-      FROM restaurants r
-      LEFT JOIN (
-        SELECT restaurant_id, COUNT(*) AS votes
-        FROM votes
-        GROUP BY restaurant_id
-      ) v ON v.restaurant_id = r.id
-      WHERE r.id = ?
-      LIMIT 1
-    `
-    : `
-      SELECT
-        r.id,
-        r.name,
-        r.cuisine,
-        r.description,
-        r.times_ordered,
-        r.average_rating,
-        r.icon,
-        r.color,
-        0 AS votes
-      FROM restaurants r
-      WHERE r.id = ?
-      LIMIT 1
-    `
-
-  const [rows] = await pool.execute<RestaurantRow[]>(query, [result.insertId])
   const created = rows[0]
 
   if (!created) {

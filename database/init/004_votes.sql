@@ -5,7 +5,6 @@ CREATE TABLE IF NOT EXISTS votes (
     restaurant_id INT UNSIGNED NOT NULL,
 
     vote_date DATE NOT NULL,
-
     created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT fk_votes_user
@@ -18,5 +17,5 @@ CREATE TABLE IF NOT EXISTS votes (
         REFERENCES restaurants(id)
         ON DELETE CASCADE,
 
-    UNIQUE KEY uq_user_vote (user_id, vote_date)
+    UNIQUE KEY uq_user_vote (user_id)
 );
