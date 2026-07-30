@@ -1,8 +1,7 @@
 import mysql from 'mysql2/promise'
 import type { Restaurant } from '@/types/restaurant'
 import { getMenuFromHtml, type MenuItem } from '~/utils/menu'
-
-type MysqlGlobal = typeof globalThis & { __lunchcorPool?: mysql.Pool }
+import { getPool } from './db'
 
 export interface RestaurantRow extends mysql.RowDataPacket {
   id: number
@@ -30,23 +29,6 @@ export interface RestaurantCreateInput {
   color?: string
   link: string
   menu?: RestaurantMenu
-}
-
-export function getPool() {
-  const globalRef = globalThis as MysqlGlobal
-
-  if (!globalRef.__lunchcorPool) {
-    globalRef.__lunchcorPool = mysql.createPool({
-      host: process.env.DB_HOST || '127.0.0.1',
-      port: Number.parseInt(process.env.DB_PORT || '3306', 10),
-      user: process.env.DB_USERNAME || 'lunchcor',
-      password: process.env.DB_PASSWORD || 'lunchcor',
-      database: process.env.DB_DATABASE || 'lunchcor',
-      connectionLimit: 10,
-    })
-  }
-
-  return globalRef.__lunchcorPool
 }
 
 export async function hasVotesTable() {

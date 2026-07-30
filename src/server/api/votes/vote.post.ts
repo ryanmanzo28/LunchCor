@@ -1,5 +1,5 @@
 import mysql from 'mysql2/promise'
-import { getPool } from '~/server/utils/restaurants'
+import { getPool } from '~/server/utils/db'
 
 interface VoteRequestBody {
   userId: number
@@ -41,7 +41,7 @@ export default defineEventHandler(async (event) => {
       [body.restaurantId],
     )
 
-    return { success: true, userId: body.userId, restaurantId: body.restaurantId }
+    return { success: true }
   } catch (error: any) {
     if (error?.statusCode === 409) {
       throw error

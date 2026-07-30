@@ -1,4 +1,4 @@
-import { getPool } from '~/server/utils/restaurants'
+import { getPool } from '~/server/utils/db'
 import { verifyAdminCredentials } from '~/server/utils/adminAuth'
 
 interface GetUsersQuery {

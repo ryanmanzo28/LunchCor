@@ -1,7 +1,7 @@
 import mysql from 'mysql2/promise'
 import { isValidEmail, isValidPassword } from '../../utils/validators'
 import { hashPassword } from '../../../utils/passwordHash'
-type MysqlGlobal = typeof globalThis & { __lunchcorPool?: mysql.Pool }
+import { getPool } from '../../utils/db'
 
 interface CreateUserBody {
     name?: string
@@ -17,23 +17,6 @@ interface UserRow extends mysql.RowDataPacket {
     admin: number | boolean
 }
 
-
-function getPool() {
-	const globalRef = globalThis as MysqlGlobal
-
-	if (!globalRef.__lunchcorPool) {
-		globalRef.__lunchcorPool = mysql.createPool({
-			host: process.env.DB_HOST || '127.0.0.1',
-			port: Number.parseInt(process.env.DB_PORT || '3306', 10),
-			user: process.env.DB_USERNAME || 'lunchcor',
-			password: process.env.DB_PASSWORD || 'lunchcor',
-			database: process.env.DB_DATABASE || 'lunchcor',
-			connectionLimit: 10,
-		})
-	}
-
-	return globalRef.__lunchcorPool
-}
 
 export default defineEventHandler(async (event) => {
     const body = await readBody<CreateUserBody>(event)
