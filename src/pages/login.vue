@@ -8,9 +8,10 @@
       <form @submit.prevent="signIn">
         <label for="email">Work email</label>
         <input id="email" v-model="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+        <label for="password">Password</label>
+        <input id="password" v-model="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
         <button type="submit">Continue to LunchCor <span aria-hidden="true">→</span></button>
       </form>
-      <p class="form-note">Demo mode — any email will work.</p>
     </section>
   </main>
 </template>
@@ -22,21 +23,39 @@ useHead({
     { rel: 'icon', href: '/favicon.ico' },
   ],
 })
+
 const router = useRouter()
 const authStore = useAuthStore()
 const userStore = useUserStore()
 const email = ref('')
+const password = ref('')
 
-function signIn() {
+async function signIn() {
   const normalizedEmail = email.value.trim().toLowerCase()
   const localPart = normalizedEmail.split('@')[0] ?? ''
+  const nextPassword = password.value
   const name = localPart
     .replace(/[._-]/g, ' ')
     .replace(/\b\w/g, (letter) => letter.toUpperCase()) || 'LunchCor User'
   const isAdmin = normalizedEmail === 'admin@lunchcor.local' || /^admin\+.+@lunchcor\.local$/.test(normalizedEmail)
 
-  authStore.setToken('demo-jwt')
-  userStore.setUser({ id: 1, name, email: normalizedEmail, password: '', admin: isAdmin })
-  router.push('/')
+  await authStore.setProfile({
+    name,
+    email: normalizedEmail,
+    password: nextPassword,
+    admin: isAdmin,
+  })
+
+  authStore.setToken('jwt')
+
+  userStore.setUser({
+    id: authStore.userId ?? 0,
+    name,
+    email: normalizedEmail,
+    password: nextPassword,
+    admin: isAdmin,
+  })
+
+  await router.push('/')
 }
 </script>

@@ -16,10 +16,9 @@ export const useUserStore = defineStore('user', () => {
     }
 
     try {
-      const id = await decodeId(token)
+      const id = authStore.userId || await decodeId(token)
       if (id) {
-        const response = await $fetch<User>(`/api/users/${id}`, {
-        })
+        const response = await $fetch<User>(`/api/users/${id}`, {})
         user.value = response
       } else {
         user.value = null
@@ -27,7 +26,6 @@ export const useUserStore = defineStore('user', () => {
     } catch (error) {
       user.value = null
     }
-    
 
     return user.value
   }

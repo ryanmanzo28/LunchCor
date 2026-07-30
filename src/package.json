@@ -25,7 +25,7 @@
     "nuxt": "^4.5.0",
     "vue": "^3.5.40",
     "vue-router": "^5.2.0",
-    "@foresightjs/vue": "^4.*.*"
+    "@foresightjs/vue": "1.0.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",

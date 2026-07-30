@@ -31,8 +31,7 @@ export default defineNuxtConfig({
 	modules: [
 		'@nuxtjs/tailwindcss',
 		'@pinia/nuxt',
-		'@vueuse/nuxt',
-		'@foresightjs/vue'
+		'@vueuse/nuxt'
 	],
 	typescript: {
 		strict: true,

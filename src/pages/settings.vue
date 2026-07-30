@@ -1,12 +1,8 @@
 <script setup lang="ts">
-const formContainer = ref<HTMLElement | null>(null)
+import type { SettingsPreferences } from '~/plugins/settings.client'
+import { defaultSettings } from '~/plugins/settings.client'
 
-type SettingsPreferences = {
-  theme: string
-  font: string
-  compactMode: boolean
-  keepLoggedIn: boolean
-}
+const formContainer = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   if (!formContainer.value) {
@@ -14,13 +10,9 @@ onMounted(() => {
   }
 
   const authStore = useAuthStore()
+  const settingsPlugin = useNuxtApp().$settings as { applySettings: () => void } | undefined
   const settingsCookie = useCookie<SettingsPreferences>('settings', {
-    default: () => ({
-      theme: 'light',
-      font: 'inter',
-      compactMode: false,
-      keepLoggedIn: false,
-    }),
+    default: () => ({ ...defaultSettings }),
     sameSite: 'lax',
     path: '/',
   })
@@ -36,8 +28,8 @@ onMounted(() => {
   )
   themeSelect.addEventListener('change', () => {
     const nextTheme = themeSelect.value
-    applyTheme(nextTheme)
     settingsCookie.value = { ...settingsCookie.value, theme: nextTheme }
+    settingsPlugin?.applySettings()
   })
   themeLabel.appendChild(themeSelect)
 
@@ -49,8 +41,8 @@ onMounted(() => {
   )
   fontSelect.addEventListener('change', () => {
     const nextFont = fontSelect.value
-    applyFont(nextFont)
     settingsCookie.value = { ...settingsCookie.value, font: nextFont }
+    settingsPlugin?.applySettings()
   })
   fontLabel.appendChild(fontSelect)
 
@@ -60,8 +52,8 @@ onMounted(() => {
   compactCheckbox.checked = Boolean(settingsCookie.value.compactMode)
   compactCheckbox.addEventListener('change', () => {
     const compactMode = compactCheckbox.checked
-    applyCompactMode(compactMode)
     settingsCookie.value = { ...settingsCookie.value, compactMode }
+    settingsPlugin?.applySettings()
   })
   compactLabel.appendChild(compactCheckbox)
 
@@ -73,15 +65,14 @@ onMounted(() => {
     const keepLoggedIn = keepLoggedInCheckbox.checked
     applyRememberMe(keepLoggedIn, authStore)
     settingsCookie.value = { ...settingsCookie.value, keepLoggedIn }
+    settingsPlugin?.applySettings()
   })
   keepLoggedInLabel.appendChild(keepLoggedInCheckbox)
 
   form.append(themeLabel, fontLabel, compactLabel, keepLoggedInLabel)
   formContainer.value.replaceChildren(form)
 
-  applyTheme(settingsCookie.value.theme || 'light')
-  applyFont(settingsCookie.value.font || 'inter')
-  applyCompactMode(Boolean(settingsCookie.value.compactMode))
+  settingsPlugin?.applySettings()
   applyRememberMe(Boolean(settingsCookie.value.keepLoggedIn), authStore)
 })
 
@@ -110,28 +101,11 @@ function createSelect(values: string[], labels: string[], selectedValue: string)
   return select
 }
 
-function applyTheme(theme: string) {
-  const nextTheme = theme === 'dark' ? 'dark' : 'light'
-  document.documentElement.dataset.theme = nextTheme
-  document.documentElement.classList.toggle('dark', nextTheme === 'dark')
-  document.documentElement.style.colorScheme = nextTheme
-}
-
-function applyFont(font: string) {
-  const nextFont = font === 'dm-sans' ? 'dm-sans' : font === 'fraunces' ? 'fraunces' : 'inter'
-  document.documentElement.dataset.font = nextFont
-}
-
-function applyCompactMode(compactMode: boolean) {
-  document.documentElement.dataset.compact = compactMode ? 'true' : 'false'
-}
-
 function applyRememberMe(keepLoggedIn: boolean, authStore: ReturnType<typeof useAuthStore>) {
-  const maxAge = keepLoggedIn ? 60 * 60 * 24 * 30 : 60 * 60 * 24
   const token = authStore.token
 
   if (typeof token === 'string' && token.length > 0) {
-    document.cookie = `jwt=${encodeURIComponent(token)}; path=/; max-age=${maxAge}; SameSite=Lax`
+    authStore.setToken(token, keepLoggedIn)
   }
 }
 </script>
@@ -141,3 +115,4 @@ function applyRememberMe(keepLoggedIn: boolean, authStore: ReturnType<typeof use
     <div ref="formContainer" class="mx-auto max-w-xl"></div>
   </div>
 </template>
+
