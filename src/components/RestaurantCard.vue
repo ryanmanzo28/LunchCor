@@ -1,7 +1,7 @@
 <template>
   <article class="restaurant-card" :style="cardStyle">
     <div class="icon-slot" aria-hidden="true">
-      <NuxtImg
+      <LazyNuxtImg
         v-if="iconIsImage"
         :src="icon"
         :alt="`${name} icon`"

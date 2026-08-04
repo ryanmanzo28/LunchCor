@@ -35,26 +35,25 @@ export default defineNuxtConfig({
 
     prerender: {
       crawlLinks: true,
+      routes: [
+        '/login',
+        '/register',
+        '/api/health',
+        '/restaurant_list',
+      ],
+      ignore: [
+        '/',
+        '/home',
+        '/voting',
+        '/settings',
+        '/create_restaurant',
+        '/admin',
+        '/admin/**',
+      ],
     },
   },
 
   routeRules: {
-    "/": {
-      prerender: true,
-    },
-
-    "/restaurant_list": {
-      prerender: true,
-    },
-
-    "/settings": {
-      ssr: true,
-    },
-
-    "/admin/**": {
-      ssr: false,
-    },
-
     "/api/restaurants/**": {
       cache: {
         maxAge: 300,

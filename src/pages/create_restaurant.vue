@@ -89,7 +89,7 @@ async function createRestaurantFormSubmit() {
       <input type="file" name="image" accept="image/*" @change="onFileChange">
     </label>
 
-    <NuxtImg
+    <LazyNuxtImg
       v-if="previewSrc"
       :src="previewSrc"
       alt="Restaurant preview"
