@@ -61,7 +61,7 @@ const topRestaurants = computed(() => {
 const maxVotes = computed(() => Math.max(...topRestaurants.value.map((restaurant) => restaurant.timesVoted), 0))
 if (import.meta.client) {
     void restaurantsStore.fetchRestaurants()
-    document.getElementById('admin-dashboard-button')?.addEventListener('click', () => navigateTo("/admin/adminDashboard"))
+
 }
 
 </script>
@@ -89,11 +89,11 @@ if (import.meta.client) {
                         <div
                             class="bar-fill"
                             :style="{
-                                height: maxVotes > 0 ? `${Math.max((restaurant.timesVoted / maxVotes) * 100, 4)}%` : '4%',
+                                height: maxVotes.valueOf() > 0 ? `${Math.max((restaurant.timesVoted / maxVotes.valueOf()) * 100, 4)}%` : '4%',
                             }"
                         >
                             <span class="bar-name">{{ restaurant.name }}</span>
-                            <button v-if="isAdminUser()" class="admin-dashboard-button">Admin Dashboard</button>
+                            <button v-if="isAdminUser()" class="admin-dashboard-button" @click="navigateTo('/admin/adminDashboard')">Admin Dashboard</button>
                         </div>
                     </div>
                 </div>

@@ -2,10 +2,25 @@ import { defineStore } from 'pinia'
 import type { User } from '@/types/user'
 import { decodeId } from '@/utils/jwtVerify'
 
+interface CreateUserInput {
+  name: string
+  email: string
+  password: string
+}
+
+interface UserSummary {
+  id: number
+  name: string
+  email: string
+  admin: boolean
+}
+
 
 export const useUserStore = defineStore('user', () => {
   const user = useState<User | null>('auth-user', () => null)
   const profileImage = useState<string | null>('auth-user-profile-image', () => null)
+  const searchResults = useState<UserSummary[]>('user-search-results', () => [])
+  const isSearching = useState<boolean>('user-searching', () => false)
 
   const avatar = computed(() => {
     if (profileImage.value) {
@@ -71,6 +86,40 @@ export const useUserStore = defineStore('user', () => {
     return user.value
   }
 
+  async function createUser(input: CreateUserInput) {
+    const created = await useAPIData<UserSummary>('/users/create', {
+      method: 'POST',
+      body: {
+        name: input.name.trim(),
+        email: input.email.trim().toLowerCase(),
+        password: input.password,
+      },
+    })
+
+    return created
+  }
+
+  async function searchUsers(query: string) {
+    const normalized = query.trim()
+
+    if (!normalized) {
+      searchResults.value = []
+      return searchResults.value
+    }
+
+    isSearching.value = true
+
+    try {
+      const results = await useAPIData<UserSummary[]>(`/users/search?q=${encodeURIComponent(normalized)}`, {
+        method: 'GET',
+      })
+      searchResults.value = results
+      return results
+    } finally {
+      isSearching.value = false
+    }
+  }
+
   function clearUser() {
     user.value = null
     profileImage.value = null
@@ -91,8 +140,12 @@ export const useUserStore = defineStore('user', () => {
   return {
     user,
     profileImage,
+    searchResults,
+    isSearching,
     avatar,
     fetchUser,
+    createUser,
+    searchUsers,
     clearUser,
     setUser,
     setProfileImage,

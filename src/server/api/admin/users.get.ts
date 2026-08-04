@@ -6,17 +6,18 @@ interface GetUsersQuery {
     password: string
 }
 
-defineEventHandler(async (event) => {
+export default defineEventHandler(async (event) => {
     const query = getQuery(event) as GetUsersQuery
     const pool = getPool()
-    if (!query.id || isNaN(query.id)) {
+    const adminId = Number(query.id)
+    if (!adminId || isNaN(adminId)) {
         throw createError({
             statusCode: 400,
             statusMessage: 'Invalid user ID',
         })
     }
     // Re-authenticate admin on each privileged listing request.
-    const admin = await verifyAdminCredentials(query.id, query.password)
+    const admin = await verifyAdminCredentials(adminId, query.password)
     if (admin) {
         const [rows] = await pool.query(
             'SELECT id, name, email, admin FROM users',

@@ -99,7 +99,6 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
       const response = await useAPIData<VoteResponse>('/votes/vote', {
         method: 'POST',
         body: {
-          userId: currentUserId,
           restaurantId: id,
         },
       })

@@ -2,17 +2,24 @@ import mysql from 'mysql2/promise'
 import { getPool } from '~/server/utils/db'
 
 interface VoteRequestBody {
-  userId: number
   restaurantId: number
 }
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody<VoteRequestBody>(event)
+  if (!event.context.auth?.isAuthenticated || !event.context.auth.id) {
+    throw createError({
+      statusCode: 401,
+      statusMessage: 'Authentication required',
+    })
+  }
 
-  if (!body?.userId || !body?.restaurantId) {
+  const body = await readBody<VoteRequestBody>(event)
+  const userId = Number(event.context.auth.id)
+
+  if (!body?.restaurantId) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'userId and restaurantId are required',
+      statusMessage: 'restaurantId is required',
     })
   }
 
@@ -22,7 +29,7 @@ export default defineEventHandler(async (event) => {
     // Application-level duplicate check for friendlier 409 responses.
     const [existingVotes] = await pool.query<Array<mysql.RowDataPacket>>(
       'SELECT id FROM votes WHERE user_id = ? LIMIT 1',
-      [body.userId],
+      [userId],
     )
 
     if (existingVotes.length > 0) {
@@ -34,7 +41,7 @@ export default defineEventHandler(async (event) => {
 
     await pool.execute(
       'INSERT INTO votes (user_id, restaurant_id, vote_date) VALUES (?, ?, CURDATE())',
-      [body.userId, body.restaurantId],
+      [userId, body.restaurantId],
     )
 
     // Keep denormalized vote counter aligned with inserted vote records.

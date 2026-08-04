@@ -6,7 +6,6 @@ interface UserRow extends mysql.RowDataPacket {
     id: number
     name: string
     email: string
-    password: string
     admin: number | boolean
 }
 
@@ -20,8 +19,25 @@ export default defineEventHandler(async (event) => {
         statusMessage: "Invalid user ID"
     })
 }
+
+    if (!event.context.auth?.isAuthenticated) {
+        throw createError({
+            statusCode: 401,
+            statusMessage: 'Authentication required',
+        })
+    }
+
+    const callerId = Number(event.context.auth.id)
+    const isAdmin = Boolean(event.context.auth.isAdmin)
+    if (!isAdmin && callerId !== id) {
+        throw createError({
+            statusCode: 403,
+            statusMessage: 'Forbidden',
+        })
+    }
+
     const [rows] = await pool.query<UserRow[]>(
-        "SELECT id, name, email, password, admin FROM users WHERE id = ? LIMIT 1",
+        "SELECT id, name, email, admin FROM users WHERE id = ? LIMIT 1",
         [id]
     )
     const user = rows[0]
@@ -35,7 +51,7 @@ export default defineEventHandler(async (event) => {
             id: user.id,
             name: user.name,
             email: user.email,
-            password: user.password,
+            password: '',
             admin: Boolean(user.admin),
         } satisfies User
     }
