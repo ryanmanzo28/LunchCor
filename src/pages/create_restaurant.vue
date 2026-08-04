@@ -35,12 +35,9 @@ async function createRestaurantFormSubmit() {
   }
 
   try {
-    await $fetch('/api/restaurants/create', {
+    await apiFetch('/restaurants/create', {
       method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(payload),
+      body: payload,
     })
 
     alert('Restaurant created successfully!')

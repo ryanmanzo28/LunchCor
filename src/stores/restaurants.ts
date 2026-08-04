@@ -42,7 +42,7 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     loadError.value = null
 
     try {
-      const response = await $fetch<RestaurantsResponse>('/api/restaurants')
+      const response = await apiFetch<RestaurantsResponse>('/restaurants')
       restaurants.value = response.restaurants
       hasLoaded.value = true
 
@@ -96,7 +96,7 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     loadError.value = null
 
     try {
-      const response = await $fetch<VoteResponse>('/api/votes/vote', {
+      const response = await apiFetch<VoteResponse>('/votes/vote', {
         method: 'POST',
         body: {
           userId: currentUserId,

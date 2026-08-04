@@ -37,13 +37,12 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function login(email: string, password: string) {
-    const response = await $fetch<{ token?: string, user?: { id: number, name: string, email: string, admin: boolean } }>('/api/auth/login', {
+    const response = await apiFetch<{ token?: string, user?: { id: number, name: string, email: string, admin: boolean } }>('/auth/login', {
       method: 'POST',
       body: {
         email: email.trim().toLowerCase(),
         password,
       },
-      credentials: 'include',
     })
 
     if (!response.user) {
@@ -86,9 +85,8 @@ export const useAuthStore = defineStore('auth', () => {
 
     if (jwtCookie.value) {
       try {
-        const response = await $fetch<{ user?: { id: number, name: string, email: string, admin: boolean } }>('/api/auth/restore-session', {
+        const response = await apiFetch<{ user?: { id: number, name: string, email: string, admin: boolean } }>('/auth/restore-session', {
           method: 'GET',
-          credentials: 'include',
         })
 
         const loggedInUser = response.user
@@ -116,9 +114,8 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function logout() {
     try {
-      await $fetch('/api/auth/logout', {
+      await apiFetch('/auth/logout', {
         method: 'POST',
-        credentials: 'include',
       })
     } finally {
       clearToken()

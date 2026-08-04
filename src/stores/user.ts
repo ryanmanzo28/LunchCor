@@ -59,7 +59,7 @@ export const useUserStore = defineStore('user', () => {
       // Prefer cached id from auth store and fall back to JWT payload decode.
       const id = authStore.userId ?? await decodeId(token)
       if (id) {
-        const response = await $fetch<User>(`/api/users/${id}`, {})
+        const response = await apiFetch<User>(`/users/${id}`)
         user.value = response
       } else {
         user.value = null
