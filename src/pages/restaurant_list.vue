@@ -38,7 +38,7 @@
         >
           <header class="menu-modal-header">
             <h2>{{ selectedRestaurant?.name ?? 'Menu' }}</h2>
-            <button type="button" class="menu-close" @click="closeMenuModal" aria-label="Close menu">x</button>
+            <button type="button" class="menu-close secondary-button" @click="closeMenuModal" aria-label="Close menu">x</button>
           </header>
 
           <p v-if="isMenuLoading" class="muted">Loading menu items...</p>
@@ -208,12 +208,10 @@ function closeMenuModal() {
 }
 
 .menu-close {
-  border: 0;
   border-radius: 10px;
-  background: #e2e8f0;
-  color: #0f172a;
   width: 34px;
   height: 34px;
+  padding: 0;
   cursor: pointer;
 }
 

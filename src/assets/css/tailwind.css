@@ -172,6 +172,14 @@
 		@apply bg-[#bf4c2d];
 	}
 
+	.secondary-button {
+		@apply border border-[var(--line)] bg-white text-[var(--deep)] shadow-none;
+	}
+
+	.secondary-button:hover {
+		@apply bg-[#f2f5f8] text-[var(--ink)];
+	}
+
 	.notice {
 		@apply mt-[22px] rounded-[10px] border border-[#cae1d7] bg-[#edf7f1] px-[16px] py-[13px] text-[#356854];
 	}

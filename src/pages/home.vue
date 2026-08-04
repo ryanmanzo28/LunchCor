@@ -74,7 +74,7 @@ if (import.meta.client) {
                 :src="userStore.avatar"
                 alt="User avatar"
             />
-            <button v-if="isWednesday && new Date().getHours() < 11" @click="navigateTo('/voting')" class="vote-button">Vote for Lunch Today!</button>
+            <button v-if="isWednesday && new Date().getHours() < 11" @click="navigateTo('/voting')" class="vote-button">Vote for Lunch Today</button>
             <h1>Top 3 Restaurants</h1>
             <p>Times voted</p>
 
@@ -104,20 +104,36 @@ if (import.meta.client) {
 
 <style scoped>
 .admin-dashboard-button {
-    bottom: 89%;
-    left: 89%;
-    color: orange;
-    text-align: center;
+    margin-top: 8px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 6px 10px;
+    background: #ffffff;
+    color: var(--deep);
+    font-size: 0.74rem;
+    font-weight: 700;
 }
+
+.admin-dashboard-button:hover {
+    background: #f2f5f8;
+}
+
 .vote-button {
-    color: orange;
-    bottom: 75%;
-    right: 75%;
-    position: absolute;
-    padding:1px;
-    text-align:center;
-    font-size: 16px;
+    margin: 10px 0 14px;
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 0.86rem;
+    font-weight: 700;
+    box-shadow: 0 7px 14px #d95d3930;
 }
+
+.vote-button:hover {
+    background: #bf4c2d;
+}
+
 .home-page {
     min-height: 100vh;
     display: flex;
@@ -128,6 +144,11 @@ if (import.meta.client) {
 
 .graph-shell {
     width: min(720px, 100%);
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
     text-align: center;
 }
 
@@ -137,8 +158,14 @@ if (import.meta.client) {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 12px;
-    right: 85%;
-    top:95%;
+}
+
+.graph-shell h1 {
+    color: var(--ink);
+}
+
+.graph-shell p {
+    color: var(--muted);
 }
 
 .bar-chart {
@@ -151,7 +178,7 @@ if (import.meta.client) {
 }
 
 .bar-column {
-    color:orange;
+    color: var(--accent);
     width: 160px;
     display: flex;
     flex-direction: column;
@@ -179,7 +206,7 @@ if (import.meta.client) {
     margin-top: 2px;
     font-size: 11px;
     line-height: 1;
-    color: #000;
+    color: var(--ink);
     text-align: center;
     padding: 0 2px;
 }

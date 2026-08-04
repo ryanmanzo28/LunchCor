@@ -24,7 +24,7 @@
 				<button type="submit" :disabled="isSubmitting">
 					{{ isSubmitting ? 'Creating account...' : 'Create account' }} <span aria-hidden="true">→</span>
 				</button>
-				<button type="button" :disabled="isSubmitting" @click="navigateTo('/login', { replace: true })">Back to login</button>
+				<button type="button" class="secondary-button" :disabled="isSubmitting" @click="navigateTo('/login', { replace: true })">Back to login</button>
 			</form>
 		</section>
 	</main>

@@ -14,7 +14,7 @@
         <button type="submit" :disabled="isSubmitting">
           {{ isSubmitting ? 'Signing in...' : 'Continue to LunchCor' }} <span aria-hidden="true">→</span>
         </button>
-        <button type="button" :disabled="isSubmitting" @click="navigateTo('/register')">Register</button>
+        <button type="button" class="secondary-button" :disabled="isSubmitting" @click="navigateTo('/register')">Register</button>
       </form>
     </section>
   </main>
