@@ -35,7 +35,7 @@ async function createRestaurantFormSubmit() {
   }
 
   try {
-    await apiFetch('/restaurants/create', {
+    await useAPIData('/restaurants/create', {
       method: 'POST',
       body: payload,
     })

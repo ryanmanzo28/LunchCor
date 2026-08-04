@@ -16,24 +16,28 @@ function withProjectAuth(options: ApiFetchOptions = {}) {
   } satisfies ApiFetchOptions
 }
 
-export async function apiFetch<T>(request: string, options: ApiFetchOptions = {}) {
-  const runtimeConfig = useRuntimeConfig()
-  return await $fetch<T>(request, {
-    baseURL: runtimeConfig.public.apiBase,
-    ...withProjectAuth(options),
-  })
+function makeAsyncDataKey(request: string) {
+  return `api:${request}:${Date.now()}:${Math.random().toString(36).slice(2)}`
 }
 
-export const useAPI = createUseFetch({
-  baseURL: () => useRuntimeConfig().public.apiBase,
-  onRequest({ options }) {
-    const next = withProjectAuth(options as ApiFetchOptions)
-    options.headers = next.headers
-    options.credentials = next.credentials
-  },
-  async onResponseError({ response }) {
-    if (response.status === 401) {
+export async function useAPIData<T>(request: string, options: ApiFetchOptions = {}) {
+  const runtimeConfig = useRuntimeConfig()
+
+  const { data, error } = await useAsyncData<T>(
+    makeAsyncDataKey(request),
+    () => $fetch<T>(request, {
+      baseURL: runtimeConfig.public.apiBase,
+      ...withProjectAuth(options),
+    }),
+  )
+
+  if (error.value) {
+    if ((error.value as { statusCode?: number }).statusCode === 401) {
       await navigateTo('/login')
     }
-  },
-})
+
+    throw error.value
+  }
+
+  return data.value as T
+}

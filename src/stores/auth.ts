@@ -37,7 +37,7 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function login(email: string, password: string) {
-    const response = await apiFetch<{ token?: string, user?: { id: number, name: string, email: string, admin: boolean } }>('/auth/login', {
+    const response = await useAPIData<{ token?: string, user?: { id: number, name: string, email: string, admin: boolean } }>('/auth/login', {
       method: 'POST',
       body: {
         email: email.trim().toLowerCase(),
@@ -85,7 +85,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     if (jwtCookie.value) {
       try {
-        const response = await apiFetch<{ user?: { id: number, name: string, email: string, admin: boolean } }>('/auth/restore-session', {
+        const response = await useAPIData<{ user?: { id: number, name: string, email: string, admin: boolean } }>('/auth/restore-session', {
           method: 'GET',
         })
 
@@ -114,7 +114,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function logout() {
     try {
-      await apiFetch('/auth/logout', {
+      await useAPIData('/auth/logout', {
         method: 'POST',
       })
     } finally {
@@ -163,3 +163,7 @@ export const useAuthStore = defineStore('auth', () => {
     clearToken,
   }
 })
+export function isAdminUser(): boolean {
+  const authStore = useAuthStore()
+  return Boolean(authStore.profile?.admin)
+}

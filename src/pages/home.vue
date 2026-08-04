@@ -5,6 +5,7 @@ useHead({
 })
 const userStore = useUserStore()
 const restaurantsStore = useRestaurantsStore()
+const authStore = useAuthStore()
 const fallbackTopIds = useState<number[]>('home-fallback-top-ids', () => [])
 const isWednesday = new Date().getDay() === 3;
 
@@ -60,7 +61,9 @@ const topRestaurants = computed(() => {
 const maxVotes = computed(() => Math.max(...topRestaurants.value.map((restaurant) => restaurant.timesVoted), 0))
 if (import.meta.client) {
     void restaurantsStore.fetchRestaurants()
+    document.getElementById('admin-dashboard-button')?.addEventListener('click', () => navigateTo("/admin/adminDashboard"))
 }
+
 </script>
 
 <template>
@@ -90,6 +93,7 @@ if (import.meta.client) {
                             }"
                         >
                             <span class="bar-name">{{ restaurant.name }}</span>
+                            <button v-if="isAdminUser()" class="admin-dashboard-button">Admin Dashboard</button>
                         </div>
                     </div>
                 </div>
@@ -99,6 +103,12 @@ if (import.meta.client) {
 </template>
 
 <style scoped>
+.admin-dashboard-button {
+    bottom: 89%;
+    left: 89%;
+    color: orange;
+    text-align: center;
+}
 .vote-button {
     color: orange;
     bottom: 75%;
