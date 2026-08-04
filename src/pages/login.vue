@@ -26,7 +26,6 @@ useHead({
 
 const router = useRouter()
 const authStore = useAuthStore()
-const userStore = useUserStore()
 const email = ref('')
 const password = ref('')
 const isSubmitting = ref(false)
@@ -39,14 +38,7 @@ async function signIn() {
   isSubmitting.value = true
 
   try {
-    const user = await authStore.login(email.value, password.value)
-    userStore.setUser({
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      password: '',
-      admin: Boolean(user.admin),
-    })
+    await authStore.login(email.value, password.value)
 
     await router.replace('/')
   } finally {

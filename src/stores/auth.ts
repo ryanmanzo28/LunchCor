@@ -9,6 +9,7 @@ const DEFAULT_JWT_MAX_AGE = 60 * 60 * 24
 const REMEMBER_ME_JWT_MAX_AGE = 60 * 60 * 24 * 30
 
 export const useAuthStore = defineStore('auth', () => {
+  const userStore = useUserStore()
   const token = useCookie<string | null>('jwt', {
     default: () => null,
     sameSite: 'lax',
@@ -59,6 +60,13 @@ export const useAuthStore = defineStore('auth', () => {
       password: '',
       admin: Boolean(response.user.admin),
     })
+    userStore.setUser({
+      id: response.user.id,
+      name: response.user.name,
+      email: response.user.email,
+      password: '',
+      admin: Boolean(response.user.admin),
+    })
 
     if (typeof response.token === 'string' && response.token.length > 0) {
       setToken(response.token)
@@ -92,6 +100,13 @@ export const useAuthStore = defineStore('auth', () => {
             password: '',
             admin: Boolean(loggedInUser.admin),
           }
+          userStore.setUser({
+            id: loggedInUser.id,
+            name: loggedInUser.name,
+            email: loggedInUser.email,
+            password: '',
+            admin: Boolean(loggedInUser.admin),
+          })
         }
       } catch {
         clearToken()
@@ -136,6 +151,7 @@ export const useAuthStore = defineStore('auth', () => {
     jwtCookie.value = null
     token.value = null
     profile.value = null
+    userStore.clearUser()
   }
 
   return {

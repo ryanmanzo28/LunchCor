@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS slack_last_sent (
+  id TINYINT UNSIGNED NOT NULL PRIMARY KEY,
+  sent_at DATETIME NULL DEFAULT NULL
+);
+
+INSERT INTO slack_last_sent (id, sent_at)
+SELECT 1, NULL
+WHERE NOT EXISTS (
+  SELECT 1 FROM slack_last_sent WHERE id = 1
+);
