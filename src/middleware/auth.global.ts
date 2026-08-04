@@ -1,6 +1,8 @@
 export default defineNuxtRouteMiddleware(async (to) => {
   const authStore = useAuthStore()
   const userStore = useUserStore()
+  const normalizedPath = to.path.replace(/\/+$/, '') || '/'
+  const publicAuthPages = ['/login', '/register']
 
   if (authStore.token && !authStore.profile) {
     await authStore.restoreSession()
@@ -8,11 +10,11 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
   const authenticated = Boolean(authStore.token)
 
-  if (!authenticated && (to.path !== '/login' && to.path !== '/register')) {
+  if (!authenticated && !publicAuthPages.includes(normalizedPath)) {
     return navigateTo('/login')
   }
 
-  if (authenticated && to.path === '/login') {
+  if (authenticated && normalizedPath === '/login') {
     return navigateTo('/')
   }
 

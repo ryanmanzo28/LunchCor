@@ -28,6 +28,16 @@ type ApiEndpointMap = {
   '/restaurants': { status: string, count: number, restaurants: RestaurantSummary[] }
   '/votes/vote': { success: boolean }
   '/restaurants/create': { status: 'created', restaurant: RestaurantSummary }
+  [key: `/restaurants/${number}/menu`]: {
+    restaurantId: number
+    restaurantName: string
+    menuItems: Array<{
+      section?: string
+      name: string
+      description?: string
+      price?: string
+    }>
+  }
   '/users/create': { id: number, name: string, email: string, admin: boolean }
   [key: `/users/search?q=${string}`]: Array<{ id: number, name: string, email: string, admin: boolean }>
   [key: `/users/${number}`]: {
