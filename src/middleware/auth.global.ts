@@ -8,11 +8,11 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
   const authenticated = Boolean(authStore.token)
 
-  if (!authenticated && to.path !== '/login') {
+  if (!authenticated && (to.path !== '/login' && to.path !== '/register')) {
     return navigateTo('/login')
   }
 
-  if (authenticated && to.path === '/login') {
+  if (authenticated && (to.path === '/login' || to.path === '/register')) {
     return navigateTo('/')
   }
 
