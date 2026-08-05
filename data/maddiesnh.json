@@ -1,0 +1,692 @@
+﻿[
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Add Ons",
+        "name":  "Bacon, Ham, Sausage, Chicken Sausage",
+        "description":  null,
+        "price_cents":  399,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Add Ons",
+        "name":  "Baked Beans",
+        "description":  null,
+        "price_cents":  299,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Add Ons",
+        "name":  "Berries",
+        "description":  null,
+        "price_cents":  525,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Add Ons",
+        "name":  "Corned Beef Hash",
+        "description":  null,
+        "price_cents":  449,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Add Ons",
+        "name":  "Fruit Cup",
+        "description":  null,
+        "price_cents":  450,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Add Ons",
+        "name":  "Home Fries",
+        "description":  null,
+        "price_cents":  299,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Add Ons",
+        "name":  "Kielbasa",
+        "description":  null,
+        "price_cents":  425,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Add Ons",
+        "name":  "Muffins",
+        "description":  null,
+        "price_cents":  375,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Add Ons",
+        "name":  "Scones",
+        "description":  null,
+        "price_cents":  399,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Add Ons",
+        "name":  "Tea Bread",
+        "description":  null,
+        "price_cents":  425,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Benedicts",
+        "name":  "Black Forest Benedict",
+        "description":  "Poached eggs, hash browns, and bacon on an English muffin, topped with hollandaise and a side of home fries.",
+        "price_cents":  1275,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Benedicts",
+        "name":  "Irish Eggs",
+        "description":  null,
+        "price_cents":  1375,
+        "currency":  "USD",
+        "image_url":  "https://static.spotapps.co/web/placeholder.png",
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Benedicts",
+        "name":  "Pesto Benedict",
+        "description":  "Poached eggs, spinach, tomatoes, and mushrooms, on an English muffin, topped with hollandaise and a side of fruit.",
+        "price_cents":  1399,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Benedicts",
+        "name":  "Sausage Benedict",
+        "description":  "Poached eggs, corned beef hash on an English muffin, topped with hollandaise and a side of home fries.",
+        "price_cents":  1275,
+        "currency":  "USD",
+        "image_url":  "https://static.spotapps.co/web/placeholder.png",
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Benedicts",
+        "name":  "Veggie Benedict",
+        "description":  "Poached eggs, and sausage patties on a grilled English muffin, topped with hollandaise and a side of home fries.",
+        "price_cents":  1349,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Benedicts",
+        "name":  "Woodsmen’s Benedict",
+        "description":  "Poached eggs, spinach, and roasted red peppers, on an English muffin, topped with pesto and asiago cheese, and a side of home fries",
+        "price_cents":  1399,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Breakfast On Bread",
+        "name":  "Artisan",
+        "description":  "Fried egg, spinach, tomato, basil pesto, and Swiss on a grilled ciabatta.",
+        "price_cents":  675,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Breakfast On Bread",
+        "name":  "Mc Brit",
+        "description":  "Fried egg, sausage, and cheddar on a grilled cinnamon raisin bagel.",
+        "price_cents":  875,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Breakfast On Bread",
+        "name":  "Mc Foxy",
+        "description":  "Fried egg, grilled hash browns, sausage, and cheddar cheese on grilled Texas toast.",
+        "price_cents":  799,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Breakfast On Bread",
+        "name":  "Mc Maddie\u0027s",
+        "description":  "Two eggs scrambled, fire-roasted corn, peppers, onions, black beans, tomatoes, cheddar jack, and salsa in a flour tortilla.",
+        "price_cents":  950,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Breakfast On Bread",
+        "name":  "Mc Manders",
+        "description":  "Fried egg and melted cheddar on a breakfast ciabatta. Add Ham, Bacon, or Sausage +$1.24",
+        "price_cents":  950,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Breakfast On Bread",
+        "name":  "Mc Reed\u0027s",
+        "description":  "Fried egg, cheddar, Black Forest ham, and bacon on grilled Texas toast.",
+        "price_cents":  975,
+        "currency":  "USD",
+        "image_url":  "https://static.spotapps.co/web/placeholder.png",
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Breakfast On Bread",
+        "name":  "Southwest Breakfast Wrap",
+        "description":  "Fried egg, bacon, and American on an English muffin grilled with spinach, avocado spread, and tomatoes.",
+        "price_cents":  925,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Breakfast On Bread",
+        "name":  "Western Breakfast Wrap",
+        "description":  "Two eggs scrambled with peppers, onions, diced ham, and cheddar cheese in a flour tortilla.",
+        "price_cents":  925,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Classic Scramblers",
+        "name":  "Daisy Scrambler",
+        "description":  "Three eggs with peppers, onions, and cheddar over grilled corned beef hash and hashbrowns, topped with hollandaise.",
+        "price_cents":  1425,
+        "currency":  "USD",
+        "image_url":  "https://static.spotapps.co/web/placeholder.png",
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Classic Scramblers",
+        "name":  "Irish Scrambler",
+        "description":  null,
+        "price_cents":  1450,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Gourmet Griddle",
+        "name":  "Belgian Waffle",
+        "description":  "Grilled kielbasa served with two eggs any style, home fries, beans, and grilled tea bread.",
+        "price_cents":  1185,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Gourmet Griddle",
+        "name":  "Breakfast Bowl",
+        "description":  null,
+        "price_cents":  1350,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Gourmet Griddle",
+        "name":  "Cinnamon Roll French Toast",
+        "description":  "French toast grilled and topped with maple butter, berries, and whipped cream.",
+        "price_cents":  1249,
+        "currency":  "USD",
+        "image_url":  "https://static.spotapps.co/web/placeholder.png",
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Gourmet Griddle",
+        "name":  "Eggs in A Basket",
+        "description":  "Cinnamon roll cut in half dipped in French toast batter and topped with berries and powdered sugar.",
+        "price_cents":  1250,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Gourmet Griddle",
+        "name":  "Huevos Rancheros",
+        "description":  "Three eggs scrambled with corn, peppers, onions, black beans, tomatoes, and cheddar, topped with chili and served with home fries and grilled cornbread.",
+        "price_cents":  1399,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Gourmet Griddle",
+        "name":  "Nana\u0027s Lemon French Toast",
+        "description":  null,
+        "price_cents":  1299,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Gourmet Griddle",
+        "name":  "New England Breakfast",
+        "description":  "Two fried eggs in grilled Texas toast. Served with home fries and corned beef hash.",
+        "price_cents":  1499,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Gourmet Griddle",
+        "name":  "Southwest Breakfast Quesadilla",
+        "description":  "Two scrambled eggs with peppers, onions, mushrooms, tomatoes, broccoli, and cheddar cheese in a grilled spinach tortilla. Served with a side of salsa and sour cream.",
+        "price_cents":  1250,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Gourmet Griddle",
+        "name":  "Veggie Breakfast Quesadilla",
+        "description":  "Belgium waffle topped with blueberries, strawberries, powder sugar, and whipped cream.",
+        "price_cents":  1275,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Gourmet Griddle",
+        "name":  "Vienna Toast",
+        "description":  "Two scrambled eggs with corn, onions, peppers, black beans, tomatoes, and cheddar cheese in a grilled flour tortilla. Served with a side of salsa and sour cream.",
+        "price_cents":  1249,
+        "currency":  "USD",
+        "image_url":  "https://static.spotapps.co/web/placeholder.png",
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Light \u0026 Tasty",
+        "name":  "Avocado Toast",
+        "description":  "Low-fat vanilla yogurt topped with granola, berries, and honey.",
+        "price_cents":  1025,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Light \u0026 Tasty",
+        "name":  "Lite Breakfast",
+        "description":  "Organic steel-cut oatmeal served with a side of brown sugar, craisins, and candied walnuts.",
+        "price_cents":  1049,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Light \u0026 Tasty",
+        "name":  "Mc Healthy",
+        "description":  null,
+        "price_cents":  975,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Light \u0026 Tasty",
+        "name":  "Organic Oatmeal",
+        "description":  "Two egg whites scrambled with tomatoes, broccoli, spinach, cheddar cheese, and salsa and served in a wheat wrap.",
+        "price_cents":  779,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Light \u0026 Tasty",
+        "name":  "Yogurt Parfait",
+        "description":  "Low-fat vanilla yogurt with granola, topped with berries and honey. Served with fresh fruit or grilled tea bread.",
+        "price_cents":  825,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Mini Maddie\u0027s",
+        "name":  "Addie Cake",
+        "description":  "Chocolate chip, banana, blueberry or plain.",
+        "price_cents":  699,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Mini Maddie\u0027s",
+        "name":  "Amelia’s Sandwich",
+        "description":  "Topped with strawberries.",
+        "price_cents":  699,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Mini Maddie\u0027s",
+        "name":  "French Toast Sticks",
+        "description":  "One egg any style \u0026 toast.",
+        "price_cents":  699,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Mini Maddie\u0027s",
+        "name":  "Little Egg",
+        "description":  "Fried egg, American cheese on an English muffin. Add Bacon, Sausage, or Ham +$0.75",
+        "price_cents":  699,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Mini Maddie\u0027s",
+        "name":  "Mickey Mouse Pancake",
+        "description":  "Topped with powdered sugar.",
+        "price_cents":  699,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Mini Maddie\u0027s",
+        "name":  "Mini Oatmeal",
+        "description":  "Low-fat vanilla yogurt, topped with granola and strawberries.",
+        "price_cents":  699,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Mini Maddie\u0027s",
+        "name":  "Mini Parfait",
+        "description":  "One buttermilk pancake.",
+        "price_cents":  699,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Omelets \u0026 Scramblers",
+        "name":  "Bacon \u0026 Cheese",
+        "description":  "American, swiss, or cheddar.",
+        "price_cents":  1225,
+        "currency":  "USD",
+        "image_url":  "https://static.spotapps.co/web/placeholder.png",
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Omelets \u0026 Scramblers",
+        "name":  "Cheese",
+        "description":  "Fire-roasted corn, onions, peppers, black beans, tomatoes, cheddar jack, and salsa.",
+        "price_cents":  999,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Omelets \u0026 Scramblers",
+        "name":  "Greek",
+        "description":  "Diced ham and cheddar.",
+        "price_cents":  1275,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Omelets \u0026 Scramblers",
+        "name":  "Ham \u0026 Cheese",
+        "description":  "Hickory smoked bacon and cheddar.",
+        "price_cents":  1225,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Omelets \u0026 Scramblers",
+        "name":  "Hash \u0026 Cheese",
+        "description":  null,
+        "price_cents":  1349,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Omelets \u0026 Scramblers",
+        "name":  "Lumberjack",
+        "description":  null,
+        "price_cents":  1375,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Omelets \u0026 Scramblers",
+        "name":  "Portabella",
+        "description":  "Portabella mushrooms, roasted red peppers, baby spinach, and feta.",
+        "price_cents":  1275,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Omelets \u0026 Scramblers",
+        "name":  "Southwestern",
+        "description":  "Peppers, onions, mushrooms, broccoli, tomatoes, spinach and cheddar.",
+        "price_cents":  1249,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Omelets \u0026 Scramblers",
+        "name":  "Veggie",
+        "description":  "Diced ham, peppers, onions and cheddar.",
+        "price_cents":  1325,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Omelets \u0026 Scramblers",
+        "name":  "Western",
+        "description":  "Spinach, kalamata olives, tomatoes, and feta.",
+        "price_cents":  1249,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "The Good Egg",
+        "name":  "One Egg + Toast",
+        "description":  "White, Wheat, Sourdough, Rye, Multigrain, Cinnamon Raisin, English Muffin, Texas Toast, Gluten-Free (+$0.99)",
+        "price_cents":  699,
+        "currency":  "USD",
+        "image_url":  "https://static.spotapps.co/spots/a4/77f5cd6e004b0a9168b86e014927f6/full",
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "The Good Egg",
+        "name":  "Three Eggs + Three Pancakes or French Toast",
+        "description":  null,
+        "price_cents":  1399,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "The Good Egg",
+        "name":  "Three Eggs, Sausage, Bacon, Ham + Toast",
+        "description":  null,
+        "price_cents":  1445,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "The Good Egg",
+        "name":  "Toast",
+        "description":  null,
+        "price_cents":  249,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "The Good Egg",
+        "name":  "Two Eggs + Toast",
+        "description":  null,
+        "price_cents":  799,
+        "currency":  "USD",
+        "image_url":  "https://static.spotapps.co/web/placeholder.png",
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "The Good Egg",
+        "name":  "Two Eggs, Belgian Waffle Topped with Berries and Whipped Cream",
+        "description":  null,
+        "price_cents":  1349,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "The Good Egg",
+        "name":  "Two Eggs, Choice of Two Pancakes or French Toast",
+        "description":  null,
+        "price_cents":  1195,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Toast \u0026 Cakes",
+        "name":  "Three Pancakes",
+        "description":  null,
+        "price_cents":  949,
+        "currency":  "USD",
+        "image_url":  "https://static.spotapps.co/spots/b8/c3bcb67e6e4fa7b12e392be75ab3b4/full",
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Toast \u0026 Cakes",
+        "name":  "Three Pieces of French Toast",
+        "description":  null,
+        "price_cents":  949,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Toast \u0026 Cakes",
+        "name":  "Three Strawberry, Blueberry, Banana, or Chocolate Chip Pancakes",
+        "description":  null,
+        "price_cents":  1095,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    },
+    {
+        "restaurant":  "Maddie\u0027s Bagel \u0026 Eatery",
+        "category":  "Toast \u0026 Cakes",
+        "name":  "Two Pieces of French Toast + Two Pancakes",
+        "description":  null,
+        "price_cents":  1245,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  null
+    }
+]

@@ -1,0 +1,212 @@
+﻿[
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Appetizers",
+        "name":  "Chicken Tenders",
+        "description":  "Please choose one sauce to come on the side.",
+        "price_cents":  1730,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#appetizers"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Appetizers",
+        "name":  "Garlic Knots",
+        "description":  "Fresh pizza dough tied up, baked until golden, then smothered in parmesan cheese with our famous garlic-olive oil.",
+        "price_cents":  755,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#appetizers"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Calzones",
+        "name":  "Buffalo Chicken Calzone",
+        "description":  "Buffalo chicken, chunky bleu cheese dressing \u0026 spicy buffalo sauce.",
+        "price_cents":  2523,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#calzones"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Calzones",
+        "name":  "Cheese Calzone",
+        "description":  "A Classic Italian favorite.",
+        "price_cents":  1960,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#calzones"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Combo Meals",
+        "name":  "Hand Cut Fries \u0026 6 Wings Combo",
+        "description":  "Sweet potato or regular.",
+        "price_cents":  1960,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#combo-meals"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Combo Meals",
+        "name":  "Sweet Potato Fries \u0026 6 Wings Combo",
+        "description":  null,
+        "price_cents":  2190,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#combo-meals"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Gourmet Burgers",
+        "name":  "3 Little Pigs Burger",
+        "description":  "Cheeseburger topped with pulled pork, bacon, and sausage with Sriracha aioli.",
+        "price_cents":  2075,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#gourmet-burgers"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Gourmet Burgers",
+        "name":  "Cheeseburger Popular Choice",
+        "description":  null,
+        "price_cents":  1730,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#gourmet-burgers"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Kids Menu",
+        "name":  "Kid\u0027s Cheeseburger \u0026 Fries",
+        "description":  null,
+        "price_cents":  1015,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#kids-menu"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Kids Menu",
+        "name":  "Kid\u0027s Chicken Tenders \u0026 Fries",
+        "description":  null,
+        "price_cents":  1265,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#kids-menu"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Monday Special",
+        "name":  "Medium Cheese Pizza \u0026 Full Order of Wings Monday Special",
+        "description":  null,
+        "price_cents":  2305,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#monday-special"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Pizza",
+        "name":  "Cheese Pizza",
+        "description":  "Classic cheese or create your own pizza.",
+        "price_cents":  1615,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#pizza"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Pizza",
+        "name":  "Gluten Free Pizza",
+        "description":  "Cooked to perfection with our famous sauce and cheese.",
+        "price_cents":  1730,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#pizza"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Salads",
+        "name":  "Apple Walnut Salad",
+        "description":  "Grilled chicken, crumbled Bleu cheese, raisins, cranberries \u0026 walnuts.",
+        "price_cents":  1325,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#salads"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Salads",
+        "name":  "House Salad",
+        "description":  "Fresh mixed greens topped with carrot, tomato, red onion, cucumber \u0026 croutons.",
+        "price_cents":  960,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#salads"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Sicilian Pizza",
+        "name":  "Granfanally\u0027s Baby Clam Sicilian Pizza",
+        "description":  "Mozzarella, plum tomatoes, baby clams, white wine, and herbs on our homemade pizza dough. Simply a taste bud party.",
+        "price_cents":  2885,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#sicilian-pizza"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Sicilian Pizza",
+        "name":  "The Mascarpone Sicilian Pizza",
+        "description":  "Mascarpone cheese, sausage, broccoli, roasted red peppers, garlic \u0026 mozzarella.",
+        "price_cents":  2885,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#sicilian-pizza"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Specialty Pizza",
+        "name":  "The Garlic Knots Pizza",
+        "description":  "Straight out of the long island, NY, and like no other.",
+        "price_cents":  1960,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#specialty-pizza"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Specialty Pizza",
+        "name":  "The Mimi Pizza",
+        "description":  "Fresh eggplant and dollops of ricotta cheese.",
+        "price_cents":  2075,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#specialty-pizza"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Specialty Pizza",
+        "name":  "The Stuffed Pizza with Ricotta \u0026 Mozzarella",
+        "description":  null,
+        "price_cents":  1960,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#specialty-pizza"
+    },
+    {
+        "restaurant":  "Granfanally\u0027s",
+        "category":  "Sunday Thursday Specials",
+        "name":  "Purchase any Specialty Pizza \u0026 Receive a Large Cheese Pizza Absolutely Free",
+        "description":  null,
+        "price_cents":  1960,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://slicelife.com/restaurants/nh/salem/03079/granfanallys-salem/menu?utm_campaign=order_now_button\u0026utm_medium=referral\u0026utm_source=granfanallys.com\u0026utm_content=custom_link#sunday-thursday-specials"
+    }
+]

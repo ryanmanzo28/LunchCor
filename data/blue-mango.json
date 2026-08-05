@@ -1,0 +1,1122 @@
+﻿[
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Appetizers",
+        "name":  "Brussel Sprouts",
+        "description":  null,
+        "price_cents":  1000,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/3ee1380d-528c-4d1d-9c75-d1524c859c89.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_2"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Appetizers",
+        "name":  "Chicken Finger",
+        "description":  "Breaded chicken in Tempura batter mix then deep fried till golden brown, served with Thai chili garlic sauce",
+        "price_cents":  1200,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/3ee1380d-528c-4d1d-9c75-d1524c859c89.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_2"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Appetizers",
+        "name":  "Chicken Satay",
+        "description":  "Marinated tender chicken on skewers grilled to perfection served with Thai peanut sauce and cucumber sauce",
+        "price_cents":  1300,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/173ca5fd-113f-422d-8079-5c10409da82b.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_2"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Appetizers",
+        "name":  "Crab Rangoon",
+        "description":  "Fried marinated crab meat and cream cheese wrapped in wonton skin served with sweet and sour sauce",
+        "price_cents":  800,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/3ee1380d-528c-4d1d-9c75-d1524c859c89.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_2"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Appetizers",
+        "name":  "Crispy Rolls",
+        "description":  "Crispy fried Thai-style spring rolls served with sweet and sour sauce",
+        "price_cents":  700,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/24e696ad-2091-4542-9285-80c953ff108b.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_2"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Appetizers",
+        "name":  "Crispy Wings",
+        "description":  "Served with sweet chili sauce",
+        "price_cents":  1000,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/3ee1380d-528c-4d1d-9c75-d1524c859c89.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_2"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Appetizers",
+        "name":  "Edamame",
+        "description":  "Steamed soybeans sprinkled with salt",
+        "price_cents":  900,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/3ee1380d-528c-4d1d-9c75-d1524c859c89.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_2"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Appetizers",
+        "name":  "Sassy Wings",
+        "description":  "Fried marinated chicken wings topped with scallion in a special sauce .",
+        "price_cents":  1000,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/3ee1380d-528c-4d1d-9c75-d1524c859c89.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_2"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Appetizers",
+        "name":  "Scallion Pancake",
+        "description":  "Served with ginger sauce",
+        "price_cents":  1200,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/3ee1380d-528c-4d1d-9c75-d1524c859c89.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_2"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Appetizers",
+        "name":  "Shrimp in the Blanket",
+        "description":  null,
+        "price_cents":  1400,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/3ee1380d-528c-4d1d-9c75-d1524c859c89.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_2"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Appetizers",
+        "name":  "Spicy Edamame",
+        "description":  null,
+        "price_cents":  800,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/3ee1380d-528c-4d1d-9c75-d1524c859c89.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_2"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Appetizers",
+        "name":  "Vegetable Tempura",
+        "description":  "Home-Fried vegetables served with sweet and sour sauce",
+        "price_cents":  800,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/3ee1380d-528c-4d1d-9c75-d1524c859c89.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_2"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Beverages",
+        "name":  "Boba Tea",
+        "description":  null,
+        "price_cents":  600,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/58fa0606-a4c8-4900-b086-cacedecfde61.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_24"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Beverages",
+        "name":  "Coke",
+        "description":  null,
+        "price_cents":  200,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/58fa0606-a4c8-4900-b086-cacedecfde61.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_24"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Beverages",
+        "name":  "Diet Coke",
+        "description":  null,
+        "price_cents":  200,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/58fa0606-a4c8-4900-b086-cacedecfde61.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_24"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Beverages",
+        "name":  "Lemonade",
+        "description":  null,
+        "price_cents":  300,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/58fa0606-a4c8-4900-b086-cacedecfde61.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_24"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Beverages",
+        "name":  "Sparking Water",
+        "description":  null,
+        "price_cents":  300,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/58fa0606-a4c8-4900-b086-cacedecfde61.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_24"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Beverages",
+        "name":  "Sparkling Lychee with boba",
+        "description":  null,
+        "price_cents":  500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/58fa0606-a4c8-4900-b086-cacedecfde61.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_24"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Beverages",
+        "name":  "Sprite",
+        "description":  null,
+        "price_cents":  200,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/58fa0606-a4c8-4900-b086-cacedecfde61.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_24"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Beverages",
+        "name":  "Thai Iced Coffee",
+        "description":  null,
+        "price_cents":  400,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/58fa0606-a4c8-4900-b086-cacedecfde61.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_24"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Beverages",
+        "name":  "Thai Iced Tea",
+        "description":  null,
+        "price_cents":  400,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/58fa0606-a4c8-4900-b086-cacedecfde61.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_24"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Beverages",
+        "name":  "Unsweetened Iced Tea",
+        "description":  null,
+        "price_cents":  300,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/58fa0606-a4c8-4900-b086-cacedecfde61.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_24"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Chef Special Entrees",
+        "name":  "Beef Bulgogi",
+        "description":  "Marinated beef thinly sliced and sautéed with onion, carrots, scallions served on a sizzling plate, complimented with kimchi on the side",
+        "price_cents":  1700,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/9f55cd11-72e1-44ec-bcd4-ed8dd8e3adf9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_7"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Chef Special Entrees",
+        "name":  "Blue Mango Chicken",
+        "description":  "Battered chicken in house sweet chili sauce , fresh mango served with steamed broccoli",
+        "price_cents":  1600,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/e8aa3d61-b772-4eb4-b797-d807bdb4c755.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_7"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Chef Special Entrees",
+        "name":  "Boston Chicken",
+        "description":  null,
+        "price_cents":  2000,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/9f55cd11-72e1-44ec-bcd4-ed8dd8e3adf9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_7"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Chef Special Entrees",
+        "name":  "Chicken Cashew Nuts",
+        "description":  null,
+        "price_cents":  2400,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/9f55cd11-72e1-44ec-bcd4-ed8dd8e3adf9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_7"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Chef Special Entrees",
+        "name":  "Crispy Chicken Basils",
+        "description":  "Crispy chicken stir- fried with fresh basil, onion, green bean and bell pepper in a spicy basil sauce",
+        "price_cents":  1800,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/9f55cd11-72e1-44ec-bcd4-ed8dd8e3adf9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_7"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Chef Special Entrees",
+        "name":  "Delight of Two",
+        "description":  "Stir-fried chicken and shrimp with broccoli, carrots and mushroom in a light brown sauce",
+        "price_cents":  2700,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/9f55cd11-72e1-44ec-bcd4-ed8dd8e3adf9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_7"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Chef Special Entrees",
+        "name":  "Home Style Duck",
+        "description":  "Deep- fried half boneless duck with ginger, carrots, onion, bell peppers, mushroom, snow peas, celery and baby corn in our spicy sauce",
+        "price_cents":  2000,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/9f55cd11-72e1-44ec-bcd4-ed8dd8e3adf9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_7"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Chef Special Entrees",
+        "name":  "Hot and Spicy Beef",
+        "description":  "Beef sautéed with mushroom, carrots, ginger, onion, bell peppers, celery, baby corn in spicy house sauce",
+        "price_cents":  1600,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/9f55cd11-72e1-44ec-bcd4-ed8dd8e3adf9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_7"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Chef Special Entrees",
+        "name":  "Mango Curry",
+        "description":  "Shrimp, chicken, onions, mango, carrots, yellow squash, bell peppers and tomato in a delicious yellow curry sauce",
+        "price_cents":  1800,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/92d0d5ad-627b-4cbe-b24b-524bef11837a.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_7"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Chef Special Entrees",
+        "name":  "Superior Duck",
+        "description":  "Deep-fried half boneless duck with sweet and tangy sauce on a bed of steamed mixed vegetable and fresh mango slices topped with crispy basils",
+        "price_cents":  2700,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/9f55cd11-72e1-44ec-bcd4-ed8dd8e3adf9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_7"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Chef Special Entrees",
+        "name":  "Teriyaki Chicken",
+        "description":  null,
+        "price_cents":  1700,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/9f55cd11-72e1-44ec-bcd4-ed8dd8e3adf9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_7"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Chef Special Entrees",
+        "name":  "Thai Chicken Kra Pow (Beef or Pork available $18)",
+        "description":  "Ground chicken sautéed with green beans, onion, basil leaves and bell peppers in chili garlic sauce",
+        "price_cents":  1800,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/9f55cd11-72e1-44ec-bcd4-ed8dd8e3adf9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_7"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Curry Dishes",
+        "name":  "Green Curry",
+        "description":  "Stringbeans, bamboo strips, bell peppers, zucchini, eggplants and basil leaves",
+        "price_cents":  1600,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/863a70b8-8dba-49b8-a0e3-6654ea078f7e.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_11"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Curry Dishes",
+        "name":  "Massaman Curry",
+        "description":  "Sweet potatoes, onion, bell peppers, carrots and peanuts",
+        "price_cents":  1600,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/863a70b8-8dba-49b8-a0e3-6654ea078f7e.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_11"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Curry Dishes",
+        "name":  "Panang Curry",
+        "description":  "Stringbeans, babycorn, bell peppers, carrots and almond slices",
+        "price_cents":  1600,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/863a70b8-8dba-49b8-a0e3-6654ea078f7e.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_11"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Curry Dishes",
+        "name":  "Red Curry",
+        "description":  "Stringbeans, bamboo strips, bell peppers, eggplants and basil leaves",
+        "price_cents":  1600,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/863a70b8-8dba-49b8-a0e3-6654ea078f7e.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_11"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Curry Dishes",
+        "name":  "Yellow Curry",
+        "description":  "Tomatoes, bell peppers, pineapple, yellow squash, onion and carrots",
+        "price_cents":  1600,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/863a70b8-8dba-49b8-a0e3-6654ea078f7e.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_11"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Desserts",
+        "name":  "Fried Ice-cream",
+        "description":  null,
+        "price_cents":  600,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/d3a2239c-a1a2-49dd-b98c-84c192a0ff6c.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_22"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Desserts",
+        "name":  "Green Tea Cheesecake",
+        "description":  null,
+        "price_cents":  500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/7d0a1418-3ade-4ea0-ad18-4da8bfc0da75.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_22"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Desserts",
+        "name":  "Mango Cheesecake",
+        "description":  null,
+        "price_cents":  500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/7d0a1418-3ade-4ea0-ad18-4da8bfc0da75.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_22"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Desserts",
+        "name":  "Mango w/ sticky rice",
+        "description":  "seasonal",
+        "price_cents":  1000,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/7d0a1418-3ade-4ea0-ad18-4da8bfc0da75.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_22"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Desserts",
+        "name":  "Pumpkin Custard",
+        "description":  null,
+        "price_cents":  900,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/7d0a1418-3ade-4ea0-ad18-4da8bfc0da75.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_22"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Desserts",
+        "name":  "Vanilla Crepe Cake",
+        "description":  null,
+        "price_cents":  900,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/7d0a1418-3ade-4ea0-ad18-4da8bfc0da75.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_22"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Fried Rice",
+        "name":  "Bacon Fried Rice",
+        "description":  "Fried rice with egg , carrot, onion, bacon and scallion",
+        "price_cents":  1800,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/d9ae5982-cbe9-4135-835f-a7837ba42d9f.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_9"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Fried Rice",
+        "name":  "Basil Fried Rice",
+        "description":  "Fried rice with egg, fresh basil, onion, carrots and bell peppers",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/d9ae5982-cbe9-4135-835f-a7837ba42d9f.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_9"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Fried Rice",
+        "name":  "Garlic Fried Rice",
+        "description":  null,
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/d9ae5982-cbe9-4135-835f-a7837ba42d9f.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_9"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Fried Rice",
+        "name":  "Korean Fried Rice",
+        "description":  "Spicy fried rice with Kim chee, carrots, onion, scallion, egg and sesame oil.",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/d9ae5982-cbe9-4135-835f-a7837ba42d9f.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_9"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Fried Rice",
+        "name":  "Mango Fried Rice",
+        "description":  "Fried rice with egg, fresh mango, carrots, onion, snow pea and tomato with a touch of curry powder",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/d9ae5982-cbe9-4135-835f-a7837ba42d9f.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_9"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Fried Rice",
+        "name":  "Pineapple Fried Rice",
+        "description":  "Fried rice with pineapple, raisins, egg, onion, carrots, snow pea and a touch of curry powder",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/d9ae5982-cbe9-4135-835f-a7837ba42d9f.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_9"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Fried Rice",
+        "name":  "Sweet Chili Fried Rice",
+        "description":  "Fried rice with sweet chili sauce, egg, onion, bell peppers, carrots topped with cashew nuts",
+        "price_cents":  1800,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/d9ae5982-cbe9-4135-835f-a7837ba42d9f.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_9"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Fried Rice",
+        "name":  "Thai Fried Rice",
+        "description":  "House fried rice with egg, carrots, onion, broccoli, snow pea, scallion and tomato",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/d9ae5982-cbe9-4135-835f-a7837ba42d9f.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_9"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "From Sushi Bar",
+        "name":  "Poke Nacho",
+        "description":  "Raw tuna, diced avocado, thin sliced jalapeño, edamame, nori, cilantro, scallion and sesame seeds on crispy wontons topped with soy ginger sauce and spicy mayo",
+        "price_cents":  1600,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/8cad26fb-54a2-47ff-ae7a-9d0cbe846e9e.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_12"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "From Sushi Bar",
+        "name":  "Seaweed Salad",
+        "description":  "Seaweed, rice vinegar, soy sauce, pickled ginger \u0026amp; sesame oil served on a bed of lettuce",
+        "price_cents":  700,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/8cad26fb-54a2-47ff-ae7a-9d0cbe846e9e.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_12"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "From Sushi Bar",
+        "name":  "Takoyaki",
+        "description":  "Fried octopus balls with bonito flakes, Nori, Takoyaki sauce and mayo",
+        "price_cents":  1000,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/8cad26fb-54a2-47ff-ae7a-9d0cbe846e9e.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_12"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "From Sushi Bar",
+        "name":  "Torched Salmon",
+        "description":  "Seared Salmon Nigiri topped with scallion and Teriyaki Sauce",
+        "price_cents":  1400,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/8cad26fb-54a2-47ff-ae7a-9d0cbe846e9e.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_12"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "From Sushi Bar",
+        "name":  "Tuna Stack",
+        "description":  "Diced tuna, avocado, seaweed salad, tempura flake, tobiko and sesame ginger dressing",
+        "price_cents":  1400,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/8cad26fb-54a2-47ff-ae7a-9d0cbe846e9e.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_12"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "From Sushi Bar",
+        "name":  "Unagi Donburi",
+        "description":  "BBQ Eel, sesame, pickled ginger, pickled red onion and shredded seaweed over rice",
+        "price_cents":  2000,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/8cad26fb-54a2-47ff-ae7a-9d0cbe846e9e.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_12"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Noodle Soup",
+        "name":  "Duck Noodle Soup",
+        "description":  "Egg noodle with bok choy in a five spices broth topped with thin slices duck.",
+        "price_cents":  1800,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/c68c7738-9401-4d2d-985c-990d9701c7a8.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_5"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Noodle Soup",
+        "name":  "Kao Soi",
+        "description":  "Steamed egg noodles topped with chicken, red onion, pickled lettuce, cilantro and crispy noodle in yellow curry sauce.",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/d19ff735-ed2f-429f-a56b-46594e6a7f59.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_5"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Noodle Soup",
+        "name":  "Pho",
+        "description":  "Rice Noodle, Slices onion \u0026cilantro in a deeply aromatic, clear and savory soup.",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/c68c7738-9401-4d2d-985c-990d9701c7a8.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_5"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Noodle Soup",
+        "name":  "Thai Noodle Soup",
+        "description":  "Traditional Thai noodle soup, rice noodle, bean sprouts, scallion, cilantro \u0026 fried garlic.",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/c98e01cd-5361-4af0-b6dd-f6b3e1d874b4.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_5"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Noodle Soup",
+        "name":  "Tom Yum Noodles Soup",
+        "description":  "Thai Style spicy noodle soup with your choice of meat. Contains peanuts.",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/c68c7738-9401-4d2d-985c-990d9701c7a8.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_5"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Noodles",
+        "name":  "Basil Pad Thai",
+        "description":  "Stir-fried noodles with egg, onion, bell peppers, zucchini, yellowsquash, carrots, basil leaves in house spicy sauce topped with crispy basil",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/54e8c5b3-e5ce-456d-baea-398f9ae4e8fc.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_8"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Noodles",
+        "name":  "Chicken Lomein Kra Pow(Beef or Pork available $17)",
+        "description":  "Lomein stir-fried with fresh chili, garlic, red pepper, onion and basil leaves",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/54e8c5b3-e5ce-456d-baea-398f9ae4e8fc.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_8"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Noodles",
+        "name":  "Crispy Pad Thai",
+        "description":  "Crispy egg noodles with egg, beansprouts, scallion and ground peanut",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/0eadbc24-04e5-4f9e-b42c-fd65653f5869.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_8"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Noodles",
+        "name":  "Drunken Noodles",
+        "description":  "Wide rice noodles stir- fried with egg, onion, carrot, green bean, babycorn, bell peppers and basil leaves",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/54e8c5b3-e5ce-456d-baea-398f9ae4e8fc.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_8"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Noodles",
+        "name":  "Pad See You",
+        "description":  "Wide rice noodles stir- fried with egg, broccoli and carrot",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/54e8c5b3-e5ce-456d-baea-398f9ae4e8fc.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_8"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Noodles",
+        "name":  "Pad Thai",
+        "description":  "A famous stir-fried noodles with egg, beansprouts, scallion and ground peanut",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/d3b1b44c-fbd6-4725-8123-d2295c486847.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_8"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Noodles",
+        "name":  "Stir-fried Udon",
+        "description":  "Udon stir fried with zucchini , carrots, egg, broccoli and garlic topped with scallion",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/54e8c5b3-e5ce-456d-baea-398f9ae4e8fc.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_8"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Noodles",
+        "name":  "Yaki Soba",
+        "description":  "Soba noodles stir-fried with scallion,cabbage, baby corn, carrot, onion, zucchini, yellow squash and beansprouts",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/54e8c5b3-e5ce-456d-baea-398f9ae4e8fc.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_8"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Open Food",
+        "name":  "Open Food",
+        "description":  null,
+        "price_cents":  0,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_25"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Poke Bowls",
+        "name":  "Combination Poke Bowl",
+        "description":  null,
+        "price_cents":  2000,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_13"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Poke Bowls",
+        "name":  "Crab Stick Poke Bowl",
+        "description":  "All Poke Bowls come with your choice of protein, sushi rice, fresh mango cube, avocado, cucumber, seaweed salad, pickled ginger, pickled red onion, nori, sesame seeds and our delicious poke sauce",
+        "price_cents":  1600,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_13"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Poke Bowls",
+        "name":  "Fried Tofu Poke Bowl",
+        "description":  "All Poke Bowls come with your choice of protein, sushi rice, fresh mango cube, avocado, cucumber, seaweed salad, pickled ginger, pickled red onion, nori, sesame seeds and our delicious poke sauce",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_13"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Poke Bowls",
+        "name":  "Salmon Poke Bowl",
+        "description":  "All Poke Bowls come with your choice of protein, sushi rice, fresh mango cube, avocado, cucumber, seaweed salad, pickled ginger, pickled red onion, nori, sesame seeds and our delicious poke sauce",
+        "price_cents":  1800,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_13"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Poke Bowls",
+        "name":  "Shrimp Tempura Poke Bowl",
+        "description":  "All Poke Bowls come with your choice of protein, sushi rice, fresh mango cube, avocado, cucumber, seaweed salad, pickled ginger, pickled red onion, nori, sesame seeds and our delicious poke sauce",
+        "price_cents":  1600,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_13"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Poke Bowls",
+        "name":  "Tuna Poke Bowl",
+        "description":  "All Poke Bowls come with your choice of protein, sushi rice, fresh mango cube, avocado, cucumber, seaweed salad, pickled ginger, pickled red onion, nori, sesame seeds and our delicious poke sauce",
+        "price_cents":  1800,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_13"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Salad",
+        "name":  "Grilled chicken Salad",
+        "description":  "Served with peanut sauce",
+        "price_cents":  1300,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/048539ae-c9d2-4bda-bcbf-1e7c6c8df9fa.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_4"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Salad",
+        "name":  "Larb",
+        "description":  "Spicy Thai-Style seasoning salad",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/a23cd8c3-498c-493c-be90-066d2d703e2f.png?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_4"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Salad",
+        "name":  "Papaya Salad",
+        "description":  "Thai-Style salad comes with shrimps, raw papaya, tomatoes, green beans and carrots. Topped with peanuts",
+        "price_cents":  1400,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/a23cd8c3-498c-493c-be90-066d2d703e2f.png?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_4"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Salad",
+        "name":  "Seaweed Salad",
+        "description":  null,
+        "price_cents":  800,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/a23cd8c3-498c-493c-be90-066d2d703e2f.png?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_4"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Salad",
+        "name":  "Simple Green Salad",
+        "description":  "Mixed baby green salad served with our delicious peanut sauce",
+        "price_cents":  700,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/a23cd8c3-498c-493c-be90-066d2d703e2f.png?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_4"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Seafood",
+        "name":  "Exotic Salmon",
+        "description":  null,
+        "price_cents":  2000,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/8724de4e-44f0-4f34-880b-a7cb138a9ba9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_6"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Seafood",
+        "name":  "Fillet Chili",
+        "description":  "Fried fish with sweet chili sauce on a bed of lettuce topped with cilantro",
+        "price_cents":  1700,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/8724de4e-44f0-4f34-880b-a7cb138a9ba9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_6"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Seafood",
+        "name":  "Salmon Teriyaki",
+        "description":  "Grilled salmon steak with Teriyaki sauce on a bed of steamed vegetables",
+        "price_cents":  2000,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/8724de4e-44f0-4f34-880b-a7cb138a9ba9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_6"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Seafood",
+        "name":  "Seafood Madness",
+        "description":  "Sautéed mixed seafood in a spicy basil sauce comes with onion, bell peppers, mushroom, baby corn, snow pea and fresh basil",
+        "price_cents":  2100,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/8724de4e-44f0-4f34-880b-a7cb138a9ba9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_6"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Seafood",
+        "name":  "Shrimp Pik King",
+        "description":  "Sautéed shrimps with string beans, bell peppers and carrots in a spicy Pik king sauce topped with almond slices.",
+        "price_cents":  1900,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/8724de4e-44f0-4f34-880b-a7cb138a9ba9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_6"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Seafood",
+        "name":  "Soft Shell Crab w/ Curry Powder",
+        "description":  "Soft Shell Crab, onion, celery, peppers and carrots stir- fried in our special curry powder sauce",
+        "price_cents":  2300,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/8724de4e-44f0-4f34-880b-a7cb138a9ba9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_6"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Seafood",
+        "name":  "Spicy Squid",
+        "description":  null,
+        "price_cents":  1700,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/8724de4e-44f0-4f34-880b-a7cb138a9ba9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_6"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Seafood",
+        "name":  "Yum Talay",
+        "description":  "Spicy seafood with red onion, tomato, scallion, cilantro on a bed of lettuce",
+        "price_cents":  2100,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/8724de4e-44f0-4f34-880b-a7cb138a9ba9.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_6"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Side Order",
+        "name":  "Brown Rice",
+        "description":  null,
+        "price_cents":  300,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_14"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Side Order",
+        "name":  "Egg Fried Rice",
+        "description":  null,
+        "price_cents":  600,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_14"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Side Order",
+        "name":  "Hot Sauce",
+        "description":  null,
+        "price_cents":  50,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_14"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Side Order",
+        "name":  "Lo Mein with Sauce",
+        "description":  null,
+        "price_cents":  600,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_14"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Side Order",
+        "name":  "Peanut Sauce",
+        "description":  null,
+        "price_cents":  200,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_14"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Side Order",
+        "name":  "Steamed Mixed Vegetable",
+        "description":  null,
+        "price_cents":  500,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_14"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Side Order",
+        "name":  "Steamed Noodles",
+        "description":  null,
+        "price_cents":  400,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_14"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Side Order",
+        "name":  "Sticky Rice",
+        "description":  null,
+        "price_cents":  300,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_14"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Side Order",
+        "name":  "White Rice",
+        "description":  null,
+        "price_cents":  300,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_14"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Soup",
+        "name":  "Coconut Soup",
+        "description":  "Thai coconut soup with lemongrass, galangal, mushroom, scallion and cilantro",
+        "price_cents":  700,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/2f958e84-bb04-41b1-b617-4dbbc2b02225.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_3"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Soup",
+        "name":  "Miso Soup",
+        "description":  "Soy bean paste, fresh cubed tofu, seaweed \u0026 scallion",
+        "price_cents":  700,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/2f958e84-bb04-41b1-b617-4dbbc2b02225.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_3"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Soup",
+        "name":  "Rice Soup",
+        "description":  "Simply delicious rice soup with the choice of chicken, shrimp, tofu or vegetables",
+        "price_cents":  700,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/2f958e84-bb04-41b1-b617-4dbbc2b02225.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_3"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Soup",
+        "name":  "Thai Wonton Soup",
+        "description":  "Soft chicken wonton with yu-choy, fried garlic and cilantro",
+        "price_cents":  700,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/2f958e84-bb04-41b1-b617-4dbbc2b02225.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_3"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Soup",
+        "name":  "Tom Yum",
+        "description":  "Thai spicy soup served with mushrooms and topped with scallion and cilantro",
+        "price_cents":  700,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/2f958e84-bb04-41b1-b617-4dbbc2b02225.jpg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_3"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Vegetarian Corner",
+        "name":  "Rama Garden",
+        "description":  "Steamed mixed vegetable and tofu served with peanut sauce",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/198ba945-72be-46d1-805d-c103decf22dd.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_10"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Vegetarian Corner",
+        "name":  "Spicy Eggplant",
+        "description":  "Stir-fried eggplant, fried tofu, onion, bell peppers and basil leaves in spicy basil sauce",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/ecbe517c-36d1-4087-ac2a-266b23be8624.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_10"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Vegetarian Corner",
+        "name":  "Stringbean Delight",
+        "description":  "Stir-fried stringbean with black bean sauce and red pepper",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/ecbe517c-36d1-4087-ac2a-266b23be8624.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_10"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Vegetarian Corner",
+        "name":  "Tofu Kra Pow",
+        "description":  "Tofu stir-fried with onion, bell peppers and basil leaves in a spicy basil sauce",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/ecbe517c-36d1-4087-ac2a-266b23be8624.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_10"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Vegetarian Corner",
+        "name":  "Vegetable Delight",
+        "description":  "Mixed vegetable stir-fried with light brown sauce and tofu",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/ecbe517c-36d1-4087-ac2a-266b23be8624.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_10"
+    },
+    {
+        "restaurant":  "Blue Mango",
+        "category":  "Vegetarian Corner",
+        "name":  "Vegetable Hot Basils",
+        "description":  "Stir-fried mixed vegetable with spicy basil sauce",
+        "price_cents":  1500,
+        "currency":  "USD",
+        "image_url":  "https://smilepos-product.s3.amazonaws.com/dining/3008301/DESKTOP/MENU/ecbe517c-36d1-4087-ac2a-266b23be8624.jpeg?20260730133731",
+        "item_url":  "https://bluemangonh.smiledining.com/?2026073001#2_10"
+    }
+]

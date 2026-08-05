@@ -1,0 +1,242 @@
+﻿[
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "4 oz Hot Tomatillo Sauce",
+        "description":  "Side of Hot tomatillo sauce",
+        "price_cents":  150,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-4-oz-hot-tomatillo-sauce_48c051bb-f9bc-4f14-a052-5a3ff97f180d"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "4 oz Mild Tomatillo Salsa",
+        "description":  "Side of tomatillo salsa",
+        "price_cents":  150,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-4-oz-mild-tomatillo-salsa_df0a608f-b2da-4e37-8fe0-ac1d86a5ffe5"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "8 oz Mild Tomatillo salsa",
+        "description":  null,
+        "price_cents":  325,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-8-oz-mild-tomatillo-salsa_07ee4510-e2a8-4502-a57c-432bca6972f5"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "8oz Hot tomatillo salsa",
+        "description":  null,
+        "price_cents":  325,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-8oz-hot-tomatillo-salsa_cd8e8812-8933-4194-85fa-f63e493aa5ca"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Extra hot Arbol salsa",
+        "description":  null,
+        "price_cents":  150,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-extra-hot-arbol-salsa_206d57a4-4196-4808-af1f-dfe384c9c7b8"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Large Side of beans 24oz",
+        "description":  null,
+        "price_cents":  499,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-large-side-of-beans-24oz_f762624b-e952-4496-9f97-a9813d157400"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Large Side of rice 24oz",
+        "description":  null,
+        "price_cents":  499,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-large-side-of-rice-24oz_ed3d98ea-90dc-42c7-ab2d-fb579036f341"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Side de chile toreado",
+        "description":  null,
+        "price_cents":  75,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-side-de-chile-toreado_ee3539de-7a4e-4175-93fe-14d394db4886"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Side Flour tortilla",
+        "description":  null,
+        "price_cents":  25,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-side-flour-tortilla_61669d6a-dd40-4ab5-96f1-ca900e12e77b"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Side handmade corn tortilla",
+        "description":  null,
+        "price_cents":  50,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-side-handmade-corn-tortilla_b13bef4c-cdaf-4cfd-9820-ea09f44aa612"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Side of Chipotle Crema",
+        "description":  null,
+        "price_cents":  199,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-side-of-chipotle-crema_5d7800fa-034c-41a9-9205-bce993f0aa6e"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Side of Consome (birria Sauce)",
+        "description":  "Complete your Birria meal with a delicious side of consome served in a 8oz container.",
+        "price_cents":  225,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-side-of-consome-birria-sauce_a633fa92-e0cb-412a-8c1a-1aef97e05a2c"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Side Of Fajita Veggie",
+        "description":  null,
+        "price_cents":  375,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-side-of-fajita-veggie_c1593fb4-3f81-438a-813c-89b82e5fd5b4"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Side of french fries",
+        "description":  null,
+        "price_cents":  350,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-side-of-french-fries_ce7c765f-f72a-4cf7-8465-af7c53df5570"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Side of Guacamole Salsa / Avocado crema",
+        "description":  "Try a side of our delicious guacamole salsa made with avocado, lime, cilantro, serrano peppers, onion garlic and seasoned to perfection served in a 3.25 oz container.",
+        "price_cents":  250,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-side-of-guacamole-salsa-avocado-crema_10c147a9-cf45-490f-a8a8-f629b779131d"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "side of pickled onion 4 oz",
+        "description":  null,
+        "price_cents":  175,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-side-of-pickled-onion-4-oz_098405c2-8631-4322-9039-147014fd3886"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Side of Pickled Onion 8oz",
+        "description":  null,
+        "price_cents":  325,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-side-of-pickled-onion-8oz_7a8f0858-4087-43df-851e-c0b1b377ae04"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Side of pico de gallo",
+        "description":  "small side of Pico de Gallo",
+        "price_cents":  150,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-side-of-pico-de-gallo_8d4cbbe2-83fb-4f88-9c10-5ab8ae2620b7"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Side of Rice and Beans",
+        "description":  null,
+        "price_cents":  499,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-side-of-rice-and-beans_ea03cf00-9126-4f68-a0a0-9dd2f3e704cf"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Side of Salsa Verde",
+        "description":  null,
+        "price_cents":  199,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-side-of-salsa-verde_f292bffe-a825-4238-a0bb-7200ec951310"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Side of Shredded cheese",
+        "description":  null,
+        "price_cents":  199,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-side-of-shredded-cheese_af08939f-dc9c-42c5-8404-e97dbb8858f0"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Side of sour cream",
+        "description":  null,
+        "price_cents":  175,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-side-of-sour-cream_f00209d8-9c70-4525-bb6a-e87f18448d9b"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Small side of beans 8oz",
+        "description":  null,
+        "price_cents":  275,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-small-side-of-beans-8oz_db38e7e8-20d7-4656-9a14-2970eaaba96d"
+    },
+    {
+        "restaurant":  "Vallarta Mexican Grill",
+        "category":  "Menu",
+        "name":  "Small side of rice 8oz",
+        "description":  null,
+        "price_cents":  275,
+        "currency":  "USD",
+        "image_url":  null,
+        "item_url":  "https://order.toasttab.com/online/vallarta-tacos-burritos/item-small-side-of-rice-8oz_cc4d984b-c2b5-4148-9131-91760d48c639"
+    }
+]
