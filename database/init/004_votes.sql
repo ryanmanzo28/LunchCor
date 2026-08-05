@@ -17,5 +17,5 @@ CREATE TABLE IF NOT EXISTS votes (
         REFERENCES restaurants(id)
         ON DELETE CASCADE,
 
-    UNIQUE KEY uq_user_vote (user_id)
+    UNIQUE KEY uq_user_vote_day (user_id, vote_date)
 );

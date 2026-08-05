@@ -28,14 +28,14 @@ export default defineEventHandler(async (event) => {
   try {
     // Application-level duplicate check for friendlier 409 responses.
     const [existingVotes] = await pool.query<Array<mysql.RowDataPacket>>(
-      'SELECT id FROM votes WHERE user_id = ? LIMIT 1',
+      'SELECT id FROM votes WHERE user_id = ? AND vote_date = CURDATE() LIMIT 1',
       [userId],
     )
 
     if (existingVotes.length > 0) {
       throw createError({
         statusCode: 409,
-        statusMessage: 'User has already cast a vote',
+        statusMessage: 'User has already cast a vote today',
       })
     }
 
@@ -59,7 +59,7 @@ export default defineEventHandler(async (event) => {
     if (error?.code === 'ER_DUP_ENTRY') {
       throw createError({
         statusCode: 409,
-        statusMessage: 'User has already cast a vote',
+        statusMessage: 'User has already cast a vote today',
       })
     }
 
