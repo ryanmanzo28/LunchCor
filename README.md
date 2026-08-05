@@ -52,6 +52,7 @@ Run from repository root:
 npm run dev
 npm run build
 npm run start
+npm run analyze
 npm run typecheck
 npm run check
 ```

@@ -1,6 +1,10 @@
 import { sendSlackMessages } from '~/server/services/slack'
 
 export default defineNitroPlugin((nitroApp) => {
+  if (import.meta.prerender) {
+    return
+  }
+
   void sendSlackMessages()
 
   const interval = setInterval(() => {

@@ -39,21 +39,30 @@ export default defineNuxtConfig({
         '/login',
         '/register',
         '/api/health',
-        '/restaurant_list',
       ],
       ignore: [
         '/',
         '/home',
+        '/restaurant_list',
         '/voting',
         '/settings',
         '/create_restaurant',
         '/admin',
         '/admin/**',
+        '/api/**',
       ],
     },
   },
 
   routeRules: {
+    "/admin/**": {
+      ssr: false,
+    },
+
+    "/api/**": {
+      prerender: false,
+    },
+
     "/api/restaurants/**": {
       cache: {
         maxAge: 300,

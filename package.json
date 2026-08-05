@@ -5,6 +5,7 @@
     "dev": "npm --prefix src run dev",
     "build": "npm --prefix src run build",
     "start": "npm --prefix src run start",
+    "analyze": "npm --prefix src run analyze",
     "typecheck": "npm --prefix src run typecheck",
     "check": "npm --prefix src run check",
     "docker:build-and-start": "powershell -ExecutionPolicy Bypass -File ./scripts/build-and-start.ps1",
@@ -17,5 +18,10 @@
     "mysql2": "^3.23.2",
     "nuxt": "^4.5.0",
     "nuxt-webhook-validators": "^0.2.8"
+  },
+  "devDependencies": {
+    "@nuxt/image": "^2.1.0",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@pinia/nuxt": "^1.0.1"
   }
 }

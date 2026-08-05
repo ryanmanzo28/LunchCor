@@ -15,11 +15,30 @@ function Invoke-MySqlCommand {
 		[string]$StepName
 	)
 
-	$escapedPassword = $dbPassword.Replace("'", "''")
-	$escapedSql = $Sql.Replace("`r", '').Replace("`n", ' ').Replace('"', '\"')
 	Invoke-CheckedCommand -StepName $StepName -Command {
-		docker compose exec -T database sh -lc "MYSQL_PWD='$escapedPassword' mysql -u$dbUser $dbName -e \"$escapedSql\""
+		$userArg = "-u$dbUser"
+		$Sql |
+			docker compose exec -T -e "MYSQL_PWD=$dbPassword" database mysql $userArg $dbName
 	}
+}
+
+function Invoke-MySqlScalar {
+	param(
+		[Parameter(Mandatory = $true)]
+		[string]$Sql,
+		[Parameter(Mandatory = $true)]
+		[string]$StepName
+	)
+
+	$userArg = "-u$dbUser"
+	$raw = $Sql |
+		docker compose exec -T -e "MYSQL_PWD=$dbPassword" database mysql -N -B $userArg $dbName
+
+	if ($LASTEXITCODE -ne 0) {
+		throw "$StepName failed with exit code $LASTEXITCODE"
+	}
+
+	return ($raw | Out-String).Trim()
 }
 
 function Invoke-DatabaseMigrations {
@@ -40,11 +59,7 @@ CREATE TABLE IF NOT EXISTS schema_migrations (
 	foreach ($migrationFile in $migrationFiles) {
 		$migrationName = $migrationFile.Name
 		$checkSql = "SELECT COUNT(*) AS migration_count FROM schema_migrations WHERE filename = '$migrationName'"
-		$checkOutput = docker compose exec -T database sh -lc "MYSQL_PWD='$($dbPassword.Replace("'", "''"))' mysql -N -B -u$dbUser $dbName -e \"$($checkSql.Replace('"', '\"'))\""
-
-		if ($LASTEXITCODE -ne 0) {
-			throw "Checking migration $migrationName failed with exit code $LASTEXITCODE"
-		}
+		$checkOutput = Invoke-MySqlScalar -StepName "Checking migration $migrationName" -Sql $checkSql
 
 		if ($checkOutput.Trim() -eq '1') {
 			Write-Host "Skipping migration $migrationName (already applied)"
@@ -53,11 +68,12 @@ CREATE TABLE IF NOT EXISTS schema_migrations (
 
 		Write-Host "Applying migration $migrationName"
 		Invoke-CheckedCommand -StepName "Applying migration $migrationName" -Command {
+			$userArg = "-u$dbUser"
 			Get-Content -Raw -Path $migrationFile.FullName |
-				docker compose exec -T database sh -lc "MYSQL_PWD='$($dbPassword.Replace("'", "''"))' mysql -u$dbUser $dbName"
+				docker compose exec -T -e "MYSQL_PWD=$dbPassword" database mysql $userArg $dbName
 		}
 
-		Invoke-MySqlCommand -StepName "Recording migration $migrationName" -Sql "INSERT INTO schema_migrations (filename) VALUES ('$migrationName')"
+		Invoke-MySqlCommand -StepName "Recording migration $migrationName" -Sql "INSERT IGNORE INTO schema_migrations (filename) VALUES ('$migrationName')"
 	}
 }
 
@@ -127,7 +143,8 @@ else {
 }
 
 Write-Host '[3/6] Starting database container'
-Invoke-CheckedCommand -StepName 'Starting database container' -Command { docker compose up --build -d database }
+Invoke-CheckedCommand -StepName 'Removing stale database container' -Command { docker compose rm -fsv database }
+Invoke-CheckedCommand -StepName 'Starting database container' -Command { docker compose up --build -d --no-deps database }
 
 Write-Host '[4/6] Waiting for database health'
 Wait-ForDatabaseHealthy

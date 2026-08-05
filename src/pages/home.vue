@@ -94,6 +94,9 @@ if (import.meta.client) {
                         >
                             <span class="bar-name">{{ restaurant.name }}</span>
                             <button v-if="isAdminUser()" class="admin-dashboard-button" @click="navigateTo('/admin/adminDashboard')">Admin Dashboard</button>
+                            <div class="person-picking-up">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>

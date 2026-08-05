@@ -11,7 +11,12 @@ DB_WAIT_TIMEOUT_SECONDS="${DB_WAIT_TIMEOUT_SECONDS:-180}"
 
 run_mysql() {
 	local sql="$1"
-	docker compose exec -T database sh -lc "MYSQL_PWD='$DB_PASSWORD' mysql -u$DB_USER $DB_NAME -e \"$sql\""
+	printf '%s\n' "$sql" | docker compose exec -T -e "MYSQL_PWD=$DB_PASSWORD" database mysql "-u$DB_USER" "$DB_NAME"
+}
+
+run_mysql_scalar() {
+	local sql="$1"
+	printf '%s\n' "$sql" | docker compose exec -T -e "MYSQL_PWD=$DB_PASSWORD" database mysql -N -B "-u$DB_USER" "$DB_NAME"
 }
 
 run_migrations() {
@@ -35,7 +40,7 @@ run_migrations() {
 
 		echo "Applying migration $migration_name"
 		docker compose exec -T database sh -lc "MYSQL_PWD='$DB_PASSWORD' mysql -u$DB_USER $DB_NAME" < "$migration_file"
-		run_mysql "INSERT INTO schema_migrations (filename) VALUES ('$migration_name')"
+		run_mysql "INSERT IGNORE INTO schema_migrations (filename) VALUES ('$migration_name')"
 	done
 }
 
@@ -73,7 +78,8 @@ echo "[2/6] Building frontend"
 npm run build
 
 echo "[3/6] Starting database container"
-docker compose up --build -d database
+docker compose rm -fsv database
+docker compose up --build -d --no-deps database
 
 echo "[4/6] Waiting for database health"
 wait_for_database_healthy

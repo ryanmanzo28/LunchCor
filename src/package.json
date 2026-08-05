@@ -3,6 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "analyze": "nuxt analyze --port 3001",
     "build": "nuxt build",
     "check": "npm run typecheck && npm run build",
     "dev": "nuxt dev",
