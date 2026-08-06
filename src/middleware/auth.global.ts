@@ -1,20 +1,24 @@
+import { resolveAuthGuardState } from '@/utils/auth-guard'
+
 export default defineNuxtRouteMiddleware(async (to) => {
   const authStore = useAuthStore()
   const userStore = useUserStore()
-  const normalizedPath = to.path.replace(/\/+$/, '') || '/'
-  const publicAuthPages = ['/login', '/register']
 
   if (authStore.token && !authStore.profile) {
     await authStore.restoreSession()
   }
 
-  const authenticated = Boolean(authStore.token)
+  const guard = resolveAuthGuardState({
+    path: to.path,
+    token: authStore.token,
+    profile: authStore.profile,
+  })
 
-  if (!authenticated && !publicAuthPages.includes(normalizedPath)) {
+  if (guard.shouldRedirectToLogin) {
     return navigateTo('/login')
   }
 
-  if (authenticated && normalizedPath === '/login') {
+  if (guard.shouldRedirectToHome) {
     return navigateTo('/')
   }
 
