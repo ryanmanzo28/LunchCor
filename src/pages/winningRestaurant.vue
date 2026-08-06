@@ -31,16 +31,6 @@ onMounted(() => {
   }
 })
 
-function resolveImage(item: MenuItem) {
-  return (item as MenuItem & { imageUrl?: string; photoUrl?: string }).imageUrl
-    || (item as MenuItem & { imageUrl?: string; photoUrl?: string }).photoUrl
-    || winningRestaurant.value?.icon
-    || '/favicon.ico'
-}
-
-function formatPrice(item: MenuItem) {
-  return item.priceCents == null ? 'Price TBD' : `$${(item.priceCents / 100).toFixed(2)}`
-}
 </script>
 
 <template>
@@ -68,19 +58,12 @@ function formatPrice(item: MenuItem) {
     <section class="menu-grid" aria-label="Winning restaurant menu" v-memo="[winningRestaurant?.id, menuItems.length]">
       <div v-if="!menuItems.length" class="empty-state">No menu items yet for this restaurant.</div>
 
-      <article v-for="item in menuItems" :key="`${item.name}-${item.category || 'main'}`" class="menu-card">
-        <img :src="resolveImage(item)" :alt="item.name" />
-        <div class="menu-card-content">
-          <div class="menu-card-header">
-            <h3>{{ item.name }}</h3>
-            <span>{{ formatPrice(item) }}</span>
-          </div>
-          <p class="menu-card-description">
-            {{ item.description || 'A delicious option from today’s winner.' }}
-          </p>
-          <p v-if="item.category" class="menu-card-section">{{ item.category }}</p>
-        </div>
-      </article>
+      <LazyWinningMenuCard
+        v-for="item in menuItems"
+        :key="`${item.name}-${item.category || 'main'}`"
+        :item="item"
+        :fallback-image="winningRestaurant?.icon || '/favicon.ico'"
+      />
     </section>
   </div>
 </template>
@@ -196,59 +179,6 @@ textarea {
   border-radius: 18px;
   background: var(--color-surface);
   color: var(--color-text-muted);
-}
-
-.menu-card {
-  overflow: hidden;
-  border-radius: 18px;
-  background: var(--color-surface-strong);
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.menu-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.14);
-}
-
-.menu-card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  background: var(--color-bg);
-}
-
-.menu-card-content {
-  padding: 14px;
-}
-
-.menu-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-}
-
-.menu-card-header h3 {
-  margin: 0;
-  font-size: 1rem;
-}
-
-.menu-card-header span {
-  font-weight: 700;
-  color: var(--color-accent);
-}
-
-.menu-card-description {
-  margin: 8px 0 0;
-  color: var(--color-text-muted);
-}
-
-.menu-card-section {
-  margin: 8px 0 0;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--color-accent);
 }
 
 @media (max-width: 768px) {

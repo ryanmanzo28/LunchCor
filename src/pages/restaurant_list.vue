@@ -41,7 +41,7 @@
             <button type="button" class="menu-close secondary-button" @click="closeMenuModal" aria-label="Close menu">x</button>
           </header>
 
-          <MenuItemsList
+          <LazyMenuItemsList
             :items="selectedMenuItems"
             :loading="isMenuLoading"
             :error="menuLoadError"

@@ -355,6 +355,16 @@
 	.form-note {
 		@apply mt-[16px] text-center text-[0.77rem] text-[var(--muted)];
 	}
+
+	@supports (content-visibility: auto) {
+		.restaurant-card,
+		.sidebar > *,
+		.panel,
+		.favorites li {
+			content-visibility: auto;
+			contain-intrinsic-size: auto 180px;
+		}
+	}
 }
 
 @media (max-width: 760px) {
