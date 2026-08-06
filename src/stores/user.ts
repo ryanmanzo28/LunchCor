@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import type { User } from '@/types/user'
 import { decodeId } from '@/utils/jwtVerify'
+import { useLazyAPIData } from '@/composables/useAPI'
 
 interface CreateUserInput {
   name: string
@@ -74,7 +75,14 @@ export const useUserStore = defineStore('user', () => {
       // Prefer cached id from auth store and fall back to JWT payload decode.
       const id = authStore.userId ?? await decodeId(token)
       if (id) {
-        const response = await useAPIData<User>(`/users/${id}`)
+        const { data } = await useLazyAPIData<User>(`/users/${id}`)
+        const response = data.value
+        if (!response) {
+          throw createError({
+            statusCode: 500,
+            statusMessage: 'Empty user response',
+          })
+        }
         user.value = response
       } else {
         user.value = null
@@ -87,14 +95,24 @@ export const useUserStore = defineStore('user', () => {
   }
 
   async function createUser(input: CreateUserInput) {
-    const created = await useAPIData<UserSummary>('/users/create', {
-      method: 'POST',
-      body: {
-        name: input.name.trim(),
-        email: input.email.trim().toLowerCase(),
-        password: input.password,
+    const { data } = await useLazyAPIData<UserSummary>('/users/create', {
+      fetch: {
+        method: 'POST',
+        body: {
+          name: input.name.trim(),
+          email: input.email.trim().toLowerCase(),
+          password: input.password,
+        },
       },
     })
+    const created = data.value
+
+    if (!created) {
+      throw createError({
+        statusCode: 500,
+        statusMessage: 'Empty create-user response',
+      })
+    }
 
     return created
   }
@@ -110,9 +128,20 @@ export const useUserStore = defineStore('user', () => {
     isSearching.value = true
 
     try {
-      const results = await useAPIData<UserSummary[]>(`/users/search?q=${encodeURIComponent(normalized)}`, {
-        method: 'GET',
+      const { data } = await useLazyAPIData<UserSummary[]>(`/users/search?q=${encodeURIComponent(normalized)}`, {
+        fetch: {
+          method: 'GET',
+        },
       })
+      const results = data.value
+
+      if (!results) {
+        throw createError({
+          statusCode: 500,
+          statusMessage: 'Empty search response',
+        })
+      }
+
       searchResults.value = results
       return results
     } finally {

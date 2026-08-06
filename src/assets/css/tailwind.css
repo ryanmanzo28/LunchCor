@@ -287,6 +287,7 @@
 
 	.progress span {
 		@apply block h-full rounded-[inherit] bg-[#498b75] transition-[width] duration-200;
+		will-change: width;
 	}
 
 	.panel .muted {

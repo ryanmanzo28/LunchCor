@@ -6,6 +6,8 @@
 
       <nav class="admin-nav" aria-label="Admin navigation">
         <NuxtLink class="admin-link" to="/admin">Dashboard</NuxtLink>
+        <NuxtLink class="admin-link" to="/admin/adminDashboard">Operations</NuxtLink>
+        <NuxtLink class="admin-link" to="/admin/analytics">Analytics</NuxtLink>
         <NuxtLink class="admin-link" to="/">Voting App</NuxtLink>
         <NuxtLink class="admin-link" to="/api/health">API Health</NuxtLink>
         <NuxtLink class="admin-link" to="/api/restaurants">Restaurants API</NuxtLink>

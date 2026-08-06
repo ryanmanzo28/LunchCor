@@ -54,6 +54,7 @@
 
 <script setup lang="ts">
 import type { Restaurant } from '@/types/restaurant'
+import { useLazyAPIData } from '@/composables/useAPI'
 
 useHead({
   title: 'List of Restaurants',
@@ -93,7 +94,15 @@ async function openMenuModal(restaurant: Restaurant) {
   isMenuModalOpen.value = true
 
   try {
-    const response = await useAPIData<{ menuItems: RestaurantMenuItem[] }>(`/restaurants/${restaurant.id}/menu`)
+    const { data } = await useLazyAPIData<{ menuItems: RestaurantMenuItem[] }>(`/restaurants/${restaurant.id}/menu`)
+    const response = data.value
+    if (!response) {
+      throw createError({
+        statusCode: 500,
+        statusMessage: 'Empty menu response',
+      })
+    }
+
     selectedMenuItems.value = response.menuItems
   }
   catch {
@@ -136,9 +145,11 @@ function closeMenuModal() {
   max-height: min(70vh, 760px);
   overflow-y: auto;
   padding-right: 6px;
+  content-visibility: auto;
 }
 
 .restaurant-item {
+  content-visibility: auto;
   min-width: 0;
 }
 
@@ -177,6 +188,7 @@ function closeMenuModal() {
 }
 
 .menu-modal {
+  content-visibility: auto;
   width: min(760px, 100%);
   max-height: min(78vh, 860px);
   overflow: auto;

@@ -83,6 +83,7 @@ const ratingLabel = computed(() => `${props.rating.toFixed(1)} out of 5 stars`)
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
   backdrop-filter: blur(14px);
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  will-change: transform, box-shadow;
 }
 
 .restaurant-card:hover {

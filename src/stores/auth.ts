@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import type { User } from '~/types/user'
+import { useLazyAPIData } from '@/composables/useAPI'
 
 type AuthProfile = Pick<User, 'name' | 'email' | 'password' | 'admin'> & {
   id: number | null
@@ -37,13 +38,23 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function login(email: string, password: string) {
-    const response = await useAPIData<{ token?: string, user?: { id: number, name: string, email: string, admin: boolean } }>('/auth/login', {
-      method: 'POST',
-      body: {
-        email: email.trim().toLowerCase(),
-        password,
+    const { data } = await useLazyAPIData<{ token?: string, user?: { id: number, name: string, email: string, admin: boolean } }>('/auth/login', {
+      fetch: {
+        method: 'POST',
+        body: {
+          email: email.trim().toLowerCase(),
+          password,
+        },
       },
     })
+    const response = data.value
+
+    if (!response) {
+      throw createError({
+        statusCode: 500,
+        statusMessage: 'Empty login response',
+      })
+    }
 
     if (!response.user) {
       throw createError({
@@ -85,9 +96,19 @@ export const useAuthStore = defineStore('auth', () => {
 
     if (jwtCookie.value) {
       try {
-        const response = await useAPIData<{ user?: { id: number, name: string, email: string, admin: boolean } }>('/auth/restore-session', {
-          method: 'GET',
+        const { data } = await useLazyAPIData<{ user?: { id: number, name: string, email: string, admin: boolean } }>('/auth/restore-session', {
+          fetch: {
+            method: 'GET',
+          },
         })
+        const response = data.value
+
+        if (!response) {
+          throw createError({
+            statusCode: 500,
+            statusMessage: 'Empty restore-session response',
+          })
+        }
 
         const loggedInUser = response.user
         if (loggedInUser) {
@@ -114,8 +135,10 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function logout() {
     try {
-      await useAPIData('/auth/logout', {
-        method: 'POST',
+      await useLazyAPIData<{ success: boolean }>('/auth/logout', {
+        fetch: {
+          method: 'POST',
+        },
       })
     } finally {
       clearToken()

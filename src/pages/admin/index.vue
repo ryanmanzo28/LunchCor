@@ -4,13 +4,14 @@
       <p>Frontend and API are reachable through the Nuxt app runtime.</p>
     </AdminCard>
 
-    <AdminCard title="Restaurants">
-      <p>Use the restaurants API endpoint to list, add, and remove entries.</p>
-      <NuxtLink to="/api/restaurants">Open endpoint</NuxtLink>
+    <AdminCard title="Operations">
+      <p>Inspect restaurant inventory, manually clear votes, and keep the lunch round moving.</p>
+      <NuxtLink to="/admin/adminDashboard">Open operations dashboard</NuxtLink>
     </AdminCard>
 
-    <AdminCard title="Next Step">
-      <p>Add role-based access when user roles are available in auth state.</p>
+    <AdminCard title="Analytics">
+      <p>Review order demand by restaurant and meal with a lightweight reporting view.</p>
+      <NuxtLink to="/admin/analytics">Open analytics</NuxtLink>
     </AdminCard>
   </section>
 </template>

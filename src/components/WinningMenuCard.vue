@@ -40,6 +40,7 @@ const formattedPrice = computed(() => (
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform, box-shadow;
 }
 
 .menu-card:hover {
@@ -57,6 +58,7 @@ const formattedPrice = computed(() => (
   object-fit: cover;
   background: var(--color-bg);
   transition: transform 0.25s ease;
+  will-change: transform;
 }
 
 .menu-card-content {

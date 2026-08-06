@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import type { Restaurant } from '@/types/restaurant'
 import { normalizeCount, randomRestaurant, restaurantIdByName, sortByPopularity, sortByRating } from '@/utils/restaurants'
+import { useLazyAPIData } from '@/composables/useAPI'
 
 interface RestaurantsResponse {
   status: string
@@ -42,7 +43,15 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     loadError.value = null
 
     try {
-      const response = await useAPIData<RestaurantsResponse>('/restaurants')
+      const { data } = await useLazyAPIData<RestaurantsResponse>('/restaurants')
+      const response = data.value
+      if (!response) {
+        throw createError({
+          statusCode: 500,
+          statusMessage: 'Empty restaurants response',
+        })
+      }
+
       restaurants.value = response.restaurants
       hasLoaded.value = true
 
@@ -118,14 +127,17 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     loadError.value = null
 
     try {
-      const response = await useAPIData<VoteResponse>('/votes/vote', {
-        method: 'POST',
-        body: {
-          restaurantId: id,
+      const { data } = await useLazyAPIData<VoteResponse>('/votes/vote', {
+        fetch: {
+          method: 'POST',
+          body: {
+            restaurantId: id,
+          },
         },
       })
+      const response = data.value
 
-      if (response.success) {
+      if (response?.success) {
         applyVoteLocally(id)
       }
     }
@@ -157,6 +169,10 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     void fetchRestaurants()
   }
 
+  function clearSelectedVote() {
+    selectedId.value = null
+  }
+
   return {
     selectedId,
     restaurants,
@@ -176,5 +192,6 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     refreshMenusLightweight,
     voteFor,
     pickSurprise,
+    clearSelectedVote,
   }
 })

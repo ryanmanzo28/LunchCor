@@ -138,6 +138,7 @@ if (import.meta.client) {
 }
 
 .home-page {
+    content-visibility: auto;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -181,6 +182,7 @@ if (import.meta.client) {
 }
 
 .bar-column {
+    content-visibility: auto;
     color: var(--accent);
     width: 160px;
     display: flex;
@@ -203,6 +205,8 @@ if (import.meta.client) {
     display: flex;
     align-items: start;
     justify-content: center;
+    transition: height 180ms ease;
+    will-change: height;
 }
 
 .bar-name {

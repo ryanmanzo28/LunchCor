@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { RestaurantCreateInput } from '~/server/utils/restaurants'
+import { useLazyAPIData } from '@/composables/useAPI'
 
 const form = reactive<Partial<RestaurantCreateInput>>({
   name: '',
@@ -35,9 +36,11 @@ async function createRestaurantFormSubmit() {
   }
 
   try {
-    await useAPIData('/restaurants/create', {
-      method: 'POST',
-      body: payload,
+    await useLazyAPIData('/restaurants/create', {
+      fetch: {
+        method: 'POST',
+        body: payload,
+      },
     })
 
     alert('Restaurant created successfully!')
