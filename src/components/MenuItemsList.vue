@@ -50,29 +50,30 @@ withDefaults(defineProps<{
   justify-content: space-between;
   gap: 14px;
   padding: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border);
   border-radius: 12px;
+  background: var(--color-surface-strong);
 }
 
 .menu-item-name {
   margin: 0;
   font-weight: 700;
-  color: #172033;
+  color: var(--color-text);
 }
 
 .menu-item-description {
   margin: 4px 0 0;
-  color: #4b5563;
+  color: var(--color-text-muted);
 }
 
 .menu-item-category {
   margin: 6px 0 0;
   font-size: 0.78rem;
-  color: #0f766e;
+  color: var(--color-accent);
 }
 
 .menu-item-price {
-  color: #0f172a;
+  color: var(--color-text);
   white-space: nowrap;
 }
 </style>

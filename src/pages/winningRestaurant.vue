@@ -2,8 +2,18 @@
 import type { MenuItem } from '@/types/menu-item'
 
 const restaurantsStore = useRestaurantsStore()
-const winningRestaurant = computed(() => restaurantsStore.getRestaurantWithMostVotes())
 const menuInput = ref('')
+
+const winningRestaurant = computed(() => restaurantsStore.getRestaurantWithMostVotes())
+
+const menuItems = computed<MenuItem[]>(() => {
+  const restaurant = winningRestaurant.value
+  if (!restaurant) {
+    return []
+  }
+
+  return restaurantsStore.getRestaurantMenuItems(restaurant.id) as MenuItem[]
+})
 
 useHead({
   title: winningRestaurant.value
@@ -12,42 +22,30 @@ useHead({
   link: [{ rel: 'icon', href: '/favicon.ico' }],
 })
 
-const now = new Date()
-const isWednesday = now.getDay() === 3
-const hour = now.getHours()
-const isLunchWindow = isWednesday && hour >= 11 && hour < 17
-
-const menuItems = computed<MenuItem[]>(() => {
-  if (!winningRestaurant.value) {
-    return []
-  }
-
-  return restaurantsStore.getRestaurantMenuItems(winningRestaurant.value.id) as MenuItem[]
-})
-
 onMounted(() => {
+  const now = new Date()
+  const isLunchWindow = now.getDay() === 3 && now.getHours() >= 11 && now.getHours() < 17
+
   if (!isLunchWindow || !winningRestaurant.value) {
     return navigateTo('/')
   }
 })
 
 function resolveImage(item: MenuItem) {
-  const extras = item as MenuItem & { imageUrl?: string; photoUrl?: string }
-  return extras.imageUrl || extras.photoUrl || winningRestaurant.value?.icon || '/favicon.ico'
+  return (item as MenuItem & { imageUrl?: string; photoUrl?: string }).imageUrl
+    || (item as MenuItem & { imageUrl?: string; photoUrl?: string }).photoUrl
+    || winningRestaurant.value?.icon
+    || '/favicon.ico'
 }
 
 function formatPrice(item: MenuItem) {
-  if (item.priceCents === null || item.priceCents === undefined) {
-    return 'Price TBD'
-  }
-
-  return `$${(item.priceCents / 100).toFixed(2)}`
+  return item.priceCents == null ? 'Price TBD' : `$${(item.priceCents / 100).toFixed(2)}`
 }
 </script>
 
 <template>
   <div class="page-shell">
-    <section class="hero-card">
+    <section class="hero-card" v-memo="[winningRestaurant?.id, winningRestaurant?.name, winningRestaurant?.description, winningRestaurant?.cuisine]">
       <div class="hero-copy">
         <p class="eyebrow">Lunch winner</p>
         <h1>{{ winningRestaurant?.name || 'No winner yet' }}</h1>
@@ -67,7 +65,7 @@ function formatPrice(item: MenuItem) {
       </div>
     </section>
 
-    <section class="menu-grid" aria-label="Winning restaurant menu">
+    <section class="menu-grid" aria-label="Winning restaurant menu" v-memo="[winningRestaurant?.id, menuItems.length]">
       <div v-if="!menuItems.length" class="empty-state">No menu items yet for this restaurant.</div>
 
       <article v-for="item in menuItems" :key="`${item.name}-${item.category || 'main'}`" class="menu-card">
@@ -118,7 +116,7 @@ function formatPrice(item: MenuItem) {
   letter-spacing: 0.22em;
   font-size: 0.78rem;
   font-weight: 700;
-  color: #b45309;
+  color: var(--color-accent);
 }
 
 h1 {
@@ -128,7 +126,7 @@ h1 {
 
 .subtitle {
   margin: 10px 0 0;
-  color: #475569;
+  color: var(--color-text-muted);
   max-width: 560px;
 }
 
@@ -142,8 +140,8 @@ h1 {
 .chip {
   border-radius: 999px;
   padding: 7px 10px;
-  background: #fff7ed;
-  color: #9a2c00;
+  background: var(--color-surface);
+  color: var(--color-accent);
   font-size: 0.82rem;
   font-weight: 700;
 }
@@ -154,8 +152,9 @@ h1 {
   flex-direction: column;
   gap: 10px;
   padding: 16px;
+  border: 1px solid var(--color-border);
   border-radius: 18px;
-  background: #fff;
+  background: var(--color-surface-strong);
   box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.06);
 }
 
@@ -166,14 +165,16 @@ label {
 textarea {
   resize: vertical;
   min-height: 92px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: 10px;
   font: inherit;
+  background: var(--color-surface);
+  color: var(--color-text);
 }
 
 .settings-link {
-  color: #2563eb;
+  color: var(--color-accent);
   font-size: 0.95rem;
   font-weight: 700;
   text-decoration: none;
@@ -193,14 +194,14 @@ textarea {
   padding: 22px;
   text-align: center;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.8);
-  color: #64748b;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
 }
 
 .menu-card {
   overflow: hidden;
   border-radius: 18px;
-  background: white;
+  background: var(--color-surface-strong);
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -214,7 +215,7 @@ textarea {
   width: 100%;
   height: 160px;
   object-fit: cover;
-  background: #f1f5f9;
+  background: var(--color-bg);
 }
 
 .menu-card-content {
@@ -235,19 +236,19 @@ textarea {
 
 .menu-card-header span {
   font-weight: 700;
-  color: #2563eb;
+  color: var(--color-accent);
 }
 
 .menu-card-description {
   margin: 8px 0 0;
-  color: #475569;
+  color: var(--color-text-muted);
 }
 
 .menu-card-section {
   margin: 8px 0 0;
   font-size: 0.8rem;
   font-weight: 700;
-  color: #0f766e;
+  color: var(--color-accent);
 }
 
 @media (max-width: 768px) {
