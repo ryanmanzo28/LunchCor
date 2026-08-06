@@ -1,5 +1,5 @@
 <template>
-  <article class="card">
+  <article class="card perf">
     <header v-if="$slots.header || title" class="card-header">
       <slot name="header">
         <h2 v-if="title">{{ title }}</h2>

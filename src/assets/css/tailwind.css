@@ -24,6 +24,22 @@
 		--font-display: 'Fraunces', Georgia, serif;
 		--font-ui: 'DM Sans', sans-serif;
 	}
+	.perf {
+    /* Skip rendering offscreen */
+    content-visibility: auto;
+
+    /* Isolate rendering work */
+    contain: layout paint style;
+
+    /* Reserve space before first render */
+    contain-intrinsic-size: auto 1000px;
+
+    /* Create a new stacking context */
+    isolation: isolate;
+
+    /* Prevent accidental horizontal overflow */
+    overflow-x: clip;
+}
 
 	.dark,
 	[data-theme='dark'] {

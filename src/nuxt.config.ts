@@ -42,7 +42,6 @@ export default defineNuxtConfig({
       ],
       ignore: [
         '/',
-        '/home',
         '/restaurant_list',
         '/voting',
         '/settings',

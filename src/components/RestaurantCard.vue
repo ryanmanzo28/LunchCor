@@ -1,5 +1,5 @@
 <template>
-  <article class="restaurant-card" :style="cardStyle">
+  <article class="restaurant-card perf" :style="cardStyle">
     <div class="icon-slot" aria-hidden="true">
       <LazyNuxtImg
         v-if="iconIsImage"

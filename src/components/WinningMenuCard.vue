@@ -17,7 +17,7 @@ const formattedPrice = computed(() => (
 </script>
 
 <template>
-  <article class="menu-card">
+  <article class="menu-card perf">
     <LazyNuxtImg :src="resolvedImage" :alt="item.name" class="menu-card-image" />
     <div class="menu-card-content">
       <div class="menu-card-header">

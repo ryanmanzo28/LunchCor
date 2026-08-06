@@ -77,7 +77,7 @@ async function loadAnalytics() {
 </script>
 
 <template>
-  <section class="analytics-page">
+  <section class="analytics-page perf">
     <div class="page-header">
       <div>
         <p class="eyebrow">Reporting</p>
@@ -113,13 +113,14 @@ async function loadAnalytics() {
       <p v-else-if="!analyticsRows.length" class="feedback">No analytics rows found for that range.</p>
     </AdminCard>
 
-    <LazyAdminAnalyticsResults
-      v-if="analyticsRows.length"
-      hydrate-on-idle
-      :rows="analyticsRows"
-      :start-date="startDate"
-      :end-date="endDate"
-    />
+    <div v-if="analyticsRows.length" class="perf">
+      <LazyAdminAnalyticsResults
+        hydrate-on-idle
+        :rows="analyticsRows"
+        :start-date="startDate"
+        :end-date="endDate"
+      />
+    </div>
   </section>
 </template>
 

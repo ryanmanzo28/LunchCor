@@ -55,7 +55,7 @@ onMounted(() => {
       </div>
     </section>
 
-    <section class="menu-grid" aria-label="Winning restaurant menu" v-memo="[winningRestaurant?.id, menuItems.length]">
+    <section class="menu-grid perf" aria-label="Winning restaurant menu" v-memo="[winningRestaurant?.id, menuItems.length]">
       <div v-if="!menuItems.length" class="empty-state">No menu items yet for this restaurant.</div>
 
       <LazyWinningMenuCard

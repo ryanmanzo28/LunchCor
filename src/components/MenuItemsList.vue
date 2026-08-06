@@ -3,7 +3,7 @@
     <p v-if="loading" class="muted">Loading menu items...</p>
     <p v-else-if="error" class="muted">{{ error }}</p>
     <ul v-else-if="items.length" class="menu-items-list">
-      <li v-for="item in items" :key="`${item.section ?? 'uncategorized'}-${item.name}`" class="menu-item-row">
+      <li v-for="item in items" :key="`${item.section ?? 'uncategorized'}-${item.name}`" class="menu-item-row perf">
         <div>
           <p class="menu-item-name">{{ item.name }}</p>
           <p v-if="item.description" class="menu-item-description">{{ item.description }}</p>

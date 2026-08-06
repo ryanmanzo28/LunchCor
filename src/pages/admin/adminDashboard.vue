@@ -234,18 +234,18 @@ async function clearVotes() {
 }
 </style>
 <template>
-    <section class="admin-grid">
+    <section class="admin-grid perf">
         <AdminCard title="Service Snapshot">
-            <div class="stats-grid">
-                <article class="stat-card">
+            <div class="stats-grid perf">
+                <article class="stat-card perf">
                     <span>Restaurants</span>
                     <strong>{{ restaurantCount }}</strong>
                 </article>
-                <article class="stat-card">
+                <article class="stat-card perf">
                     <span>Votes in play</span>
                     <strong>{{ totalVotes }}</strong>
                 </article>
-                <article class="stat-card">
+                <article class="stat-card perf">
                     <span>Current leader</span>
                     <strong>{{ topRestaurant?.name ?? 'No leader' }}</strong>
                 </article>
@@ -284,8 +284,8 @@ async function clearVotes() {
             <p v-if="isLoading" class="muted">Loading restaurants...</p>
             <p v-else-if="loadError" class="muted">{{ loadError }}</p>
 
-            <ul v-else class="restaurant-list">
-                <li v-for="restaurant in restaurants" :key="restaurant.id" class="restaurant-row">
+            <ul v-else class="restaurant-list perf">
+                <li v-for="restaurant in restaurants" :key="restaurant.id" class="restaurant-row perf">
                     <span class="badge" :style="{ background: restaurant.color }">{{ restaurant.icon }}</span>
                     <div>
                         <strong>{{ restaurant.name }}</strong>

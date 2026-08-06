@@ -14,8 +14,8 @@
       <p v-if="isLoading" class="muted">Loading restaurants...</p>
       <p v-else-if="loadError" class="muted">{{ loadError }}</p>
 
-      <ul v-else class="restaurant-grid" aria-label="All restaurants">
-        <li v-for="restaurant in allRestaurants" :key="restaurant.id" class="restaurant-item">
+      <ul v-else class="restaurant-grid perf" aria-label="All restaurants">
+        <li v-for="restaurant in allRestaurants" :key="restaurant.id" class="restaurant-item perf">
           <button type="button" class="card-trigger" @click="openMenuModal(restaurant)">
             <LazyRestaurantCard
               :name="restaurant.name"
