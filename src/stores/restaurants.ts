@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import type { Restaurant } from '@/types/restaurant'
-import { randomRestaurant, restaurantIdByName, sortByPopularity, sortByRating } from '@/utils/restaurants'
+import { normalizeCount, randomRestaurant, restaurantIdByName, sortByPopularity, sortByRating } from '@/utils/restaurants'
 
 interface RestaurantsResponse {
   status: string
@@ -67,6 +67,28 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     return restaurantIdByName(restaurants.value, name)
   }
 
+  function getRestaurantWithMostVotes() {
+    return [...restaurants.value]
+      .sort((left, right) => {
+        const byVotes = normalizeCount(right.timesVoted) - normalizeCount(left.timesVoted)
+        if (byVotes !== 0) {
+          return byVotes
+        }
+
+        return left.name.localeCompare(right.name)
+      })[0] ?? null
+  }
+
+  function getRestaurantMenuItems(restaurantId: number) {
+    const restaurant = restaurants.value.find((item) => item.id === restaurantId)
+
+    if (!restaurant) {
+      return []
+    }
+
+    return restaurant.menuItems ?? []
+  }
+
   function applyVoteLocally(id: number) {
     const choice = restaurants.value.find((restaurant) => restaurant.id === id)
 
@@ -74,8 +96,8 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
       return
     }
 
-    choice.votes += 1
-    choice.timesVoted += 1
+    choice.votes = normalizeCount(choice.votes) + 1
+    choice.timesVoted = normalizeCount(choice.timesVoted) + 1
     selectedId.value = id
   }
 
@@ -148,6 +170,8 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     hasLoaded,
     loadError,
     idFromName,
+    getRestaurantWithMostVotes,
+    getRestaurantMenuItems,
     fetchRestaurants,
     refreshMenusLightweight,
     voteFor,

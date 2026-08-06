@@ -73,6 +73,11 @@ function parseStoredMenuItems(value: string | null | undefined) {
   }
 }
 
+function normalizeCount(value: unknown, fallback = 0) {
+  const parsed = typeof value === 'number' ? value : Number(value)
+  return Number.isFinite(parsed) ? parsed : fallback
+}
+
 export function mapRestaurant(row: RestaurantRow): Restaurant {
   // Coerce nullable/legacy database fields into stable API shape.
   return {
@@ -80,10 +85,10 @@ export function mapRestaurant(row: RestaurantRow): Restaurant {
     name: row.name,
     cuisine: typeof row.cuisine === 'string' ? row.cuisine : '',
     description: row.description ?? '',
-    rating: Number(row.average_rating),
-    orders: row.times_ordered,
-    timesVoted: row.times_voted,
-    votes: typeof row.votes === 'number' ? row.votes : 0,
+    rating: Number.isFinite(Number(row.average_rating)) ? Number(row.average_rating) : 0,
+    orders: normalizeCount(row.times_ordered),
+    timesVoted: normalizeCount(row.times_voted),
+    votes: normalizeCount(row.votes),
     icon: typeof row.icon === 'string' ? row.icon : '',
     color: typeof row.color === 'string' ? row.color : '#9aa5b1',
     link: typeof row.link === 'string' ? row.link : undefined,

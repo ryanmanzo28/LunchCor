@@ -1,15 +1,16 @@
 <script setup lang="ts">
+import { normalizeCount } from '@/utils/restaurants'
+
 useHead({
     title: 'LunchCor Home',
     link: [{ rel: 'icon', href: '/favicon.ico' }],
 })
 const userStore = useUserStore()
 const restaurantsStore = useRestaurantsStore()
-const authStore = useAuthStore()
 const fallbackTopIds = useState<number[]>('home-fallback-top-ids', () => [])
 const isWednesday = new Date().getDay() === 3;
 
-const allTimesVotedZero = computed(() => restaurantsStore.restaurants.every((restaurant) => (restaurant.timesVoted ?? 0) === 0))
+const allTimesVotedZero = computed(() => restaurantsStore.restaurants.every((restaurant) => normalizeCount(restaurant.timesVoted) === 0))
 
 const topRestaurants = computed(() => {
     const list = restaurantsStore.restaurants
@@ -22,7 +23,7 @@ const topRestaurants = computed(() => {
     if (!allTimesVotedZero.value) {
         return [...list]
             .sort((left, right) => {
-                const byVotes = (right.timesVoted ?? 0) - (left.timesVoted ?? 0)
+                const byVotes = normalizeCount(right.timesVoted) - normalizeCount(left.timesVoted)
                 if (byVotes !== 0) {
                     return byVotes
                 }
@@ -58,7 +59,7 @@ const topRestaurants = computed(() => {
     return list.slice(0, 3)
 })
 
-const maxVotes = computed(() => Math.max(...topRestaurants.value.map((restaurant) => restaurant.timesVoted), 0))
+const maxVotes = computed(() => Math.max(...topRestaurants.value.map((restaurant) => normalizeCount(restaurant.timesVoted)), 0))
 if (import.meta.client) {
     void restaurantsStore.fetchRestaurants()
 
@@ -84,19 +85,18 @@ if (import.meta.client) {
                     :key="restaurant.id"
                     class="bar-column"
                 >
-                    <strong class="bar-count">{{ restaurant.timesVoted }}</strong>
+                    <strong class="bar-count">{{ normalizeCount(restaurant.timesVoted) }}</strong>
                     <div class="bar-track">
                         <div
                             class="bar-fill"
                             :style="{
-                                height: maxVotes.valueOf() > 0 ? `${Math.max((restaurant.timesVoted / maxVotes.valueOf()) * 100, 4)}%` : '4%',
+                                height: maxVotes.valueOf() > 0 ? `${Math.max((normalizeCount(restaurant.timesVoted) / maxVotes.valueOf()) * 100, 4)}%` : '4%',
                             }"
                         >
                             <span class="bar-name">{{ restaurant.name }}</span>
                             <button v-if="isAdminUser()" class="admin-dashboard-button" @click="navigateTo('/admin/adminDashboard')">Admin Dashboard</button>
-                            <div class="person-picking-up">
-                                
-                            </div>
+
+                            
                         </div>
                     </div>
                 </div>

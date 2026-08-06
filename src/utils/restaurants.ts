@@ -1,16 +1,21 @@
 import type { Restaurant } from '@/types/restaurant'
 
+export function normalizeCount(value: unknown, fallback = 0) {
+  const parsed = typeof value === 'number' ? value : Number(value)
+  return Number.isFinite(parsed) ? parsed : fallback
+}
+
 export function sortByRating(restaurants: Restaurant[]) {
   // Return a copy so callers keep original order untouched.
   return [...restaurants].sort((a, b) => b.rating - a.rating)
 }
 
 export function sortByPopularity(restaurants: Restaurant[]) {
-  return [...restaurants].sort((a, b) => b.orders - a.orders)
+  return [...restaurants].sort((a, b) => normalizeCount(b.orders) - normalizeCount(a.orders))
 }
 
 export function sortByTimesVoted(restaurants: Restaurant[]) {
-  return [...restaurants].sort((a, b) => b.timesVoted - a.timesVoted)
+  return [...restaurants].sort((a, b) => normalizeCount(b.timesVoted) - normalizeCount(a.timesVoted))
 }
 
 export function randomRestaurant(restaurants: Restaurant[]) {
