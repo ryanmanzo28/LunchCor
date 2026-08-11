@@ -67,6 +67,7 @@ export default defineEventHandler(async (event) => {
             id: newUser.id,
             name: newUser.name,
             email: newUser.email,
+            password: '',
             admin: Boolean(newUser.admin),
         }
     }

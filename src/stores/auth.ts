@@ -135,11 +135,13 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function logout() {
     try {
-      await useLazyAPIData<{ success: boolean }>('/auth/logout', {
+      const { data } = await useLazyAPIData<{ success: boolean }>('/auth/logout', {
         fetch: {
           method: 'POST',
         },
       })
+      // Wait for the logout API response before clearing local state
+      await data
     } finally {
       clearToken()
     }
