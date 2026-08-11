@@ -58,7 +58,11 @@ export async function useLazyAPIData<T>(
   )
 
   if (asyncData.error.value?.statusCode === 401) {
-    await navigateTo('/login')
+    authStore.clearToken()
+
+    if (import.meta.client) {
+      await navigateTo('/login')
+    }
   }
 
   return asyncData
