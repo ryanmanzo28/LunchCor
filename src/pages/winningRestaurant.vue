@@ -1,8 +1,17 @@
 <script setup lang="ts">
 import type { MenuItem } from '@/types/menu-item'
+import type { RestaurantReview, RestaurantReviewsResponse } from '@/types/review'
+import { useLazyAPIData } from '@/composables/useAPI'
 
 const restaurantsStore = useRestaurantsStore()
-const menuInput = ref('')
+const selectedRating = ref(5)
+const reviewInput = ref('')
+const isSubmittingReview = ref(false)
+const reviewMessage = ref('')
+const reviewError = ref('')
+const isReviewsLoading = ref(false)
+const reviewsRefreshToken = ref(0)
+const reviewsSummary = ref<RestaurantReviewsResponse | null>(null)
 
 const winningRestaurant = computed(() => restaurantsStore.getRestaurantWithMostVotes())
 
@@ -14,6 +23,115 @@ const menuItems = computed<MenuItem[]>(() => {
 
   return restaurantsStore.getRestaurantMenuItems(restaurant.id) as MenuItem[]
 })
+
+const recentReviews = computed<RestaurantReview[]>(() => reviewsSummary.value?.reviews ?? [])
+
+const reviewStatsLabel = computed(() => {
+  if (!reviewsSummary.value || reviewsSummary.value.totalReviews === 0) {
+    return 'No ratings yet. Be the first to leave one.'
+  }
+
+  return `${reviewsSummary.value.averageRating.toFixed(2)} average from ${reviewsSummary.value.totalReviews} ratings`
+})
+
+async function fetchReviews() {
+  const restaurant = winningRestaurant.value
+
+  if (!restaurant) {
+    reviewsSummary.value = null
+    return
+  }
+
+  isReviewsLoading.value = true
+  reviewError.value = ''
+
+  try {
+    const { data, error } = await useLazyAPIData<RestaurantReviewsResponse>(
+      `/restaurants/${restaurant.id}/reviews`,
+      {
+        key: `restaurant-reviews-${restaurant.id}-${reviewsRefreshToken.value}`,
+        server: false,
+      },
+    )
+
+    if (error.value) {
+      throw error.value
+    }
+
+    if (!data.value) {
+      throw createError({
+        statusCode: 500,
+        statusMessage: 'Empty reviews response',
+      })
+    }
+
+    reviewsSummary.value = data.value
+  }
+  catch {
+    reviewError.value = 'Unable to load reviews right now.'
+  }
+  finally {
+    isReviewsLoading.value = false
+  }
+}
+
+async function submitReview() {
+  const restaurant = winningRestaurant.value
+
+  if (!restaurant || isSubmittingReview.value) {
+    return
+  }
+
+  isSubmittingReview.value = true
+  reviewMessage.value = ''
+  reviewError.value = ''
+
+  try {
+    const { data, error } = await useLazyAPIData<{ success: boolean, message: string }>(
+      `/restaurants/${restaurant.id}/reviews`,
+      {
+        key: `restaurant-review-submit-${restaurant.id}-${Date.now()}`,
+        server: false,
+        fetch: {
+          method: 'POST',
+          body: {
+            rating: selectedRating.value,
+            review: reviewInput.value,
+          },
+        },
+      },
+    )
+
+    if (error.value) {
+      const statusCode = Number(error.value.statusCode ?? 500)
+
+      if (statusCode === 409) {
+        reviewError.value = 'You already reviewed this restaurant today.'
+        return
+      }
+
+      reviewError.value = 'Unable to submit your review right now.'
+      return
+    }
+
+    if (!data.value?.success) {
+      reviewError.value = 'Unable to submit your review right now.'
+      return
+    }
+
+    reviewMessage.value = data.value.message || 'Review submitted.'
+    reviewInput.value = ''
+    reviewsRefreshToken.value += 1
+
+    await Promise.all([
+      fetchReviews(),
+      restaurantsStore.fetchRestaurants(true),
+    ])
+  }
+  finally {
+    isSubmittingReview.value = false
+  }
+}
 
 useHead({
   title: winningRestaurant.value
@@ -29,7 +147,19 @@ onMounted(() => {
   if (!isLunchWindow || !winningRestaurant.value) {
     return navigateTo('/')
   }
+
+  void fetchReviews()
 })
+
+watch(
+  () => winningRestaurant.value?.id,
+  () => {
+    reviewMessage.value = ''
+    reviewError.value = ''
+    reviewsRefreshToken.value += 1
+    void fetchReviews()
+  },
+)
 
 </script>
 
@@ -49,9 +179,31 @@ onMounted(() => {
       </div>
 
       <div class="entry-card">
-        <label for="menu-entry">Menu note</label>
-        <textarea id="menu-entry" v-model="menuInput" rows="4" placeholder="Write today’s specials or a quick note..." />
-        <NuxtLink to="/settings" class="settings-link">Open settings</NuxtLink>
+        <label for="rating-select">Rate this lunch</label>
+        <select id="rating-select" v-model.number="selectedRating">
+          <option :value="5">5 - Loved it</option>
+          <option :value="4">4 - Really good</option>
+          <option :value="3">3 - Solid</option>
+          <option :value="2">2 - Not great</option>
+          <option :value="1">1 - Would not order again</option>
+        </select>
+
+        <label for="review-entry">Quick review</label>
+        <textarea
+          id="review-entry"
+          v-model="reviewInput"
+          rows="4"
+          maxlength="1000"
+          placeholder="Share what you ordered and whether you would order it again..."
+        />
+
+        <button type="button" class="primary-button" :disabled="isSubmittingReview" @click="submitReview">
+          {{ isSubmittingReview ? 'Submitting...' : 'Submit review' }}
+        </button>
+
+        <p v-if="reviewMessage" class="review-feedback success">{{ reviewMessage }}</p>
+        <p v-if="reviewError" class="review-feedback error">{{ reviewError }}</p>
+        <p class="review-stats">{{ reviewStatsLabel }}</p>
       </div>
     </section>
 
@@ -64,6 +216,26 @@ onMounted(() => {
         :item="item"
         :fallback-image="winningRestaurant?.icon || '/favicon.ico'"
       />
+    </section>
+
+    <section class="reviews-panel" aria-label="Recent restaurant reviews">
+      <header class="reviews-header">
+        <h2>Recent reviews</h2>
+        <p v-if="isReviewsLoading" class="muted">Loading reviews...</p>
+      </header>
+
+      <p v-if="!isReviewsLoading && !recentReviews.length" class="muted">No reviews posted yet for this restaurant.</p>
+
+      <ul v-else class="review-list">
+        <li v-for="entry in recentReviews" :key="entry.id" class="review-item">
+          <div class="review-top-row">
+            <strong>{{ entry.userName }}</strong>
+            <span class="review-rating">{{ entry.rating }}/5</span>
+          </div>
+          <p v-if="entry.review" class="review-copy">{{ entry.review }}</p>
+          <p class="review-date">{{ entry.reviewDate }}</p>
+        </li>
+      </ul>
     </section>
   </div>
 </template>
@@ -156,6 +328,48 @@ textarea {
   color: var(--color-text);
 }
 
+select {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 10px;
+  font: inherit;
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.primary-button {
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--color-accent);
+}
+
+.primary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.review-feedback {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.review-feedback.success {
+  color: #216b4a;
+}
+
+.review-feedback.error {
+  color: #a53a24;
+}
+
+.review-stats {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
 .settings-link {
   color: var(--color-accent);
   font-size: 0.95rem;
@@ -178,6 +392,68 @@ textarea {
   text-align: center;
   border-radius: 18px;
   background: var(--color-surface);
+  color: var(--color-text-muted);
+}
+
+.reviews-panel {
+  margin-top: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 18px;
+}
+
+.reviews-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.reviews-header h2 {
+  margin: 0;
+}
+
+.muted {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.review-list {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.review-item {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: var(--color-surface-strong);
+}
+
+.review-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.review-rating {
+  color: #9a6800;
+  font-weight: 700;
+}
+
+.review-copy {
+  margin: 8px 0 0;
+  color: var(--color-text);
+}
+
+.review-date {
+  margin: 8px 0 0;
+  font-size: 0.8rem;
   color: var(--color-text-muted);
 }
 

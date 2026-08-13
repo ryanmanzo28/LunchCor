@@ -111,6 +111,14 @@ Authentication:
 - Returns menu items for a restaurant.
 - Uses normalized `menu_items` rows first, then falls back to legacy stored menu JSON when needed.
 
+`GET /api/restaurants/:id/reviews`
+- Returns recent restaurant reviews and aggregate rating data.
+
+`POST /api/restaurants/:id/reviews`
+- Auth required.
+- Body: `{ rating, review? }`
+- Creates a post-lunch restaurant review (1-5 rating) and updates aggregate restaurant rating.
+
 `POST /api/restaurants/create`
 - Body: `{ name, link, cuisine?, description?, color?, icon? }`
 - Creates a restaurant.
